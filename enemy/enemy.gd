@@ -28,3 +28,6 @@ func _physics_process(_delta: float) -> void:
 		velocity = _motion * _speed
 	
 		move_and_slide()
+
+func enemy():
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=13 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://beptwm1jpl54g" path="res://kitchen.png" id="1_iw1i3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://enemy/enemy.tscn" id="3_epa61"]
 [ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="6_phuhi"]
 [ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="7_3swbc"]
+[ext_resource type="PackedScene" uid="uid://bx5jso6gcl86a" path="res://coin.tscn" id="8_cv5ri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ntukp"]
 texture = ExtResource("1_iw1i3")
@@ -1057,7 +1058,7 @@ position = Vector2(1043, 48)
 scale = Vector2(3.31109, 3.22828)
 texture = ExtResource("6_phuhi")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
 offset_left = 946.0
 offset_top = 16.0
 offset_right = 1025.0
@@ -1088,3 +1089,16 @@ scale = Vector2(0.5, 0.5)
 [node name="enemy" parent="." instance=ExtResource("3_epa61")]
 position = Vector2(598, 168)
 scale = Vector2(0.5, 0.5)
+
+[node name="coins" type="Area2D" parent="."]
+
+[node name="coin2" parent="coins" instance=ExtResource("8_cv5ri")]
+position = Vector2(892, 346)
+
+[node name="coin" parent="coins" instance=ExtResource("8_cv5ri")]
+position = Vector2(271, 355)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
