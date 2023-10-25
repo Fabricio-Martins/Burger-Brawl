@@ -1,8 +1,6 @@
 extends Area2D
 
-@export var _character: Character
-
-var coin_label
+@onready var _character: Character
 
 func _ready():
 	var characters = get_tree().get_nodes_in_group("Character")
@@ -11,16 +9,16 @@ func _ready():
 		_character = characters[0]
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
-		
-	coin_label = get_tree().get_nodes_in_group("CoinLabel")[0]
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+
 func _on_body_entered(body):
-	if _character:
-		if "coins" in _character:
-			_character.coins += 1
-			coin_label.text = str(_character.coins)
-		queue_free()
-		#$CoinAudio.play()
+	_character._move_speed -= 500
+
+
+func _on_body_exited(body):
+	_character._move_speed += 500

@@ -2,8 +2,6 @@ extends Area2D
 
 @export var _character: Character
 
-var coin_label
-
 func _ready():
 	var characters = get_tree().get_nodes_in_group("Character")
 	
@@ -12,15 +10,11 @@ func _ready():
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
-	coin_label = get_tree().get_nodes_in_group("CoinLabel")[0]
-
 func _process(delta):
 	pass
-
+	
 func _on_body_entered(body):
 	if _character:
-		if "coins" in _character:
-			_character.coins += 1
-			coin_label.text = str(_character.coins)
+		_character._damage *= 2
+		#$ketchupPowerup.play()
 		queue_free()
-		#$CoinAudio.play()

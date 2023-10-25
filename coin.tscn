@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx5jso6gcl86a"]
+[gd_scene load_steps=5 format=3 uid="uid://bx5jso6gcl86a"]
 
 [ext_resource type="Script" path="res://coin.gd" id="1_a1waw"]
 [ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="2_ldfey"]
+[ext_resource type="AudioStream" uid="uid://ulqnmw4y8gyi" path="res://coin.wav" id="3_bfx8c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7u53"]
 
@@ -16,5 +17,8 @@ texture = ExtResource("2_ldfey")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4.37492, 4.21443)
 shape = SubResource("CircleShape2D_p7u53")
+
+[node name="CoinAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bfx8c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

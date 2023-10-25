@@ -11,6 +11,7 @@ var player_alive = true
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
 @export var _health: float = 10
+@export var _damage: float = 10
 @export var coins: float
 
 func _physics_process(delta: float) -> void:
