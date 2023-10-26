@@ -10,15 +10,16 @@ func _ready():
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_body_entered(body):
+	if _character.is_dashing:
+		_character.is_dashing = false
+	_character.dash_is_allowed = false
 	_character._move_speed -= 500
 
 
 func _on_body_exited(body):
+	_character.dash_is_allowed = true
 	_character._move_speed += 500

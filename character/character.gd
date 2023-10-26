@@ -13,11 +13,37 @@ var player_alive = true
 @export var _health: float = 10
 @export var _damage: float = 10
 @export var coins: float
+@export var dash_is_allowed: bool = true
+@export var is_dashing: bool = false
+var dash_duration: float = 0.3
+var dash_speed: float = 1000  
 
+func start_dash():
+	if not is_dashing:
+		is_dashing = true
+		dash_duration = 0.3
+		var dash_direction: Vector2 = Vector2(
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		).normalized()
+		
+		velocity = dash_direction * dash_speed
+		
 func _physics_process(delta: float) -> void:
-	_move()
+	if is_dashing:
+		dash_duration -= delta
+		
+		if dash_duration <= 0:
+			is_dashing = false
+			velocity = Vector2.ZERO
+	else:
+		_move()
+		
 	move_and_slide()
-	enemy_attack()
+	
+func _input(event):
+	if event.is_action_pressed("dash") and dash_is_allowed:
+		start_dash()
 	
 func _move() -> void:
 	var _direction: Vector2 = Vector2(
@@ -35,15 +61,3 @@ func _move() -> void:
 
 func player():
 	pass
-
-func _on_player_hitbox_body_entered(body):
-	if body.has_method("enemy"):
-		enemy_inattack_range = true
-
-func _on_player_hitbox_body_exited(body):
-	if body.has_method("enemy"):
-		enemy_inattack_range = false
-		
-func enemy_attack():
-	if enemy_inattack_range:
-		print("player took damage")
