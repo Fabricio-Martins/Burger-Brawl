@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://k7xtthubkcek"]
+
+[ext_resource type="Script" path="res://pause_screen.gd" id="1_kboee"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_kuhet"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_kboee")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.12549)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer"]
+custom_minimum_size = Vector2(340, 120)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kuhet")
+text = "PAUSADO"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_kuhet")
+text = "Continuar"
+vertical_icon_alignment = 2
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_kuhet")
+text = "Sair"
+vertical_icon_alignment = 2
+
+[connection signal="pressed" from="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_quit_pressed"]

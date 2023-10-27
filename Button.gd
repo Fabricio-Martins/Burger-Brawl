@@ -9,4 +9,4 @@ func _process(delta):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://start_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Interface/start_screen.tscn")
