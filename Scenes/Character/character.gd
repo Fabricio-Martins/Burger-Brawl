@@ -6,7 +6,7 @@ var enemy_attack_colldown = true
 var player_alive = true
 
 @export_category("Variables")
-@export var _move_speed: float = 600
+@export var _move_speed: float = 200
 
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
@@ -18,6 +18,38 @@ var player_alive = true
 var dash_duration: float = 0.3
 var dash_speed: float = 1000  
 
+@onready var weapon: Node2D = get_node("Weapon")
+@onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
+
+func _physics_process(delta: float) -> void:
+	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	
+	if is_dashing:
+		dash_duration -= delta
+		
+		if dash_duration <= 0:
+			is_dashing = false
+			velocity = Vector2.ZERO
+	else:
+		_move()
+	
+	
+	if mouse_direction.x > 0:
+		$Sprite2D.flip_h = false
+		$Weapon/Node2D/Sprite2D.scale.y = 1
+	else:
+		$Sprite2D.flip_h = true
+		$Weapon/Node2D/Sprite2D.scale.y = -1
+		
+	weapon.rotation = mouse_direction.angle()
+	
+	if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and mouse_direction.x > 0:
+		weapon_animation.play("attack_right")
+	elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and mouse_direction.x < 0:
+		weapon_animation.play("attack_left")
+		
+	move_and_slide()
+	
 func start_dash():
 	if not is_dashing:
 		is_dashing = true
@@ -28,19 +60,8 @@ func start_dash():
 		).normalized()
 		
 		velocity = dash_direction * dash_speed
-		
-func _physics_process(delta: float) -> void:
-	if is_dashing:
-		dash_duration -= delta
-		
-		if dash_duration <= 0:
-			is_dashing = false
-			velocity = Vector2.ZERO
-	else:
-		_move()
-		
-	move_and_slide()
-	
+
+
 func _input(event):
 	if event.is_action_pressed("dash") and dash_is_allowed:
 		start_dash()

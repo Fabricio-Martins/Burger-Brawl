@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ho6eoo57dyig"]
 
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="1_420tc"]
-[ext_resource type="Script" path="res://Button.gd" id="2_lns84"]
+[ext_resource type="Script" path="res://Scenes/Interface/returnButton.gd" id="2_7pjcj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4kq"]
 bg_color = Color(0, 0, 0, 0)
@@ -188,7 +188,7 @@ theme_override_fonts/font = ExtResource("1_420tc")
 theme_override_font_sizes/font_size = 16
 text = "e"
 
-[node name="Button" type="Button" parent="."]
+[node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 71.0
 offset_top = 79.0
@@ -211,7 +211,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_pchw7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u8jbc")
 text = "Voltar"
 alignment = 0
-script = ExtResource("2_lns84")
+script = ExtResource("2_7pjcj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -222,4 +222,4 @@ offset_right = 1154.99
 offset_bottom = 651.0
 stretch_mode = 1
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://mbmewlsmr6o7"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_3fyiq"]
+[ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://beptwm1jpl54g" path="res://kitchen.png" id="1_iw1i3"]
 [ext_resource type="Texture2D" uid="uid://cowajyokn604b" path="res://TopDownHouse_FloorsAndWalls.png" id="2_2igd4"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Enemy/enemy.tscn" id="3_epa61"]
 [ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="6_phuhi"]
 [ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="7_3swbc"]
-[ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/tomato_liquid.tscn" id="8_lbtg3"]
-[ext_resource type="PackedScene" uid="uid://8hr62i2w2uu3" path="res://Scenes/Scenario/ketchup.tscn" id="9_rwij7"]
+[ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
+[ext_resource type="PackedScene" uid="uid://8hr62i2w2uu3" path="res://Scenes/Scenario/Collectable/ketchup.tscn" id="9_rwij7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ntukp"]
 texture = ExtResource("1_iw1i3")
@@ -1091,6 +1091,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
 
 [node name="character" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
+position = Vector2(507, 225)
 scale = Vector2(0.5, 0.5)
 
 [node name="enemy" parent="." instance=ExtResource("3_epa61")]

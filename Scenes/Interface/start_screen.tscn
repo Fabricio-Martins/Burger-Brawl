@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://b5fhgjna6b2p5"]
 
-[ext_resource type="Script" path="res://start_screen.gd" id="1_mnaho"]
+[ext_resource type="Script" path="res://Scenes/Interface/start_screen.gd" id="1_twnp1"]
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_2l7b3"]
-[ext_resource type="Script" path="res://controlBtn.gd" id="3_y1xga"]
-[ext_resource type="Script" path="res://Button3.gd" id="4_yyicf"]
+[ext_resource type="Script" path="res://Scenes/Interface/controlBtn.gd" id="3_tkcal"]
+[ext_resource type="Script" path="res://Scenes/Interface/quitBtn.gd" id="4_ydgqs"]
 [ext_resource type="Texture2D" uid="uid://bk7m5d6smshvc" path="res://assets_template/burger.png" id="5_ry5rd"]
 [ext_resource type="Texture2D" uid="uid://c0bknjq4ma3d7" path="res://assets_template/kitchen_floor.png" id="6_0v3lm"]
 
@@ -31,7 +31,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mnaho")
+script = ExtResource("1_twnp1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -38.5
-offset_right = 37.5
-offset_bottom = 38.5
+offset_left = -36.0
+offset_top = -24.0
+offset_right = 36.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
@@ -56,7 +56,7 @@ theme_override_colors/font_pressed_color = Color(0.65098, 0.45098, 0, 1)
 theme_override_colors/font_hover_color = Color(0.94902, 0.662745, 0, 1)
 theme_override_colors/font_focus_color = Color(0.94902, 0.662745, 0, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_04h8d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tpyy5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_h6qtn")
@@ -73,14 +73,14 @@ theme_override_colors/font_pressed_color = Color(0, 0.105882, 0.372549, 1)
 theme_override_colors/font_hover_color = Color(0, 0.2, 0.627451, 1)
 theme_override_colors/font_focus_color = Color(0, 0.2, 0.627451, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_04h8d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tpyy5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_h6qtn")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_vo3sw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q2q50")
 text = "Controles"
-script = ExtResource("3_y1xga")
+script = ExtResource("3_tkcal")
 
 [node name="quitBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -90,46 +90,46 @@ theme_override_colors/font_pressed_color = Color(0.576471, 0.160784, 0.109804, 1
 theme_override_colors/font_hover_color = Color(0.854902, 0.160784, 0.109804, 1)
 theme_override_colors/font_focus_color = Color(0.854902, 0.160784, 0.109804, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_04h8d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tpyy5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_h6qtn")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_vo3sw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_q2q50")
 text = "Sair"
-script = ExtResource("4_yyicf")
+script = ExtResource("4_ydgqs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 0
-offset_left = -575.0
-offset_top = 322.0
-offset_right = -535.0
-offset_bottom = 362.0
+offset_left = -170.0
+offset_top = 98.0
+offset_right = -158.0
+offset_bottom = 110.0
 scale = Vector2(28.7871, -16.2656)
 mouse_filter = 2
 color = Color(0.968627, 0.917647, 0.843137, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -325.0
-offset_top = -205.0
-offset_right = 305.0
-offset_bottom = -151.0
+offset_left = -95.0
+offset_top = -68.0
+offset_right = 73.0
+offset_bottom = -53.0
 scale = Vector2(1.09426, 1.09349)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 42
-text = "Brawl    Burger"
+theme_override_font_sizes/font_size = 12
+text = "Burger   Brawl"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
-offset_left = -211.0
-offset_top = 175.0
-offset_right = 195.0
-offset_bottom = 251.0
+offset_left = -97.0
+offset_top = 36.0
+offset_right = 112.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4
@@ -139,7 +139,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 6
 text = "Fabrício Flávio Martins Damasceno
 "
 
@@ -148,22 +148,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("2_2l7b3")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 6
 text = "Matheus Patriarca Santana
 "
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(-7, -199)
+position = Vector2(0, -62)
+scale = Vector2(0.167778, 0.163333)
 texture = ExtResource("5_ry5rd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
 layout_mode = 0
-offset_left = -576.0
-offset_top = 259.0
-offset_right = 577.0
-offset_bottom = 323.0
+offset_left = -146.0
+offset_top = 87.0
+offset_right = 175.0
+offset_bottom = 151.0
 texture = ExtResource("6_0v3lm")
 stretch_mode = 1
 

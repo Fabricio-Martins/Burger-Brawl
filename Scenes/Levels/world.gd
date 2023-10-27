@@ -1,6 +1,6 @@
 extends Node2D
 
-var coin_scene = preload("res://Scenes/Scenario/coin.tscn")
+var coin_scene = preload("res://Scenes/Scenario/Collectable/coin.tscn")
 var spawn_interval = 1
 var spawn_area = Rect2(Vector2(100, 100), Vector2(400, 400))
 
