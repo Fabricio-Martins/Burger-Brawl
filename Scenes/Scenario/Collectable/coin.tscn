@@ -11,10 +11,9 @@ radius = 6.92264
 collision_layer = 8
 script = ExtResource("1_5lw06")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 0.999)
-sprite_frames = SubResource("SpriteFrames_q4j7w")
-frame_progress = 0.0151463
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.650999, 0.647685)
+texture = ExtResource("2_t42p7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.00505, 0.879936)
