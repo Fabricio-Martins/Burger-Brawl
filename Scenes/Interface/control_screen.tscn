@@ -218,6 +218,7 @@ script = ExtResource("2_7pjcj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = 416.0
 offset_top = 400.0
 offset_right = 735.0
