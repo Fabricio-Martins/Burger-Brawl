@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=13 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
@@ -6,13 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Enemy/enemy.tscn" id="3_epa61"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="6_phuhi"]
-[ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="7_3swbc"]
-[ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
 [ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
-[ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
 [ext_resource type="PackedScene" uid="uid://8hr62i2w2uu3" path="res://Scenes/Scenario/Collectable/ketchup.tscn" id="9_rwij7"]
-[ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stp2s"]
 texture = ExtResource("2_e26yy")
@@ -131,10 +127,6 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 anti_aliasing_size = 0.01
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lpiq"]
-custom_solver_bias = 1.0
-size = Vector2(8, 8)
-
 [node name="world" type="Node2D"]
 script = ExtResource("1_3fyiq")
 
@@ -179,6 +171,12 @@ offset_bottom = 114.346
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
 
+[node name="JoystickBase" parent="CanvasLayer2" instance=ExtResource("5_d5x8i")]
+visible = false
+z_index = 1000
+position = Vector2(16, 141)
+scale = Vector2(0.321429, 0.315789)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
@@ -201,16 +199,6 @@ theme_override_font_sizes/font_size = 16
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
-position = Vector2(19, 123)
-scale = Vector2(0.392445, 0.392172)
-visibility_mode = 1
-action_right = "move_right"
-action_left = "move_left"
-action_up = "move_up"
-action_down = "move_down"
-vanchor = 1
-
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 z_index = -1
 anchors_preset = -1
@@ -224,25 +212,6 @@ offset_right = 213.667
 offset_bottom = 131.047
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
-top_level = true
-position = Vector2(276, 115)
-scale = Vector2(2.69058, 2.7409)
-texture_normal = ExtResource("7_2q305")
-shape = SubResource("RectangleShape2D_1lpiq")
-shape_visible = false
-visibility_mode = 1
-script = ExtResource("8_yivcq")
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer"]
-top_level = true
-texture_filter = 1
-position = Vector2(259, 150)
-scale = Vector2(1.37772, 1.32683)
-texture_normal = ExtResource("8_3ug3c")
-visibility_mode = 1
-script = ExtResource("9_wxms1")
 
 [node name="character" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
 position = Vector2(129, 152)
@@ -279,5 +248,4 @@ scale = Vector2(0.492553, 0.361272)
 position = Vector2(963, 217)
 scale = Vector2(0.519936, 0.359511)
 
-[connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

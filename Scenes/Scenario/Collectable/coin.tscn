@@ -1,66 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx5jso6gcl86a"]
+[gd_scene load_steps=5 format=3 uid="uid://bx5jso6gcl86a"]
 
 [ext_resource type="Script" path="res://Scenes/Scenario/Collectable/coin.gd" id="1_5lw06"]
-[ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="2_0lir7"]
+[ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="2_t42p7"]
 [ext_resource type="AudioStream" uid="uid://ulqnmw4y8gyi" path="res://coin.wav" id="3_u6seo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfkvv"]
-atlas = ExtResource("2_0lir7")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6vjll"]
-atlas = ExtResource("2_0lir7")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufd12"]
-atlas = ExtResource("2_0lir7")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yu24t"]
-atlas = ExtResource("2_0lir7")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4igp"]
-atlas = ExtResource("2_0lir7")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q4j7w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yfkvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6vjll")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufd12")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yu24t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u4igp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7u53"]
-radius = 1.84394
+radius = 6.92264
 
 [node name="coin" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_5lw06")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 0.999)
-sprite_frames = SubResource("SpriteFrames_q4j7w")
-frame_progress = 0.645774
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.650999, 0.647685)
+texture = ExtResource("2_t42p7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4.37492, 4.21443)
+scale = Vector2(1.00505, 0.879936)
 shape = SubResource("CircleShape2D_p7u53")
 
 [node name="CoinAudio" type="AudioStreamPlayer2D" parent="."]
