@@ -48,14 +48,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7u53"]
-radius = 1.84394
+radius = 0.914302
 
 [node name="coin" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_5lw06")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 0.999)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_q4j7w")
 frame_progress = 0.0151463
 
