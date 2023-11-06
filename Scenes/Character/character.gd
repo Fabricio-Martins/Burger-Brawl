@@ -16,12 +16,14 @@ var player_alive = true
 @export var dash_is_allowed: bool = true
 @export var is_dashing: bool = false
 var dash_duration: float = 0.3
-var dash_speed: float = 300  
+var dash_speed: float = 400  
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
 @onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
 
+
+@export var manual_dash_enabled = false
 
 func _physics_process(delta: float) -> void:
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
@@ -66,8 +68,9 @@ func start_dash():
 
 
 func _input(event):
-	if event.is_action_pressed("dash") and dash_is_allowed:
+	if (event.is_action_pressed("dash") or manual_dash_enabled) and dash_is_allowed:
 		start_dash()
+		manual_dash_enabled = false
 	
 func _move() -> void:
 	var _direction: Vector2 = Vector2(
