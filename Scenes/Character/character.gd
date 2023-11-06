@@ -6,7 +6,7 @@ var enemy_attack_colldown = true
 var player_alive = true
 
 @export_category("Variables")
-@export var _move_speed: float = 200
+@export var _move_speed: float = 150
 
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
@@ -20,6 +20,8 @@ var dash_speed: float = 400
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
+@onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
+
 
 @export var manual_dash_enabled = false
 
@@ -44,6 +46,7 @@ func _physics_process(delta: float) -> void:
 		$Weapon/Node2D/Sprite2D.scale.y = -1
 		
 	weapon.rotation = mouse_direction.angle()
+	weapon_hitbox.knockback_direction = mouse_direction
 	
 	if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and mouse_direction.x > 0:
 		weapon_animation.play("attack_right")
