@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Enemy/enemy.tscn" id="3_epa61"]
+[ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
-[ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="7_3swbc"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
 [ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
@@ -170,7 +170,7 @@ offset_top = 4.13335
 offset_right = 51.1781
 offset_bottom = 20.1334
 scale = Vector2(1, 1.117)
-texture = ExtResource("7_3swbc")
+texture = ExtResource("3_m6nag")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
