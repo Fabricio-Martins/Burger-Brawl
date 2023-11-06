@@ -106,8 +106,8 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	await get_tree().create_timer(0.2).timeout
 	
 	if _health <= 0:
+		$AnimationPlayer.play("dead")
 		emit_signal("died")
-		queue_free()
 	_is_being_damaged = false
 
 
@@ -118,3 +118,11 @@ func _on_touch_button_attack_pressed() -> void:
 		weapon_animation.play("attack_right")
 	elif not weapon_animation.is_playing() and mouse_direction.x < 0:
 		weapon_animation.play("attack_left")
+
+func has_died():
+	queue_free()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "dead":
+		emit_signal("died")

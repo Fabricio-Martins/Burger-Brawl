@@ -10,7 +10,6 @@ func _init() -> void:
 	
 	
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if body.has_method("take_damage"):
 		body.take_damage(damage, knockback_force, knockback_direction)
 		
