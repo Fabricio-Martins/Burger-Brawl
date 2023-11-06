@@ -24,9 +24,13 @@ var mouse_direction: Vector2 = Vector2.ZERO
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
 @onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
 
-
 @export var manual_dash_enabled = false
 
+signal life_changed
+
+func _ready() -> void:
+	emit_signal('life_changed', _health)
+	
 func _physics_process(delta: float) -> void:
 	mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	
@@ -66,6 +70,7 @@ func start_dash():
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		).normalized()
 		
+		$AnimationPlayer.play("dash")
 		velocity = dash_direction * dash_speed
 
 
@@ -91,6 +96,7 @@ func _move() -> void:
 
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	_health -= 1
+	emit_signal('life_changed', _health)
 	
 	velocity += knockback_direction * knockback_force
 	
@@ -102,8 +108,6 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 		queue_free()
 	_is_being_damaged = false
 
-#func attack():
-	
 
 func _on_touch_button_attack_pressed() -> void:
 	mouse_direction = (get_global_mouse_position() - global_position).normalized()

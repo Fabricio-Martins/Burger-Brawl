@@ -4,7 +4,7 @@ var coin_scene = preload("res://Scenes/Scenario/Collectable/coin.tscn")
 
 var spawn_interval = 5
 var spawn_area
-
+var heart_size = 16
 @export var _character: Character
 
 func _ready():
@@ -46,3 +46,8 @@ func _on_timer_timeout():
 
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true
+
+func _on_player_life_changed(lives: int) -> void:
+	$CanvasLayer2/BackgroundPanel/Heart.set_size(Vector2(lives * heart_size, 0))
+	if lives <= 0:
+		$CanvasLayer2/BackgroundPanel/Heart.visible = false
