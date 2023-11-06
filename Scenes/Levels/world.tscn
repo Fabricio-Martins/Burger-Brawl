@@ -275,5 +275,6 @@ scale = Vector2(0.519936, 0.359511)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

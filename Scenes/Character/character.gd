@@ -27,6 +27,7 @@ var mouse_direction: Vector2 = Vector2.ZERO
 @export var manual_dash_enabled = false
 
 signal life_changed
+signal died
 
 func _ready() -> void:
 	emit_signal('life_changed', _health)
@@ -105,6 +106,7 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	await get_tree().create_timer(0.2).timeout
 	
 	if _health <= 0:
+		emit_signal("died")
 		queue_free()
 	_is_being_damaged = false
 

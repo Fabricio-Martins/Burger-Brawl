@@ -51,3 +51,9 @@ func _on_player_life_changed(lives: int) -> void:
 	$CanvasLayer2/BackgroundPanel/Heart.set_size(Vector2(lives * heart_size, 0))
 	if lives <= 0:
 		$CanvasLayer2/BackgroundPanel/Heart.visible = false
+
+func _on_player_died() -> void:
+	get_tree().set_pause(true)
+	var game_over = preload("res://Scenes/Interface/game_over_screen.tscn")
+	var game_over_instance = game_over.instantiate()  
+	add_child(game_over_instance)  
