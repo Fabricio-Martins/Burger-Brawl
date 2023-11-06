@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Enemy/enemy.tscn" id="3_epa61"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
-[ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="6_phuhi"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="7_3swbc"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
 [ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
+[ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="9_omaxu"]
 [ext_resource type="PackedScene" uid="uid://8hr62i2w2uu3" path="res://Scenes/Scenario/Collectable/ketchup.tscn" id="9_rwij7"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
 
@@ -176,21 +176,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
-anchors_preset = -1
-anchor_left = -0.236458
-anchor_top = -0.283333
-anchor_right = -0.236458
-anchor_bottom = -0.283333
-offset_left = 273.667
-offset_top = 5.99999
-offset_right = 352.667
-offset_bottom = 86.0
-scale = Vector2(1, 1.047)
-theme_override_font_sizes/font_size = 16
-text = "0"
-metadata/_edit_use_anchors_ = true
-
 [node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
 position = Vector2(19, 123)
 scale = Vector2(0.392445, 0.392172)
@@ -207,10 +192,11 @@ anchor_left = 0.276042
 anchor_top = -0.53915
 anchor_right = 0.276042
 anchor_bottom = -0.53915
-offset_left = 173.667
-offset_top = 91.047
-offset_right = 213.667
-offset_bottom = 131.047
+offset_left = 165.667
+offset_top = 105.047
+offset_right = 205.667
+offset_bottom = 145.047
+scale = Vector2(1.3146, 0.596821)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
 
@@ -233,11 +219,22 @@ texture_normal = ExtResource("8_3ug3c")
 visibility_mode = 1
 script = ExtResource("9_wxms1")
 
+[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
+offset_left = 239.0
+offset_top = 7.0
+offset_right = 279.0
+offset_bottom = 33.0
+text = "0"
+horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(294, 19)
+texture = ExtResource("9_omaxu")
+
 [node name="character" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
 position = Vector2(129, 152)
 
 [node name="enemy" parent="." instance=ExtResource("3_epa61")]
-visible = false
 position = Vector2(224, 64)
 
 [node name="coins" type="Area2D" parent="."]

@@ -1,12 +1,17 @@
 extends Node2D
 
 var coin_scene = preload("res://Scenes/Scenario/Collectable/coin.tscn")
-var spawn_interval = 1
-var spawn_area = Rect2(Vector2(100, 100), Vector2(400, 400))
+
+var spawn_interval = 5
+var spawn_area
 
 @export var _character: Character
 
 func _ready():
+	var screen_size = get_viewport_rect().size
+	
+	spawn_area = Rect2(Vector2(0, 0), screen_size)
+	
 	$Timer.wait_time = spawn_interval
 	$Timer.start()
 	
@@ -16,7 +21,7 @@ func _ready():
 		_character = characters[0]
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
-	
+		
 func _process(delta):
 	if Input.is_action_pressed("open_pause"):
 		get_tree().set_pause(true)  
@@ -25,15 +30,19 @@ func _process(delta):
 		add_child(pause_instance)  
 
 func _on_timer_timeout():
-	var random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-	var random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+	var random_x
+	var random_y
+	
+	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
 	
 	var coin_instance = coin_scene.instantiate()
+	print(random_x, " ", random_y)
 	coin_instance.global_position = Vector2(random_x, random_y)
 	add_child(coin_instance)
 	
 	$Timer.start()
-
 
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true
