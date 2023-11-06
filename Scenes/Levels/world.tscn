@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
 [ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
-[ext_resource type="Texture2D" uid="uid://buf7d00hgrxeq" path="res://1.png" id="9_omaxu"]
+[ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="9_k88nf"]
 [ext_resource type="PackedScene" uid="uid://8hr62i2w2uu3" path="res://Scenes/Scenario/Collectable/ketchup.tscn" id="9_rwij7"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
 
@@ -200,7 +200,7 @@ scale = Vector2(1.3146, 0.596821)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="TouchButtonAttack" type="TouchScreenButton" parent="CanvasLayer"]
 top_level = true
 position = Vector2(276, 115)
 scale = Vector2(2.69058, 2.7409)
@@ -229,18 +229,9 @@ horizontal_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(294, 19)
-texture = ExtResource("9_omaxu")
-
-[node name="character" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
-position = Vector2(129, 152)
-
-[node name="enemy" parent="." instance=ExtResource("3_epa61")]
-position = Vector2(224, 64)
-
-[node name="coins" type="Area2D" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+texture = ExtResource("9_k88nf")
+hframes = 5
+frame = 1
 
 [node name="tomato_liquid" parent="." instance=ExtResource("8_lbtg3")]
 z_index = 0
@@ -262,6 +253,18 @@ z_index = 0
 position = Vector2(235, 143)
 scale = Vector2(1, 1)
 
+[node name="Player" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
+z_index = 0
+position = Vector2(129, 152)
+
+[node name="enemy" parent="." instance=ExtResource("3_epa61")]
+position = Vector2(224, 64)
+
+[node name="coins" type="Area2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="Node2D" parent="." instance=ExtResource("9_rwij7")]
 position = Vector2(128, 385)
 scale = Vector2(0.492553, 0.361272)
@@ -270,5 +273,6 @@ scale = Vector2(0.492553, 0.361272)
 position = Vector2(963, 217)
 scale = Vector2(0.519936, 0.359511)
 
+[connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

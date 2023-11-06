@@ -10,16 +10,16 @@ func _ready():
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 
-func _process(delta):
-	pass
 
 func _on_body_entered(body):
-	if _character.is_dashing:
-		_character.is_dashing = false
-	_character.dash_is_allowed = false
-	_character._move_speed -= 100
+	if body.get_name() == "Player":
+		if _character.is_dashing:
+			_character.is_dashing = false
+		_character.dash_is_allowed = false
+		_character._move_speed -= 100
 
 
 func _on_body_exited(body):
-	_character.dash_is_allowed = true
-	_character._move_speed += 100
+	if body.get_name() == "Player":
+		_character.dash_is_allowed = true
+		_character._move_speed += 100

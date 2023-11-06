@@ -10,13 +10,15 @@ var player_alive = true
 
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
-@export var _health: float = 10
+@export var _health: float = 3
 @export var _damage: float = 10
 @export var coins: float
 @export var dash_is_allowed: bool = true
 @export var is_dashing: bool = false
 var dash_duration: float = 0.3
-var dash_speed: float = 400  
+var dash_speed: float = 300  
+var _is_being_damaged: bool = false
+var mouse_direction: Vector2 = Vector2.ZERO
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
@@ -26,7 +28,7 @@ var dash_speed: float = 400
 @export var manual_dash_enabled = false
 
 func _physics_process(delta: float) -> void:
-	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	
 	if is_dashing:
 		dash_duration -= delta
@@ -83,8 +85,30 @@ func _move() -> void:
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _acceleration)
 		return
 	
-	velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _friction)
-	velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
+	if not _is_being_damaged:
+		velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _friction)
+		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
-func player():
-	pass
+func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
+	_health -= 1
+	
+	velocity += knockback_direction * knockback_force
+	
+	$AnimationPlayer.play("hurt")
+	_is_being_damaged = true
+	await get_tree().create_timer(0.2).timeout
+	
+	if _health <= 0:
+		queue_free()
+	_is_being_damaged = false
+
+#func attack():
+	
+
+func _on_touch_button_attack_pressed() -> void:
+	mouse_direction = (get_global_mouse_position() - global_position).normalized()
+	
+	if not weapon_animation.is_playing() and mouse_direction.x > 0:
+		weapon_animation.play("attack_right")
+	elif not weapon_animation.is_playing() and mouse_direction.x < 0:
+		weapon_animation.play("attack_left")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://umd3k0c8uf3n"]
+[gd_scene load_steps=26 format=3 uid="uid://umd3k0c8uf3n"]
 
 [ext_resource type="Script" path="res://Scenes/Character/character.gd" id="1_1md65"]
 [ext_resource type="Texture2D" uid="uid://dhys3wail7koq" path="res://Assets/Characters/Chef/OneHandChef16.png" id="2_pb5nr"]
@@ -10,6 +10,42 @@ size = Vector2(2.84496, 1.33321)
 
 [sub_resource type="Animation" id="Animation_7deh6"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_padbe"]
 resource_name = "attack_down"
@@ -47,6 +83,46 @@ resource_name = "move_right"
 [sub_resource type="Animation" id="Animation_2nsrj"]
 resource_name = "move_top"
 
+[sub_resource type="Animation" id="Animation_453q2"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8p765"]
 _data = {
 "RESET": SubResource("Animation_7deh6"),
@@ -54,6 +130,7 @@ _data = {
 "attack_left": SubResource("Animation_v87mh"),
 "attack_right": SubResource("Animation_l5gnc"),
 "attack_up": SubResource("Animation_tfhy4"),
+"hurt": SubResource("Animation_453q2"),
 "idle_down": SubResource("Animation_lmm2b"),
 "idle_left": SubResource("Animation_f3l13"),
 "idle_right": SubResource("Animation_wy2ea"),
@@ -160,8 +237,10 @@ _data = {
 "attack_right": SubResource("Animation_0ieih")
 }
 
-[node name="character" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 z_index = 9
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_1md65")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -187,7 +266,7 @@ offset = Vector2(12.5, 2)
 
 [node name="Hitbox" type="Area2D" parent="Weapon/Node2D/Sprite2D"]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 4
 script = ExtResource("4_a73ab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Node2D/Sprite2D/Hitbox"]
