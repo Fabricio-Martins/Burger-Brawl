@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_2oy43"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
-radius = 15.0333
+radius = 15.0
 
 [sub_resource type="Animation" id="Animation_py473"]
 length = 0.001
@@ -79,6 +79,7 @@ texture = ExtResource("2_dtuqm")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
 rotation = -1.5708
 shape = SubResource("CircleShape2D_wb0is")
 

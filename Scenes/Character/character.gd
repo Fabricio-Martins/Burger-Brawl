@@ -19,6 +19,8 @@ var dash_duration: float = 0.3
 var dash_speed: float = 300  
 var _is_being_damaged: bool = false
 var mouse_direction: Vector2 = Vector2.ZERO
+var _is_dead: bool = false
+
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
@@ -35,14 +37,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	
-	if is_dashing:
-		dash_duration -= delta
-		
-		if dash_duration <= 0:
-			is_dashing = false
-			velocity = Vector2.ZERO
-	else:
-		_move()
+	if !_is_dead:
+		if is_dashing:
+			dash_duration -= delta
+			
+			if dash_duration <= 0:
+				is_dashing = false
+				velocity = Vector2.ZERO
+		else:
+			_move()
 	
 	
 	if mouse_direction.x > 0:
@@ -96,6 +99,7 @@ func _move() -> void:
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
+	#knockback_force = 0
 	_health -= 1
 	emit_signal('life_changed', _health)
 	
@@ -122,3 +126,6 @@ func _on_touch_button_attack_pressed() -> void:
 func has_died():
 	emit_signal("died")
 	queue_free()
+
+func is_dead():
+	_is_dead = true
