@@ -46,10 +46,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if mouse_direction.x > 0:
-		$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = false
 		$Weapon/Node2D/Sprite2D.scale.y = 1
 	else:
-		$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = true
 		$Weapon/Node2D/Sprite2D.scale.y = -1
 		
 	weapon.rotation = mouse_direction.angle()
@@ -101,13 +101,13 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	
 	velocity += knockback_direction * knockback_force
 	
-	$AnimationPlayer.play("hurt")
-	_is_being_damaged = true
-	await get_tree().create_timer(0.2).timeout
 	
-	if _health <= 0:
+	_is_being_damaged = true
+	if _health > 0:
+		$AnimationPlayer.play("hurt")
+	else:
 		$AnimationPlayer.play("dead")
-		emit_signal("died")
+	await get_tree().create_timer(0.2).timeout
 	_is_being_damaged = false
 
 
@@ -120,9 +120,5 @@ func _on_touch_button_attack_pressed() -> void:
 		weapon_animation.play("attack_left")
 
 func has_died():
+	emit_signal("died")
 	queue_free()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "dead":
-		emit_signal("died")
