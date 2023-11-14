@@ -1,25 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://8hr62i2w2uu3"]
+[gd_scene load_steps=4 format=3 uid="uid://ch7kkm6kschqm"]
 
-[ext_resource type="Script" path="res://Scenes/Scenario/Collectable/ketchup.gd" id="1_lvv07"]
-[ext_resource type="Texture2D" uid="uid://bmsbyr8nttcve" path="res://ketchup.png" id="2_xsfd1"]
-[ext_resource type="AudioStream" uid="uid://jrjseujfrf0f" path="res://powerup_ketchup.wav" id="3_b0drb"]
+[ext_resource type="Script" path="res://Scenes/Scenario/Collectable/ketchup.gd" id="1_b317v"]
+[ext_resource type="Texture2D" uid="uid://cyeeypvpthqpj" path="res://Assets/Scenario/ketchup.png" id="2_t0jet"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6cuh"]
-size = Vector2(120, 246)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kobet"]
+size = Vector2(11, 19)
 
 [node name="ketchup" type="Area2D"]
-script = ExtResource("1_lvv07")
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_b317v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.477224, 0.463556)
-texture = ExtResource("2_xsfd1")
+texture = ExtResource("2_t0jet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_b6cuh")
-
-[node name="ketchupPowerup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_b0drb")
-volume_db = 24.0
+position = Vector2(-0.5, -0.5)
+scale = Vector2(0.909596, 0.878646)
+shape = SubResource("RectangleShape2D_kobet")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
 extends Node2D
 
-var coin_scene = preload("res://Scenes/Scenario/Collectable/coin.tscn")
+var ketchup_scene = preload("res://Scenes/Scenario/Collectable/ketchup.tscn")
 
 var spawn_interval = 5
 var spawn_area
@@ -19,6 +19,7 @@ func _ready():
 	
 	if characters.size() > 0:
 		_character = characters[0]
+		_character.double_damage.connect(_set_power_up_double_damage)
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
@@ -37,10 +38,9 @@ func _on_timer_timeout():
 		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
 	
-	var coin_instance = coin_scene.instantiate()
-	print(random_x, " ", random_y)
-	coin_instance.global_position = Vector2(random_x, random_y)
-	add_child(coin_instance)
+	var ketchup_instance = ketchup_scene.instantiate()
+	ketchup_instance.global_position = Vector2(random_x, random_y)
+	add_child(ketchup_instance)
 	
 	$Timer.start()
 
@@ -57,3 +57,6 @@ func _on_player_died() -> void:
 	var game_over = preload("res://Scenes/Interface/game_over_screen.tscn")
 	var game_over_instance = game_over.instantiate()  
 	add_child(game_over_instance)  
+	
+func _set_power_up_double_damage():
+	$CanvasLayer/powerup_double_damage.visible = not($CanvasLayer/powerup_double_damage.visible)

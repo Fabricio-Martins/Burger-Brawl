@@ -11,7 +11,7 @@ var player_alive = true
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
 @export var _health: float = 3
-@export var _damage: float = 10
+@export var _damage: float = 1
 @export var coins: float
 @export var dash_is_allowed: bool = true
 @export var is_dashing: bool = false
@@ -20,11 +20,13 @@ var dash_speed: float = 300
 var _is_being_damaged: bool = false
 var mouse_direction: Vector2 = Vector2.ZERO
 var _is_dead: bool = false
-
+var double_damage_active: bool = false
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
 @onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
+
+signal double_damage
 
 @export var manual_dash_enabled = false
 
@@ -129,3 +131,15 @@ func has_died():
 
 func is_dead():
 	_is_dead = true
+
+func apply_powerup_double_damage():
+	if not double_damage_active:
+		emit_signal("double_damage")
+		_damage = 2
+		double_damage_active = true
+		await get_tree().create_timer(8).timeout
+		
+		if(_damage == 2):
+			emit_signal("double_damage")
+			_damage = 1
+			double_damage_active = false

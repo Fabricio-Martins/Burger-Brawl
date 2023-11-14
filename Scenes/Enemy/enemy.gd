@@ -42,7 +42,8 @@ func _physics_process(_delta: float) -> void:
 
 	
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
-	_health -= 1
+	print(_character._damage)
+	_health -= _character._damage
 	
 	velocity += knockback_direction * knockback_force
 	
