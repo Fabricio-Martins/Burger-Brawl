@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xg52edgrgswv"]
+
+[ext_resource type="Script" path="res://Scenes/Scenario/Collectable/mustard.gd" id="1_uksqf"]
+[ext_resource type="Texture2D" uid="uid://bu0wv3hitle00" path="res://Assets/Scenario/mustard.png" id="2_kxihq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kobet"]
+size = Vector2(8.16169, 19.3193)
+
+[node name="mustard" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_uksqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.05095, 1.04723)
+texture = ExtResource("2_kxihq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.190574)
+scale = Vector2(1.34776, 0.911982)
+shape = SubResource("RectangleShape2D_kobet")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

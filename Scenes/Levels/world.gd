@@ -1,8 +1,10 @@
 extends Node2D
 
 var ketchup_scene = preload("res://Scenes/Scenario/Collectable/ketchup.tscn")
+var mustard_scene = preload("res://Scenes/Scenario/Collectable/mustard.tscn")
 
-var spawn_interval = 5
+var spawn_ketchup_interval = 12
+var spawn_mustard_interval = 20
 var spawn_area
 var heart_size = 16
 @export var _character: Character
@@ -12,14 +14,18 @@ func _ready():
 	
 	spawn_area = Rect2(Vector2(0, 0), screen_size)
 	
-	$Timer.wait_time = spawn_interval
-	$Timer.start()
+	$KetchupTimer.wait_time = spawn_ketchup_interval
+	$KetchupTimer.start()
+	
+	$MustardTimer.wait_time = spawn_mustard_interval
+	$MustardTimer.start()
 	
 	var characters = get_tree().get_nodes_in_group("Character")
 	
 	if characters.size() > 0:
 		_character = characters[0]
 		_character.double_damage.connect(_set_power_up_double_damage)
+		_character.double_speed.connect(_set_power_up_more_speed)
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
@@ -30,10 +36,10 @@ func _process(delta):
 		var pause_instance = pause_scene.instantiate()  
 		add_child(pause_instance)  
 
-func _on_timer_timeout():
+func _on_ketchup_timer_timeout():
 	var random_x
 	var random_y
-	
+
 	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
 		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
@@ -42,8 +48,22 @@ func _on_timer_timeout():
 	ketchup_instance.global_position = Vector2(random_x, random_y)
 	add_child(ketchup_instance)
 	
-	$Timer.start()
+	$KetchupTimer.start()
 
+func _on_mustard_timer_timeout():
+	var random_x
+	var random_y
+	
+	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+	
+	var mustard_instance = mustard_scene.instantiate()
+	mustard_instance.global_position = Vector2(random_x, random_y)
+	add_child(mustard_instance)
+	
+	$MustardTimer.start()
+	
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true
 
@@ -60,3 +80,6 @@ func _on_player_died() -> void:
 	
 func _set_power_up_double_damage():
 	$CanvasLayer/powerup_double_damage.visible = not($CanvasLayer/powerup_double_damage.visible)
+	
+func _set_power_up_more_speed():
+	$CanvasLayer/powerup_double_speed.visible = not($CanvasLayer/powerup_double_speed.visible)

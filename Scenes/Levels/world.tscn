@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=22 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="9_k88nf"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
 [ext_resource type="Texture2D" uid="uid://b7qm5apiisg2i" path="res://Assets/Scenario/x2.png" id="11_0gi2p"]
+[ext_resource type="Texture2D" uid="uid://cmv0rgdlm18vk" path="res://Assets/Scenario/velocity.png" id="11_a0o32"]
 [ext_resource type="Script" path="res://Scenes/Levels/powerup_double_damage.gd" id="12_kn4m4"]
 [ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="14_0jr71"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="14_uur5t"]
@@ -241,10 +242,17 @@ texture = ExtResource("9_k88nf")
 hframes = 5
 frame = 1
 
+[node name="powerup_double_speed" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(87, 24)
+scale = Vector2(0.921722, 0.830757)
+texture = ExtResource("11_a0o32")
+script = ExtResource("12_kn4m4")
+
 [node name="powerup_double_damage" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(84, 24)
-scale = Vector2(0.788198, 0.757482)
+position = Vector2(109, 24)
+scale = Vector2(0.921373, 0.847195)
 texture = ExtResource("11_0gi2p")
 script = ExtResource("12_kn4m4")
 
@@ -278,7 +286,10 @@ position = Vector2(224, 64)
 [node name="coins" type="Area2D" parent="."]
 visible = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="KetchupTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="MustardTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="Heart" type="Sprite2D" parent="."]
@@ -292,4 +303,5 @@ position = Vector2(-288, -352)
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
+[connection signal="timeout" from="MustardTimer" to="." method="_on_mustard_timer_timeout"]

@@ -19,5 +19,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if _character:
-		_character.apply_powerup_double_damage()
+		_character.apply_powerup_more_speed()
 		queue_free()
