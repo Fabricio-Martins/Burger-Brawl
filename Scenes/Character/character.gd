@@ -11,6 +11,7 @@ var player_alive = true
 @export var _acceleration: float = 0.2
 @export var _friction: float = 0.2
 @export var _health: float = 3
+@export var _damage_suffered: float = 1
 @export var _damage: float = 1
 @export var coins: float
 @export var dash_is_allowed: bool = true
@@ -23,6 +24,7 @@ var _is_dead: bool = false
 
 var double_damage_active: bool = false
 var double_speed_active: bool = false
+var less_damage_active: bool = false
 
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
@@ -30,6 +32,7 @@ var double_speed_active: bool = false
 
 signal double_damage
 signal double_speed
+signal less_damage
 
 @export var manual_dash_enabled = false
 
@@ -105,11 +108,12 @@ func _move() -> void:
 
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	#knockback_force = 0
-	_health -= 1
+	_health -= _damage_suffered
+	
+	print(_health)
 	emit_signal('life_changed', _health)
 	
 	velocity += knockback_direction * knockback_force
-	
 	
 	_is_being_damaged = true
 	if _health > 0:
@@ -118,7 +122,6 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 		$AnimationPlayer.play("dead")
 	await get_tree().create_timer(0.2).timeout
 	_is_being_damaged = false
-
 
 func _on_touch_button_attack_pressed() -> void:
 	mouse_direction = (get_global_mouse_position() - global_position).normalized()
@@ -158,3 +161,15 @@ func apply_powerup_double_damage():
 			emit_signal("double_damage")
 			_damage = 1
 			double_damage_active = false
+			
+func apply_powerup_less_damage():
+	if not less_damage_active:
+		emit_signal("less_damage")
+		_damage_suffered = 0
+		less_damage_active = true
+		await get_tree().create_timer(2).timeout
+		
+		if(_damage_suffered == 0):
+			emit_signal("less_damage")
+			_damage_suffered = 1
+			less_damage_active = false

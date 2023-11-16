@@ -2,9 +2,12 @@ extends Node2D
 
 var ketchup_scene = preload("res://Scenes/Scenario/Collectable/ketchup.tscn")
 var mustard_scene = preload("res://Scenes/Scenario/Collectable/mustard.tscn")
+var mayonnaise_scene = preload("res://Scenes/Scenario/Collectable/mayonnaise.tscn")
 
 var spawn_ketchup_interval = 12
 var spawn_mustard_interval = 20
+var spawn_mayonnaise_interval = 32
+
 var spawn_area
 var heart_size = 16
 @export var _character: Character
@@ -20,12 +23,16 @@ func _ready():
 	$MustardTimer.wait_time = spawn_mustard_interval
 	$MustardTimer.start()
 	
+	$MayonnaiseTimer.wait_time = spawn_mayonnaise_interval
+	$MayonnaiseTimer.start()
+	
 	var characters = get_tree().get_nodes_in_group("Character")
 	
 	if characters.size() > 0:
 		_character = characters[0]
 		_character.double_damage.connect(_set_power_up_double_damage)
 		_character.double_speed.connect(_set_power_up_more_speed)
+		_character.less_damage.connect(_set_power_up_less_damage)
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
@@ -64,6 +71,20 @@ func _on_mustard_timer_timeout():
 	
 	$MustardTimer.start()
 	
+func _on_mayonnaise_timer_timeout():
+	var random_x
+	var random_y
+	
+	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+	
+	var mayonnaise_instance = mayonnaise_scene.instantiate()
+	mayonnaise_instance.global_position = Vector2(random_x, random_y)
+	add_child(mayonnaise_instance)
+	
+	$MayonnaiseTimer.start()
+	
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true
 
@@ -83,3 +104,7 @@ func _set_power_up_double_damage():
 	
 func _set_power_up_more_speed():
 	$CanvasLayer/powerup_double_speed.visible = not($CanvasLayer/powerup_double_speed.visible)
+
+func _set_power_up_less_damage():
+	$CanvasLayer/powerup_less_damage.visible = not($CanvasLayer/powerup_less_damage.visible)
+	

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://1extnd6q7ra4"]
-
-[ext_resource type="Texture2D" uid="uid://dphx7hwxqk471" path="res://Assets/Scenario/x2.jpeg" id="1_f1i0c"]
-
-[node name="Powerup" type="CanvasLayer"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.129293, 0.108834)
-texture = ExtResource("1_f1i0c")
