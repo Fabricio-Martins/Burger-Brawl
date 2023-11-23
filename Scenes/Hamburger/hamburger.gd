@@ -1,9 +1,9 @@
-class_name Enemy
+class_name Hamburger
 extends CharacterBody2D
 
 @onready var _character: Character
 
-@export var _health: float = 10
+@export var _health: float = 30
 
 var pos_enemy
 var pos_player
@@ -36,13 +36,12 @@ func _physics_process(_delta: float) -> void:
 		
 		if not _is_being_damaged:
 			velocity = _motion * _speed
-	
+		
 		hitbox.knockback_direction = velocity.normalized()
 		move_and_slide()
 
 	
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
-	print(_character._damage)
 	_health -= _character._damage
 	
 	velocity += knockback_direction * knockback_force

@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3sd6ftfyphxt"]
+[gd_scene load_steps=8 format=3 uid="uid://4wprlrnvop30"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_4bes7"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_dtuqm"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_2oy43"]
+[ext_resource type="Script" path="res://Scenes/Hamburger/hamburger.gd" id="1_tdoms"]
+[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_j5mdb"]
+[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_y8qgr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
 radius = 15.0
@@ -72,10 +72,10 @@ _data = {
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_4bes7")
+script = ExtResource("1_tdoms")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_dtuqm")
+texture = ExtResource("2_j5mdb")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -91,7 +91,7 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_2oy43")
+script = ExtResource("3_y8qgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708

@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3sd6ftfyphxt"]
+
+[ext_resource type="Script" path="res://Scenes/Tomato/tomato.gd" id="1_afciu"]
+[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_vuy8m"]
+[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_s5ods"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_py473"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gc467"]
+resource_name = "hurt"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t3ih"]
+_data = {
+"RESET": SubResource("Animation_py473"),
+"hurt": SubResource("Animation_gc467")
+}
+
+[node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_afciu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vuy8m")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+rotation = -1.5708
+shape = SubResource("CircleShape2D_wb0is")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8t3ih")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_s5ods")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_wb0is")

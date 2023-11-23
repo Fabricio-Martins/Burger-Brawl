@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
-[ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Enemy/enemy.tscn" id="3_epa61"]
+[ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Tomato/tomato.tscn" id="3_epa61"]
 [ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://b7qm5apiisg2i" path="res://Assets/Scenario/x2.png" id="11_0gi2p"]
 [ext_resource type="Texture2D" uid="uid://cmv0rgdlm18vk" path="res://Assets/Scenario/velocity.png" id="11_a0o32"]
 [ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="12_ac5gf"]
-[ext_resource type="Texture2D" uid="uid://bdidk6qh1sw4c" path="res://heart.png" id="14_0jr71"]
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="14_uur5t"]
+[ext_resource type="PackedScene" uid="uid://4wprlrnvop30" path="res://Scenes/Hamburger/hamburger.tscn" id="19_arfdo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stp2s"]
 texture = ExtResource("2_e26yy")
@@ -315,12 +315,11 @@ wait_time = 2.0
 [node name="MayonnaiseTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Heart" type="Sprite2D" parent="."]
-position = Vector2(226, -64)
-texture = ExtResource("14_0jr71")
-
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-288, -352)
+
+[node name="Hamburger" parent="." instance=ExtResource("19_arfdo")]
+position = Vector2(152, -120)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
