@@ -53,3 +53,5 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	if _health <= 0:
 		queue_free()
 	_is_being_damaged = false
+
+

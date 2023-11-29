@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://tpdt6f08ga1y"]
+
+[ext_resource type="Texture2D" uid="uid://cmop3p32e1l16" path="res://Assets/Characters/blown.png" id="1_75boo"]
+[ext_resource type="Script" path="res://SpawnAnimation.gd" id="2_agodh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy3va"]
+atlas = ExtResource("1_75boo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_427bj"]
+atlas = ExtResource("1_75boo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31do0"]
+atlas = ExtResource("1_75boo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwga5"]
+atlas = ExtResource("1_75boo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gowuh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy3va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_427bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31do0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwga5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpawnAnimation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_gowuh")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("2_agodh")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
