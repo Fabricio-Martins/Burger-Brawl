@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4qbn3mqetjs"
-path="res://.godot/imported/tomato.png-f200b0c3a9eb549dae3245938bbdd11d.ctex"
+uid="uid://dsv4bqm6u75nm"
+path="res://.godot/imported/bread.png-b8ca8d4f864bcb54ca7892034546fee5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Tomato/tomato.png"
-dest_files=["res://.godot/imported/tomato.png-f200b0c3a9eb549dae3245938bbdd11d.ctex"]
+source_file="res://Scenes/Bread/bread.png"
+dest_files=["res://.godot/imported/bread.png-b8ca8d4f864bcb54ca7892034546fee5.ctex"]
 
 [params]
 

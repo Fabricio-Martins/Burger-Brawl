@@ -1,4 +1,4 @@
-class_name Tomato
+class_name Onion
 extends CharacterBody2D
 
 @onready var _character: Character
@@ -15,6 +15,8 @@ var _is_being_damaged = false
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var characters = get_tree().get_nodes_in_group("Character")
 @onready var hitbox: Area2D = get_node("Hitbox")
+
+var min_distance_between_enemies: float = 50
 
 func _ready():
 	if characters.size() > 0:
@@ -33,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 			$Sprite2D.flip_h = true
 				
 		_motion = (pos_player - pos_enemy).normalized()
-			
+		
 		if not _is_being_damaged:
 			velocity = _motion * _speed
 		

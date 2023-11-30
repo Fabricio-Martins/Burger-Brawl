@@ -85,7 +85,6 @@ func start_dash():
 		$AnimationPlayer.play("dash")
 		velocity = dash_direction * dash_speed
 
-
 func _input(event):
 	if (event.is_action_pressed("dash") or manual_dash_enabled) and dash_is_allowed:
 		start_dash()
@@ -107,7 +106,6 @@ func _move() -> void:
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
 func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
-	#knockback_force = 0
 	_health -= _damage_suffered
 	
 	print(_health)

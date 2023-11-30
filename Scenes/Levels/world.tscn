@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=26 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
-[ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Tomato/tomato.tscn" id="3_epa61"]
+[ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Onion/onion.tscn" id="3_epa61"]
 [ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="14_uur5t"]
 [ext_resource type="PackedScene" uid="uid://4wprlrnvop30" path="res://Scenes/Hamburger/hamburger.tscn" id="19_arfdo"]
+[ext_resource type="PackedScene" uid="uid://6huvm4jnuos0" path="res://Scenes/Bread/bread.tscn" id="19_wp1lj"]
+[ext_resource type="PackedScene" uid="uid://dkad7k7oh5bc3" path="res://Scenes/Tomato/tomato.tscn" id="20_e2fjx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stp2s"]
 texture = ExtResource("2_e26yy")
@@ -155,7 +157,7 @@ func _process(delta):
 [node name="world" type="Node2D"]
 script = ExtResource("1_3fyiq")
 
-[node name="CameraMovement" type="Camera2D" parent="."]
+[node name="CameraMovement" type="Camera2D" parent="." groups=["Camera"]]
 position = Vector2(160, 88)
 script = ExtResource("14_uur5t")
 
@@ -300,9 +302,6 @@ scale = Vector2(1, 1)
 z_index = 0
 position = Vector2(160, 88)
 
-[node name="enemy" parent="." instance=ExtResource("3_epa61")]
-position = Vector2(224, 64)
-
 [node name="coins" type="Area2D" parent="."]
 visible = false
 
@@ -320,6 +319,18 @@ position = Vector2(-288, -352)
 
 [node name="Hamburger" parent="." instance=ExtResource("19_arfdo")]
 position = Vector2(152, -120)
+
+[node name="Bread" parent="." instance=ExtResource("19_wp1lj")]
+position = Vector2(-151, 88)
+
+[node name="onion" parent="." instance=ExtResource("3_epa61")]
+position = Vector2(547, 55)
+
+[node name="tomato" parent="." instance=ExtResource("20_e2fjx")]
+position = Vector2(254, 111)
+
+[node name="onion2" parent="." instance=ExtResource("3_epa61")]
+position = Vector2(510, 132)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]

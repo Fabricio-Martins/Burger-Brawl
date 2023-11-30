@@ -4,15 +4,27 @@ var ketchup_scene = preload("res://Scenes/Scenario/Collectable/ketchup.tscn")
 var mustard_scene = preload("res://Scenes/Scenario/Collectable/mustard.tscn")
 var mayonnaise_scene = preload("res://Scenes/Scenario/Collectable/mayonnaise.tscn")
 
+@onready var _camera: Camera2D
+
 var spawn_ketchup_interval = 12
 var spawn_mustard_interval = 20
 var spawn_mayonnaise_interval = 32
+
+var max_items = 12
+var current_items = 0
 
 var spawn_area
 var heart_size = 16
 @export var _character: Character
 
+@onready var cameras = get_tree().get_nodes_in_group("Camera")
+
 func _ready():
+	if cameras.size() > 0:
+		_camera = cameras[0]
+	else:
+		print("Nenhum elemento no grupo 'Camera' encontrado.")
+		
 	var screen_size = get_viewport_rect().size
 	
 	spawn_area = Rect2(Vector2(0, 0), screen_size)
@@ -44,46 +56,55 @@ func _process(delta):
 		add_child(pause_instance)  
 
 func _on_ketchup_timer_timeout():
-	var random_x
-	var random_y
+	if current_items < max_items:
+		var random_x
+		var random_y
 
-	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
-	
-	var ketchup_instance = ketchup_scene.instantiate()
-	ketchup_instance.global_position = Vector2(random_x, random_y)
-	add_child(ketchup_instance)
-	
-	$KetchupTimer.start()
+		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+		
+		var ketchup_instance = ketchup_scene.instantiate()
+		ketchup_instance.global_position = Vector2(random_x, random_y)
+		add_child(ketchup_instance)
+		
+		$KetchupTimer.start()
+
+		current_items += 1
 
 func _on_mustard_timer_timeout():
-	var random_x
-	var random_y
-	
-	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
-	
-	var mustard_instance = mustard_scene.instantiate()
-	mustard_instance.global_position = Vector2(random_x, random_y)
-	add_child(mustard_instance)
-	
-	$MustardTimer.start()
+	if current_items < max_items:
+		var random_x
+		var random_y
+		
+		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+		
+		var mustard_instance = mustard_scene.instantiate()
+		mustard_instance.global_position = Vector2(random_x, random_y)
+		add_child(mustard_instance)
+		
+		$MustardTimer.start()
+		
+		current_items += 1
 	
 func _on_mayonnaise_timer_timeout():
-	var random_x
-	var random_y
-	
-	while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-		random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-		random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
-	
-	var mayonnaise_instance = mayonnaise_scene.instantiate()
-	mayonnaise_instance.global_position = Vector2(random_x, random_y)
-	add_child(mayonnaise_instance)
-	
-	$MayonnaiseTimer.start()
+	if current_items < max_items:
+		var random_x
+		var random_y
+		
+		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
+			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+		
+		var mayonnaise_instance = mayonnaise_scene.instantiate()
+		mayonnaise_instance.global_position = Vector2(random_x, random_y)
+		add_child(mayonnaise_instance)
+		
+		$MayonnaiseTimer.start()
+		
+		current_items += 1
 	
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true

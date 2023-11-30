@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4qbn3mqetjs"
-path="res://.godot/imported/tomato.png-f200b0c3a9eb549dae3245938bbdd11d.ctex"
+uid="uid://cbhf0v5um3nrv"
+path="res://.godot/imported/caveira.png-7d7f93a8167836ced3bdedf9bc436a4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Tomato/tomato.png"
-dest_files=["res://.godot/imported/tomato.png-f200b0c3a9eb549dae3245938bbdd11d.ctex"]
+source_file="res://Assets/Scenario/caveira.png"
+dest_files=["res://.godot/imported/caveira.png-7d7f93a8167836ced3bdedf9bc436a4d.ctex"]
 
 [params]
 
