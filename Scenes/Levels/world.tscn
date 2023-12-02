@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
@@ -17,9 +17,11 @@
 [ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="12_ac5gf"]
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="14_uur5t"]
+[ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
 [ext_resource type="PackedScene" uid="uid://4wprlrnvop30" path="res://Scenes/Hamburger/hamburger.tscn" id="19_arfdo"]
 [ext_resource type="PackedScene" uid="uid://6huvm4jnuos0" path="res://Scenes/Bread/bread.tscn" id="19_wp1lj"]
 [ext_resource type="PackedScene" uid="uid://dkad7k7oh5bc3" path="res://Scenes/Tomato/tomato.tscn" id="20_e2fjx"]
+[ext_resource type="PackedScene" uid="uid://cwyeqrpuloj2q" path="res://Scenes/Lettuce/lettuce.tscn" id="21_rldcl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stp2s"]
 texture = ExtResource("2_e26yy")
@@ -317,20 +319,30 @@ wait_time = 2.0
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-288, -352)
 
+[node name="cooking_oil2" parent="." instance=ExtResource("17_uxr03")]
+position = Vector2(237, -85)
+scale = Vector2(0.795575, 0.829446)
+
+[node name="cooking_oil" parent="." instance=ExtResource("17_uxr03")]
+position = Vector2(73, -54)
+
 [node name="Hamburger" parent="." instance=ExtResource("19_arfdo")]
-position = Vector2(152, -120)
+position = Vector2(159, -104)
 
 [node name="Bread" parent="." instance=ExtResource("19_wp1lj")]
-position = Vector2(-151, 88)
+position = Vector2(-174, 86)
 
 [node name="onion" parent="." instance=ExtResource("3_epa61")]
 position = Vector2(547, 55)
 
 [node name="tomato" parent="." instance=ExtResource("20_e2fjx")]
-position = Vector2(254, 111)
+position = Vector2(225, 46)
 
 [node name="onion2" parent="." instance=ExtResource("3_epa61")]
 position = Vector2(510, 132)
+
+[node name="Lettuce" parent="." instance=ExtResource("21_rldcl")]
+position = Vector2(158, 275)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
