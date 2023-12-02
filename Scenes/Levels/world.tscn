@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://b3sd6ftfyphxt" path="res://Scenes/Onion/onion.tscn" id="3_epa61"]
 [ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
-[ext_resource type="PackedScene" uid="uid://bd74cewydwbdd" path="res://Scenes/Scenario/Enviroment/door.tscn" id="4_dd30b"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://6huvm4jnuos0" path="res://Scenes/Bread/bread.tscn" id="19_wp1lj"]
 [ext_resource type="PackedScene" uid="uid://dkad7k7oh5bc3" path="res://Scenes/Tomato/tomato.tscn" id="20_e2fjx"]
 [ext_resource type="PackedScene" uid="uid://cwyeqrpuloj2q" path="res://Scenes/Lettuce/lettuce.tscn" id="21_rldcl"]
+[ext_resource type="PackedScene" uid="uid://dkvbwqhhftfei" path="res://Scenes/Scenario/Hazard/onion_gas.tscn" id="23_wb1t0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_stp2s"]
 texture = ExtResource("2_e26yy")
@@ -33,11 +33,11 @@ texture = ExtResource("2_e26yy")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.883883, -8, 0.883883)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.75, -8, 0.625)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.883883, -8, 0.883883)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.75, -8, 0.625)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -120,13 +120,9 @@ texture = ExtResource("2_e26yy")
 3:2/0/physics_layer_0/angular_velocity = 0.0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0.75, -8, 0.625)
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bp7is"]
-scenes/1/scene = ExtResource("4_dd30b")
-
 [sub_resource type="TileSet" id="TileSet_d3fu6"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_stp2s")
-sources/1 = SubResource("TileSetScenesCollectionSource_bp7is")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -348,6 +344,9 @@ position = Vector2(510, 132)
 
 [node name="Lettuce" parent="." instance=ExtResource("21_rldcl")]
 position = Vector2(158, 275)
+
+[node name="onion_gas" parent="." instance=ExtResource("23_wb1t0")]
+position = Vector2(222, 292)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
