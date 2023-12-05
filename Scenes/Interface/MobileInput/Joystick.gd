@@ -23,6 +23,7 @@ var _pos_offset: Vector2
 func _ready() -> void:
 	if OS.has_feature("mobile"):
 		set_visible(true)
+		
 	_radius.x = _base.shape.radius * _base.scale.x
 	_radius.y = _base.shape.radius * _base.scale.y
 	_point.visible = true
