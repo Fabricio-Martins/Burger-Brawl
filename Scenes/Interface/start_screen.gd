@@ -1,5 +1,7 @@
 extends Control
 
+var _is_full_screen = false
+
 func _ready():
 	pass 
 

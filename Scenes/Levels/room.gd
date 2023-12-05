@@ -8,7 +8,7 @@ const ENEMIES: Dictionary = {
 
 @onready var tilemap: TileMap = $TileMapKitchen
 @onready var entrance: Node2D = $Entrance
-#@onready var doors: Node2D = $Doors
+@onready var doors: Node2D = $Doors
 @onready var enemies_position: Node2D = $EnemyPositions
 @onready var player_detector: Area2D = $PlayerDetector
 
@@ -23,8 +23,8 @@ func _on_enemy_killed():
 		_open_doors()
 	
 func _open_doors() -> void:
-	for door in tilemap.get_children():
-		door.open()
+	for door in doors.get_children():
+		door.queue_free()
 		
 func _close_entrance() -> void:
 	for entry in entrance.get_children():

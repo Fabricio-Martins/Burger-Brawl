@@ -19,6 +19,8 @@ var heart_size = 16
 
 @onready var cameras = get_tree().get_nodes_in_group("Camera")
 
+var _is_full_screen = false
+
 func _ready():
 	if cameras.size() > 0:
 		_camera = cameras[0]
@@ -48,6 +50,11 @@ func _ready():
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
+	if OS.has_feature("mobile"):
+		$CanvasLayer.ButtonFullscreen.visible = false
+		
+	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	
 func _process(delta):
 	if Input.is_action_pressed("open_pause"):
 		get_tree().set_pause(true)  
@@ -128,4 +135,13 @@ func _set_power_up_more_speed():
 
 func _set_power_up_less_damage():
 	$CanvasLayer/powerup_less_damage.visible = not($CanvasLayer/powerup_less_damage.visible)
-	
+
+func _on_pressed() -> void:
+	_toggle_fullscreen()
+
+func _toggle_fullscreen() -> void:
+	_is_full_screen = not _is_full_screen
+	if _is_full_screen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

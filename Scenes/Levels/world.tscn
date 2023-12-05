@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=31 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="2_e26yy"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="12_ac5gf"]
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
 [ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="14_uur5t"]
+[ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="15_aq4wa"]
+[ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="16_5fxfm"]
 [ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
 [ext_resource type="PackedScene" uid="uid://4wprlrnvop30" path="res://Scenes/Hamburger/hamburger.tscn" id="19_arfdo"]
 [ext_resource type="PackedScene" uid="uid://6huvm4jnuos0" path="res://Scenes/Bread/bread.tscn" id="19_wp1lj"]
@@ -218,10 +220,10 @@ anchor_left = 0.276042
 anchor_top = -0.53915
 anchor_right = 0.276042
 anchor_bottom = -0.53915
-offset_left = 165.667
-offset_top = 105.047
-offset_right = 205.667
-offset_bottom = 145.047
+offset_left = 151.667
+offset_top = 107.047
+offset_right = 191.667
+offset_bottom = 147.047
 scale = Vector2(1.3146, 0.596821)
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
@@ -246,16 +248,16 @@ visibility_mode = 1
 script = ExtResource("9_wxms1")
 
 [node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
-offset_left = 239.0
-offset_top = 7.0
-offset_right = 279.0
-offset_bottom = 33.0
+offset_left = 225.0
+offset_top = 11.0
+offset_right = 265.0
+offset_bottom = 37.0
 text = "0"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(294, 19)
+position = Vector2(280, 23)
 texture = ExtResource("9_k88nf")
 hframes = 5
 frame = 1
@@ -280,6 +282,16 @@ position = Vector2(131, 24)
 scale = Vector2(0.914885, 0.872103)
 texture = ExtResource("14_txg1q")
 script = SubResource("GDScript_dboj3")
+
+[node name="ButtonFullscreen" type="Button" parent="CanvasLayer"]
+offset_left = 302.0
+offset_top = 7.0
+offset_right = 822.0
+offset_bottom = 527.0
+scale = Vector2(0.0262319, 0.0263534)
+mouse_default_cursor_shape = 2
+icon = ExtResource("15_aq4wa")
+script = ExtResource("16_5fxfm")
 
 [node name="tomato_liquid" parent="." instance=ExtResource("8_lbtg3")]
 z_index = 0
@@ -350,6 +362,7 @@ position = Vector2(222, 292)
 
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
 [connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
