@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://5v5uecrt3fkk"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/utfprlogo.gd" id="1_wdkns"]
-[ext_resource type="Texture2D" uid="uid://cdq52bp1u502d" path="res://Assets/UI/logo_gamepad_80x80.png" id="2_0sk6a"]
+[ext_resource type="Texture2D" uid="uid://5rog673l6ahc" path="res://Assets/UI/logo_gamepad_80x80.png" id="2_0sk6a"]
 
 [sub_resource type="Animation" id="Animation_vl5of"]
 length = 4.0

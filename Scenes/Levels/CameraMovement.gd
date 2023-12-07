@@ -5,9 +5,11 @@ extends Node2D
 var _camera_speed: float = 2
 var _lefttop_most: Vector2i
 
+signal cell_changed
+
 func _ready():
 	_current_cell = _get_cell($"../Player".global_position) # Pega a célula atual
-	var rect_scene: Rect2 = _get_map_bounds($"../TileMapKitchen")
+	var rect_scene: Rect2 = _get_map_bounds($"../TileMapKitchen")#_get_map_bounds($"../TileMapKitchen")
 	_lefttop_most = rect_scene.position
 
 func _get_cell(pos: Vector2i) -> Vector2i:
@@ -32,6 +34,7 @@ func _change_cell(cell: Vector2i) -> void:
 func _process(_delta):
 	var cell: Vector2i = _get_cell($"../Player".global_position)
 	if _current_cell != cell:
+		emit_signal("cell_changed")
 		print("Current Cell:", cell)
 		_change_cell(cell)
 		

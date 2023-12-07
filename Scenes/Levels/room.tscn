@@ -108,7 +108,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_stp2s")
 sources/1 = SubResource("TileSetScenesCollectionSource_h1rjs")
 
-[node name="Room" type="Node"]
+[node name="Room" type="Node2D"]
 script = ExtResource("1_l3ggc")
 
 [node name="TileMapKitchen" type="TileMap" parent="."]
@@ -120,8 +120,6 @@ layer_1/name = "Doors"
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Entrance" type="Node2D" parent="."]
-
-[node name="Doors" type="Node2D" parent="."]
 
 [node name="EnemyPositions" type="Node2D" parent="."]
 

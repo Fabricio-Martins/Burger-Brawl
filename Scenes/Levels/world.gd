@@ -117,9 +117,9 @@ func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true
 
 func _on_player_life_changed(lives: int) -> void:
-	$CanvasLayer2/BackgroundPanel/Heart.set_size(Vector2(lives * heart_size, 0))
+	$CanvasLayer/BackgroundPanel/Heart.set_size(Vector2(lives * heart_size, 0))
 	if lives <= 0:
-		$CanvasLayer2/BackgroundPanel/Heart.visible = false
+		$CanvasLayer/BackgroundPanel/Heart.visible = false
 
 func _on_player_died() -> void:
 	get_tree().set_pause(true)
