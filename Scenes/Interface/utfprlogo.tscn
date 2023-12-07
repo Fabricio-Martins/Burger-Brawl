@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://5v5uecrt3fkk"]
+
+[ext_resource type="Script" path="res://Scenes/Interface/utfprlogo.gd" id="1_wdkns"]
+[ext_resource type="Texture2D" uid="uid://cdq52bp1u502d" path="res://Assets/UI/logo_gamepad_80x80.png" id="2_0sk6a"]
+
+[sub_resource type="Animation" id="Animation_vl5of"]
+length = 4.0
+loop_mode = 1
+step = 0.0335
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.005),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_cxdjl"]
+resource_name = "new_animation"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 3, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l1rtf"]
+_data = {
+"RESET": SubResource("Animation_vl5of"),
+"new_animation": SubResource("Animation_cxdjl")
+}
+
+[sub_resource type="GDScript" id="GDScript_8858f"]
+
+[node name="telaInicial" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdkns")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -170.0
+offset_top = 98.0
+offset_right = -158.0
+offset_bottom = 110.0
+scale = Vector2(28.7871, -16.2656)
+mouse_filter = 2
+color = Color(0.443137, 0.439216, 0.427451, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_l1rtf")
+}
+script = SubResource("GDScript_8858f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0sk6a")
+hframes = 5
