@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://5v5uecrt3fkk"]
+[gd_scene load_steps=8 format=3 uid="uid://5v5uecrt3fkk"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/utfprlogo.gd" id="1_wdkns"]
 [ext_resource type="Texture2D" uid="uid://5rog673l6ahc" path="res://Assets/UI/logo_gamepad_80x80.png" id="2_0sk6a"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="3_bdbkr"]
 
 [sub_resource type="Animation" id="Animation_vl5of"]
 length = 4.0
@@ -77,3 +78,14 @@ script = SubResource("GDScript_8858f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0sk6a")
 hframes = 5
+
+[node name="Label" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -53.0
+offset_right = 139.0
+offset_bottom = -38.0
+scale = Vector2(1.09426, 1.09349)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_bdbkr")
+theme_override_font_sizes/font_size = 5
+text = "Feito na"

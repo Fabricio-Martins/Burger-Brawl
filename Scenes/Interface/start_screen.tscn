@@ -160,7 +160,7 @@ theme_override_font_sizes/font_size = 4
 text = "Fabrício Flávio Martins Damasceno
 "
 
-[node name="Label2" type="Label" parent="VBoxContainer2"]
+[node name="Label3" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
@@ -168,6 +168,14 @@ theme_override_fonts/font = ExtResource("2_2l7b3")
 theme_override_font_sizes/font_size = 4
 text = "Matheus Patriarca Santana
 "
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.839216, 0.721569, 0.0509804, 1)
+theme_override_fonts/font = ExtResource("2_2l7b3")
+theme_override_font_sizes/font_size = 4
+text = "UTFPR 2023"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
