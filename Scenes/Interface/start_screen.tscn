@@ -82,6 +82,23 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_q2q50")
 text = "Controles"
 script = ExtResource("3_tkcal")
 
+[node name="creditsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.227451, 0.988235, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.160784, 0.760784, 0.364706, 1)
+theme_override_colors/font_focus_color = Color(0.160784, 0.760784, 0.364706, 1)
+theme_override_fonts/font = ExtResource("2_2l7b3")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_04h8d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tpyy5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h6qtn")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vo3sw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q2q50")
+text = "Créditos"
+script = ExtResource("3_tkcal")
+
 [node name="quitBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -170,4 +187,5 @@ stretch_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_control_btn_play"]
 [connection signal="pressed" from="VBoxContainer/controlBtn" to="." method="_on_control_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/creditsBtn" to="." method="_on_credits_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitBtn" to="VBoxContainer/quitBtn" method="_on_pressed"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://cha06o1x707dn"]
+
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="1_sy5wc"]
+[ext_resource type="Script" path="res://Scenes/Interface/returnButton.gd" id="2_7ea6e"]
+[ext_resource type="Texture2D" uid="uid://glo3jghq30bq" path="res://floor.png" id="3_yvdt6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4kq"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pchw7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8jbc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ControlScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -326.0
+offset_right = -578.0
+offset_bottom = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00445, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 400.219
+offset_top = 224.0
+offset_right = 440.219
+offset_bottom = 264.0
+scale = Vector2(8.91208, 5.35979)
+color = Color(0.968627, 0.917647, 0.843137, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 439.046
+offset_top = 282.0
+offset_right = 493.046
+offset_bottom = 291.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sy5wc")
+theme_override_font_sizes/font_size = 5
+text = "Arte e Código"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 439.046
+offset_top = 299.0
+offset_right = 775.046
+offset_bottom = 410.0
+theme_override_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 8
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("1_sy5wc")
+theme_override_font_sizes/font_size = 4
+text = "Fabrício Flávio e Matheus Patriarca"
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 249.0
+offset_right = 464.0
+offset_bottom = 262.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.501961, 0.0705882, 0.0392157, 1)
+theme_override_colors/font_hover_color = Color(0.854902, 0.160784, 0.109804, 1)
+theme_override_colors/font_focus_color = Color(0.854902, 0.160784, 0.109804, 1)
+theme_override_colors/icon_normal_color = Color(0.854902, 0.160784, 0.109804, 1)
+theme_override_colors/icon_hover_color = Color(0.854902, 0.160784, 0.109804, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.854902, 0.160784, 0.109804, 1)
+theme_override_constants/h_separation = 2
+theme_override_constants/icon_max_width = 42
+theme_override_fonts/font = ExtResource("1_sy5wc")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_0t4kq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pchw7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u8jbc")
+text = "Voltar"
+alignment = 0
+script = ExtResource("2_7ea6e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 416.0
+offset_top = 400.0
+offset_right = 735.0
+offset_bottom = 416.0
+texture = ExtResource("3_yvdt6")
+stretch_mode = 1
+
+[connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
