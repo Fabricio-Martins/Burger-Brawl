@@ -51,3 +51,9 @@ func _on_player_detector_body_entered(_body: CharacterBody2D) -> void:
 	player_detector.queue_free()
 	_close_entrance()
 	_spawn_enemies()
+
+
+func _on_player_camera_detector_body_entered(body: Node2D) -> void:
+	Events.room_entered.emit(self)
+	print("Collision triggered")
+	print(body)

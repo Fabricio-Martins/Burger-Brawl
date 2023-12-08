@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6elxn11wjjge"]
+[gd_scene load_steps=8 format=3 uid="uid://b6elxn11wjjge"]
 
 [ext_resource type="Texture2D" uid="uid://ddx4bmno8xda4" path="res://Assets/Scenario/AllTiles.png" id="1_2fh14"]
 [ext_resource type="Script" path="res://Scenes/Levels/room.gd" id="1_l3ggc"]
@@ -108,6 +108,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_stp2s")
 sources/1 = SubResource("TileSetScenesCollectionSource_h1rjs")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rdmw"]
+size = Vector2(240, 113)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_l3ggc")
 
@@ -124,7 +127,20 @@ layer_1/tile_data = PackedInt32Array()
 [node name="EnemyPositions" type="Node2D" parent="."]
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(160, 94.5)
+shape = SubResource("RectangleShape2D_5rdmw")
+
+[node name="PlayerCameraDetector" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 2
 collision_layer = 0
 collision_mask = 2
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="PlayerCameraDetector" to="." method="_on_player_camera_detector_body_entered"]

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var _character: Character
 
-@export var _health: float = 10
+@export var _health: float = 1
 
 var pos_enemy
 var pos_player
