@@ -8,7 +8,7 @@ var _next_pos: Vector2
 var _ref_pos: Vector2
 var _radius: float
 
-@onready var weapon: Node2D = get_node("Player/Weapon")
+#@onready var weapon: Node2D = get_node("Player/Weapon")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +26,7 @@ func update_position(ref_pos: Vector2, ref_offset: Vector2) -> void:
 	
 	_next_pos += ref_offset
 	set_global_position(_next_pos)
-	weapon.rotation = _next_pos.angle()
+	#weapon.rotation = _next_pos.angle()
 
 
 func _move_pos(input_vector: Vector2, speed: float) -> void:

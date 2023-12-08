@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://4wprlrnvop30"]
 
-[ext_resource type="Script" path="res://Scenes/Hamburger/hamburger.gd" id="1_tdoms"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Hamburger/hamburger.gd" id="1_tdoms"]
 [ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_j5mdb"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_y8qgr"]
 

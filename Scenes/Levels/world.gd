@@ -118,6 +118,7 @@ func _on_touch_screen_button_2_pressed() -> void:
 
 func _on_player_life_changed(lives: int) -> void:
 	$CanvasLayer/BackgroundPanel/Heart.set_size(Vector2(lives * heart_size, 0))
+	$CanvasLayer/BackgroundPanel.set_size(Vector2(lives * heart_size, 24))
 	if lives <= 0:
 		$CanvasLayer/BackgroundPanel/Heart.visible = false
 

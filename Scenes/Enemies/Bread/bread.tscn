@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://6huvm4jnuos0"]
 
-[ext_resource type="Script" path="res://Scenes/Bread/bread.gd" id="1_ybbja"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Bread/bread.gd" id="1_ybbja"]
 [ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_am6i2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi322huarxxlv"]
+[gd_scene load_steps=4 format=3 uid="uid://dbvcsxr63lt3t"]
 
 [ext_resource type="Script" path="res://Scenes/Scenario/Collectable/mayonnaise.gd" id="1_yoy3b"]
 [ext_resource type="Texture2D" uid="uid://b8g3qli1gbuiv" path="res://Assets/Scenario/mayonnaise.png" id="2_dl42v"]

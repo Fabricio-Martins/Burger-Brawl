@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boilhq2ndsmlv"
-path="res://.godot/imported/tomato.png-6e82d3bd4b0f672e5c7467858df4b0ef.ctex"
+uid="uid://de4qbn3mqetjs"
+path="res://.godot/imported/tomato.png-05c6a5520135e86bf2cf0e8d685369f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Onion/tomato.png"
-dest_files=["res://.godot/imported/tomato.png-6e82d3bd4b0f672e5c7467858df4b0ef.ctex"]
+source_file="res://Scenes/Enemies/Tomato/tomato.png"
+dest_files=["res://.godot/imported/tomato.png-05c6a5520135e86bf2cf0e8d685369f1.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck77hnxecurco"]
+[gd_scene load_steps=5 format=3 uid="uid://d4bvfq1ulm7qg"]
 
 [ext_resource type="Script" path="res://MainCamera.gd" id="1_q1rvu"]
 [ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="2_wlp2i"]
@@ -20,5 +20,4 @@ script = ExtResource("1_q1rvu")
 position = Vector2(0, -192)
 
 [node name="Player" parent="." groups=["Character"] instance=ExtResource("4_t1omq")]
-z_index = 0
 position = Vector2(152, 88)

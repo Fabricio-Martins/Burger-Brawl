@@ -140,7 +140,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ydn1x"]
 resource_name = "dash"
-length = 0.6
+length = 0.8
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -149,10 +149,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -164,12 +164,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"dash"]
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_5itqb"]
 resource_name = "dead"
-length = 2.0
+length = 1.4
 step = 0.2
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -178,7 +178,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.8),
+"times": PackedFloat32Array(0, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -195,7 +195,7 @@ tracks/1/path = NodePath("Weapon:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -207,7 +207,7 @@ tracks/2/path = NodePath("AnimatedSprite2D:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"idle", &"dead"]
@@ -219,7 +219,7 @@ tracks/3/path = NodePath("AnimatedSprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6),
+"times": PackedFloat32Array(0, 0.6, 0.8, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 0, 1, 2, 3]
@@ -431,7 +431,6 @@ states/Start/position = Vector2(279, 127)
 graph_offset = Vector2(-16, 30)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 9
 collision_layer = 2
 script = ExtResource("1_1md65")
 

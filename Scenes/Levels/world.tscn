@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="3_ljpro"]
-[ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
 [ext_resource type="PackedScene" uid="uid://m6i5uuduah4i" path="res://Scenes/Levels/level_two.tscn" id="4_2ho8y"]
 [ext_resource type="PackedScene" uid="uid://8tg3r3406ml1" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
@@ -22,6 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="16_5fxfm"]
 [ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
 [ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
+[ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -104,12 +104,12 @@ scale = Vector2(0.795575, 0.829446)
 [node name="OnionGas" type="Node2D" parent="."]
 
 [node name="Player" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
-z_index = 0
 position = Vector2(152, 88)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
+visible = false
 position = Vector2(19, 123)
 scale = Vector2(0.392445, 0.392172)
 shape_visible = false
@@ -121,6 +121,7 @@ action_down = "move_down"
 vanchor = 1
 
 [node name="JoystickBase2" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
+visible = false
 position = Vector2(248, 120)
 scale = Vector2(0.392, 0.392)
 shape_visible = false
@@ -218,13 +219,13 @@ script = ExtResource("16_5fxfm")
 
 [node name="BackgroundPanel" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = -0.0911458
-anchor_top = -0.446369
-anchor_right = -0.0380208
-anchor_bottom = -0.446369
-offset_left = 41.1667
+anchor_left = 0.018103
+anchor_top = -0.44515
+anchor_right = 0.039978
+anchor_bottom = -0.445148
+offset_left = 11.207
 offset_top = 90.3464
-offset_right = 81.1667
+offset_right = 52.207
 offset_bottom = 114.346
 theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
@@ -232,16 +233,16 @@ metadata/_edit_use_anchors_ = true
 [node name="Heart" type="TextureRect" parent="CanvasLayer/BackgroundPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.00312501
-anchor_top = -0.00555556
-anchor_right = -0.00312501
-anchor_bottom = -0.00555556
-offset_left = 3.17808
+anchor_left = 0.0216051
+anchor_top = -0.00555634
+anchor_right = 0.0216051
+anchor_bottom = -0.00555627
+offset_left = -2.03704
 offset_top = 4.13335
-offset_right = 51.1781
+offset_right = 45.963
 offset_bottom = 20.1334
 scale = Vector2(1, 1.117)
-texture = ExtResource("3_m6nag")
+texture = ExtResource("21_uskco")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -266,5 +267,3 @@ wait_time = 2.0
 [connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
 [connection signal="timeout" from="MustardTimer" to="." method="_on_mustard_timer_timeout"]
 [connection signal="timeout" from="MayonnaiseTimer" to="." method="_on_mayonnaise_timer_timeout"]
-
-[editable path="Player"]

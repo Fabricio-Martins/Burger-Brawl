@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3sd6ftfyphxt"]
+[gd_scene load_steps=8 format=3 uid="uid://dkad7k7oh5bc3"]
 
-[ext_resource type="Script" path="res://Scenes/Onion/onion.gd" id="1_w714k"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_300fo"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_vnxkt"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Tomato/tomato.gd" id="1_brvnf"]
+[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_wbi28"]
+[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_5k06r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
 radius = 15.0
@@ -69,13 +69,14 @@ _data = {
 "hurt": SubResource("Animation_gc467")
 }
 
-[node name="onion" type="CharacterBody2D" groups=["Enemy"]]
+[node name="tomato" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_w714k")
+script = ExtResource("1_brvnf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_300fo")
+texture = ExtResource("2_wbi28")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -91,7 +92,7 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_vnxkt")
+script = ExtResource("3_5k06r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708

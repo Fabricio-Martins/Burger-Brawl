@@ -121,6 +121,11 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	await get_tree().create_timer(0.2).timeout
 	_is_being_damaged = false
 
+func heal() -> void:
+	_health += 1
+	emit_signal('life_changed', _health)
+
+
 func _on_touch_button_attack_pressed() -> void:
 	mouse_direction = (get_global_mouse_position() - global_position).normalized()
 	

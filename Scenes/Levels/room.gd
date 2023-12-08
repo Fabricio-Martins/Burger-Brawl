@@ -1,9 +1,10 @@
 extends Node2D
 
+const life_pickup: PackedScene = preload("res://Scenes/Scenario/Collectable/life_pickup.tscn")
 const SPAWN_ANIMATION: PackedScene = preload("res://Scenes/Scenario/Enviroment/spawn_animation.tscn")
 
 const ENEMIES: Dictionary = {
-	"TOMATO": preload("res://Scenes/Tomato/tomato.tscn")
+	"TOMATO": preload("res://Scenes/Enemies/Tomato/tomato.tscn")
 	#"LETTUCE":
 	#"HAMBURGER"
 	#"BREAD"
@@ -20,7 +21,12 @@ var num_enemies: int
 func _ready() -> void:
 	num_enemies = enemies_position.get_child_count() # Adquire a quantia de inimigos.
 
-func _on_enemy_killed():
+func _on_enemy_killed(enemy):
+	# Cai uma vida ao derrotar o inimigo
+	var life: Area2D = life_pickup.instantiate()
+	life.position = enemy.position
+	call_deferred("add_child", life)
+	
 	# Abre todas as portas quando não há mais inimigos na sala.
 	num_enemies -= 1
 	if num_enemies == 0:
@@ -40,7 +46,7 @@ func _close_entrance() -> void:
 func _spawn_enemies() -> void:
 	for enemy_position in enemies_position.get_children():
 		var enemy: CharacterBody2D = ENEMIES.TOMATO.instantiate()
-		var __ = enemy.connect("tree_exited", _on_enemy_killed) # Envia sinal quando inimigo morre.
+		var __ = enemy.connect("tree_exited", _on_enemy_killed.bind(enemy)) # Envia sinal quando inimigo morre.
 		enemy.position = enemy_position.position # Seta a posição inicial do inimigo.
 		call_deferred("add_child", enemy)
 		
