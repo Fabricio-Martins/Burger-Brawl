@@ -4,6 +4,10 @@ const SPAWN_ANIMATION: PackedScene = preload("res://Scenes/Scenario/Enviroment/s
 
 const ENEMIES: Dictionary = {
 	"TOMATO": preload("res://Scenes/Tomato/tomato.tscn")
+	#"LETTUCE":
+	#"HAMBURGER"
+	#"BREAD"
+	#"CHEESE" 
 }
 
 @onready var tilemap: TileMap = $TileMapKitchen

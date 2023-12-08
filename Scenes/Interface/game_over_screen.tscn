@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blqhb3c1bvi71"]
 
 [ext_resource type="Script" path="res://GameOverScreen.gd" id="1_lc8n7"]
-[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_oem3p"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="2_oem3p"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_lc8n7")

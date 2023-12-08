@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://k7xtthubkcek"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/pause_screen.gd" id="1_64ee4"]
-[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_kuhet"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="2_kuhet"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_64ee4")

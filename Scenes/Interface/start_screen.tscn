@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5fhgjna6b2p5"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/start_screen.gd" id="1_twnp1"]
-[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_2l7b3"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="2_2l7b3"]
 [ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="2_5gogj"]
 [ext_resource type="Script" path="res://Scenes/Interface/controlBtn.gd" id="3_tkcal"]
 [ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="3_vi1fn"]
 [ext_resource type="Script" path="res://Scenes/Interface/quitBtn.gd" id="4_ydgqs"]
-[ext_resource type="Texture2D" uid="uid://bk7m5d6smshvc" path="res://assets_template/burger.png" id="5_ry5rd"]
 [ext_resource type="Texture2D" uid="uid://glo3jghq30bq" path="res://floor.png" id="6_eaxr0"]
+[ext_resource type="Texture2D" uid="uid://b7vkk6lci50p8" path="res://Assets/UI/rambugue.png" id="7_yrbqr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04h8d"]
 bg_color = Color(1, 0.286275, 0.556863, 0)
@@ -36,6 +36,7 @@ grow_vertical = 2
 script = ExtResource("1_twnp1")
 
 [node name="ButtonFullscreen" type="Button" parent="."]
+layout_mode = 0
 offset_left = 142.0
 offset_top = -81.0
 offset_right = 662.0
@@ -191,9 +192,9 @@ text = "UTFPR 2023"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -62)
-scale = Vector2(0.167778, 0.163333)
-texture = ExtResource("5_ry5rd")
+position = Vector2(1, -62)
+scale = Vector2(0.78125, 0.84375)
+texture = ExtResource("7_yrbqr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1

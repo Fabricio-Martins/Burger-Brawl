@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=25 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="15_aq4wa"]
 [ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="16_5fxfm"]
 [ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
+[ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -72,33 +73,27 @@ position = Vector2(0, -192)
 [node name="TomatoLiquid" type="Node2D" parent="."]
 
 [node name="tomato_liquid" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-z_index = 0
 position = Vector2(53, 130)
 scale = Vector2(1, 1)
 
 [node name="tomato_liquid2" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-z_index = 0
 position = Vector2(257, 83)
 scale = Vector2(1, 1)
 
 [node name="tomato_liquid3" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-z_index = 0
 position = Vector2(111, 65)
 scale = Vector2(1, 1)
 
 [node name="tomato_liquid4" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-z_index = 0
 position = Vector2(235, 143)
 scale = Vector2(1, 1)
 
 [node name="CookingOil" type="Node2D" parent="."]
 
 [node name="cooking_oil" parent="CookingOil" instance=ExtResource("17_uxr03")]
-z_index = 0
 position = Vector2(73, -54)
 
 [node name="cooking_oil2" parent="CookingOil" instance=ExtResource("17_uxr03")]
-z_index = 0
 position = Vector2(237, -85)
 scale = Vector2(0.795575, 0.829446)
 
@@ -111,7 +106,6 @@ position = Vector2(152, 88)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
-visible = false
 position = Vector2(19, 123)
 scale = Vector2(0.392445, 0.392172)
 shape_visible = false
@@ -122,7 +116,19 @@ action_up = "move_up"
 action_down = "move_down"
 vanchor = 1
 
+[node name="JoystickBase2" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
+position = Vector2(248, 120)
+scale = Vector2(0.392, 0.392)
+shape_visible = false
+visibility_mode = 1
+action_right = "move_right"
+action_left = "move_left"
+action_up = "move_up"
+action_down = "move_down"
+vanchor = 1
+
 [node name="CoinBackgroundPanel" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.276042
 anchor_top = -0.53915
@@ -137,11 +143,22 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
 metadata/_edit_use_anchors_ = true
 
 [node name="CoinIcon" type="Sprite2D" parent="CanvasLayer/CoinBackgroundPanel"]
+visible = false
 position = Vector2(30.4272, 18.1686)
 scale = Vector2(0.760688, 1.67554)
 texture = ExtResource("9_k88nf")
 hframes = 5
 frame = 1
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
+visible = false
+offset_left = 225.0
+offset_top = 11.0
+offset_right = 265.0
+offset_bottom = 37.0
+text = "0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TouchButtonAttack" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false
@@ -163,15 +180,6 @@ scale = Vector2(1.37772, 1.32683)
 texture_normal = ExtResource("8_3ug3c")
 visibility_mode = 1
 script = ExtResource("9_wxms1")
-
-[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
-offset_left = 225.0
-offset_top = 11.0
-offset_right = 265.0
-offset_bottom = 37.0
-text = "0"
-horizontal_alignment = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="powerup_double_speed" type="Sprite2D" parent="CanvasLayer"]
 visible = false
@@ -243,6 +251,8 @@ wait_time = 2.0
 wait_time = 2.0
 
 [node name="coins" type="Area2D" parent="."]
+
+[node name="Aim" parent="." instance=ExtResource("21_0rjvi")]
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
