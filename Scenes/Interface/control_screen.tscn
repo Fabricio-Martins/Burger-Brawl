@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ho6eoo57dyig"]
+[gd_scene load_steps=10 format=3 uid="uid://ho6eoo57dyig"]
 
+[ext_resource type="Script" path="res://Scenes/Interface/control_screen.gd" id="1_17mmq"]
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="1_420tc"]
 [ext_resource type="Script" path="res://Scenes/Interface/returnButton.gd" id="2_7pjcj"]
 [ext_resource type="Texture2D" uid="uid://glo3jghq30bq" path="res://floor.png" id="3_nyrso"]
+[ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="4_u15t6"]
+[ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="5_2ebkj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4kq"]
 bg_color = Color(0, 0, 0, 0)
@@ -30,6 +33,7 @@ grow_vertical = 2
 scale = Vector2(1.00445, 1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_17mmq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -226,4 +230,15 @@ offset_bottom = 416.0
 texture = ExtResource("3_nyrso")
 stretch_mode = 1
 
+[node name="ButtonFullscreen" type="Button" parent="."]
+offset_left = 716.811
+offset_top = 245.0
+offset_right = 1236.81
+offset_bottom = 765.0
+scale = Vector2(0.0262319, 0.0263534)
+mouse_default_cursor_shape = 2
+icon = ExtResource("4_u15t6")
+script = ExtResource("5_2ebkj")
+
 [connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
+[connection signal="pressed" from="ButtonFullscreen" to="." method="_on_pressed"]

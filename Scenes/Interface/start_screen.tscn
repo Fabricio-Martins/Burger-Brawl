@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5fhgjna6b2p5"]
+[gd_scene load_steps=14 format=3 uid="uid://b5fhgjna6b2p5"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/start_screen.gd" id="1_twnp1"]
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="2_2l7b3"]
+[ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="2_5gogj"]
 [ext_resource type="Script" path="res://Scenes/Interface/controlBtn.gd" id="3_tkcal"]
+[ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="3_vi1fn"]
 [ext_resource type="Script" path="res://Scenes/Interface/quitBtn.gd" id="4_ydgqs"]
 [ext_resource type="Texture2D" uid="uid://bk7m5d6smshvc" path="res://assets_template/burger.png" id="5_ry5rd"]
 [ext_resource type="Texture2D" uid="uid://glo3jghq30bq" path="res://floor.png" id="6_eaxr0"]
@@ -32,6 +34,16 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_twnp1")
+
+[node name="ButtonFullscreen" type="Button" parent="."]
+offset_left = 142.0
+offset_top = -81.0
+offset_right = 662.0
+offset_bottom = 439.0
+scale = Vector2(0.0262319, 0.0263534)
+mouse_default_cursor_shape = 2
+icon = ExtResource("2_5gogj")
+script = ExtResource("3_vi1fn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -193,6 +205,7 @@ offset_bottom = 90.0
 texture = ExtResource("6_eaxr0")
 stretch_mode = 1
 
+[connection signal="pressed" from="ButtonFullscreen" to="." method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_control_btn_play"]
 [connection signal="pressed" from="VBoxContainer/controlBtn" to="." method="_on_control_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/creditsBtn" to="." method="_on_credits_btn_pressed"]

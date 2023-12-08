@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cha06o1x707dn"]
+[gd_scene load_steps=10 format=3 uid="uid://cha06o1x707dn"]
 
+[ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="1_4l2my"]
+[ext_resource type="Script" path="res://Scenes/Levels/credits_screen.gd" id="1_ngj4f"]
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://assets_template/Craftable/PressStart2P.ttf" id="1_sy5wc"]
 [ext_resource type="Script" path="res://Scenes/Interface/returnButton.gd" id="2_7ea6e"]
+[ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="2_p1etv"]
 [ext_resource type="Texture2D" uid="uid://glo3jghq30bq" path="res://floor.png" id="3_yvdt6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4kq"]
@@ -14,7 +17,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8jbc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="ControlScreen" type="Control"]
+[node name="CreditScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,6 +33,7 @@ grow_vertical = 2
 scale = Vector2(1.00445, 1)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_ngj4f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -111,4 +115,17 @@ offset_bottom = 416.0
 texture = ExtResource("3_yvdt6")
 stretch_mode = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonFullscreen" type="Button" parent="CanvasLayer"]
+offset_left = 302.0
+offset_top = 7.0
+offset_right = 822.0
+offset_bottom = 527.0
+scale = Vector2(0.026, 0.026)
+mouse_default_cursor_shape = 2
+icon = ExtResource("1_4l2my")
+script = ExtResource("2_p1etv")
+
 [connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]
