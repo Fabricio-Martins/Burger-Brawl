@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=26 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="3_ljpro"]
 [ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="3_m6nag"]
 [ext_resource type="PackedScene" uid="uid://m6i5uuduah4i" path="res://Scenes/Levels/level_two.tscn" id="4_2ho8y"]
+[ext_resource type="PackedScene" uid="uid://8tg3r3406ml1" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
@@ -70,6 +71,9 @@ script = ExtResource("2_3rbv0")
 [node name="LevelTwo" parent="Rooms" instance=ExtResource("4_2ho8y")]
 position = Vector2(0, -192)
 
+[node name="LevelThree" parent="Rooms" instance=ExtResource("5_2m6kr")]
+position = Vector2(0, -384)
+
 [node name="TomatoLiquid" type="Node2D" parent="."]
 
 [node name="tomato_liquid" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
@@ -121,10 +125,10 @@ position = Vector2(248, 120)
 scale = Vector2(0.392, 0.392)
 shape_visible = false
 visibility_mode = 1
-action_right = "move_right"
-action_left = "move_left"
-action_up = "move_up"
-action_down = "move_down"
+action_right = "ui_right2"
+action_left = "ui_left2"
+action_up = "ui_up2"
+action_down = "ui_down2"
 vanchor = 1
 
 [node name="CoinBackgroundPanel" type="Panel" parent="CanvasLayer"]
@@ -262,3 +266,5 @@ wait_time = 2.0
 [connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
 [connection signal="timeout" from="MustardTimer" to="." method="_on_mustard_timer_timeout"]
 [connection signal="timeout" from="MayonnaiseTimer" to="." method="_on_mayonnaise_timer_timeout"]
+
+[editable path="Player"]
