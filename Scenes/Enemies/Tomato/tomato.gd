@@ -40,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 		hitbox.knockback_direction = velocity.normalized()
 		move_and_slide()
 	
-func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
+func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	print(_character._damage)
 	_health -= _character._damage
 	

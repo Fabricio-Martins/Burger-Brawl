@@ -14,10 +14,7 @@ func _ready():
 		
 	coin_label = get_tree().get_nodes_in_group("CoinLabel")[0]
 
-func _process(delta):
-	pass
-
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if _character:
 		_character.apply_powerup_less_damage()
 		queue_free()

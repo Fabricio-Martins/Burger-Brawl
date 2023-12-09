@@ -85,3 +85,7 @@ shape = SubResource("CircleShape2D_wb0is")
 libraries = {
 "": SubResource("AnimationLibrary_8t3ih")
 }
+
+[node name="AttackDelay" type="Timer" parent="."]
+
+[connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

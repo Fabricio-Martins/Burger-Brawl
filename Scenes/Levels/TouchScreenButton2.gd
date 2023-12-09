@@ -6,6 +6,3 @@ func _ready() -> void:
 	
 	if OS.has_feature("mobile"):
 		visible = true
-
-func _process(delta: float) -> void:
-	pass

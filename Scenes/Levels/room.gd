@@ -1,14 +1,15 @@
 extends Node2D
 
+# Esse código possui partes baseadas em uma série de vídeos, cujo script pode ser encontrado em:
+# https://github.com/MateuSai/Godot-Roguelike-Tutorial
+
 const life_pickup: PackedScene = preload("res://Scenes/Scenario/Collectable/life_pickup.tscn")
-const SPAWN_ANIMATION: PackedScene = preload("res://Scenes/Scenario/Enviroment/spawn_animation.tscn")
+const spawn_animation: PackedScene = preload("res://Scenes/Scenario/Enviroment/spawn_animation.tscn")
 
 const ENEMIES: Dictionary = {
-	"TOMATO": preload("res://Scenes/Enemies/Tomato/tomato.tscn")
-	#"LETTUCE":
-	#"HAMBURGER"
-	#"BREAD"
-	#"CHEESE" 
+	"TOMATO": preload("res://Scenes/Enemies/Tomato/tomato.tscn"),
+	"BREAD": preload("res://Scenes/Enemies/Bread/bread.tscn"),
+	"MEAT": preload("res://Scenes/Enemies/Meat/meat.tscn")
 }
 
 @onready var tilemap: TileMap = $TileMapKitchen
@@ -45,15 +46,27 @@ func _close_entrance() -> void:
 
 func _spawn_enemies() -> void:
 	for enemy_position in enemies_position.get_children():
-		var enemy: CharacterBody2D = ENEMIES.TOMATO.instantiate()
+		var enemy: CharacterBody2D
+		
+		var enemy_choosen = ENEMIES.keys()[randi() % ENEMIES.size()]
+		
+		match(enemy_choosen):
+			"TOMATO":
+				enemy = ENEMIES.TOMATO.instantiate()
+			"BREAD":
+				enemy = ENEMIES.BREAD.instantiate()
+			"MEAT":
+				enemy = ENEMIES.MEAT.instantiate()
+		
+		
 		var __ = enemy.connect("tree_exited", _on_enemy_killed.bind(enemy)) # Envia sinal quando inimigo morre.
 		enemy.position = enemy_position.position # Seta a posição inicial do inimigo.
 		call_deferred("add_child", enemy)
 		
 		# Faz animação de spawn antes do inimigo surgir.
-		var spawn_animation: AnimatedSprite2D = SPAWN_ANIMATION.instantiate()
-		spawn_animation.position = enemy_position.position
-		call_deferred("add_child", spawn_animation)
+		var spawn: AnimatedSprite2D = spawn_animation.instantiate()
+		spawn.position = enemy_position.position
+		call_deferred("add_child", spawn)
 		
 		
 func _on_player_detector_body_entered(_body: CharacterBody2D) -> void:
@@ -63,7 +76,6 @@ func _on_player_detector_body_entered(_body: CharacterBody2D) -> void:
 	_spawn_enemies()
 
 
-func _on_player_camera_detector_body_entered(body: Node2D) -> void:
+func _on_player_camera_detector_body_entered(_body: Node2D) -> void:
 	Events.room_entered.emit(self)
 	print("Collision triggered")
-	print(body)

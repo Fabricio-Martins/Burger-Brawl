@@ -105,7 +105,7 @@ func _move() -> void:
 		velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _friction)
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
-func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
+func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	_health -= _damage_suffered
 	
 	print(_health)

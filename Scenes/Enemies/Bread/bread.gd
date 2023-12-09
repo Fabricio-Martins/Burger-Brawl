@@ -5,22 +5,16 @@ extends CharacterBody2D
 
 @export var _health: float = 10
 
+const bullet: PackedScene = preload("res://Scenes/Enemies/Bread/projectile.tscn")
+
 var pos_enemy
 var pos_player
 
 var _speed: float = 30
-var _motion: Vector2
 var _is_being_damaged = false
 
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var characters = get_tree().get_nodes_in_group("Character")
-@onready var hitbox: Area2D = get_node("Hitbox")
-
-const ATTACK_RANGE: float = 100  
-var can_attack: bool = true
-
-const MAX_DISTANCE_TO_PLAYER: int = 80
-const MIN_DISTANCE_TO_PLAYER: int = 40
 
 func _ready():
 	if characters.size() > 0:
@@ -51,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 	
-func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
+func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	print(_character._damage)
 	_health -= _character._damage
 	
@@ -64,3 +58,12 @@ func take_damage(damage: int, knockback_force: int, knockback_direction: Vector2
 	if _health <= 0:
 		queue_free()
 	_is_being_damaged = false
+
+func shoot() -> void:
+	var projectile: Area2D = bullet.instantiate()
+	projectile.shooting_target(global_position, (_character.get_global_position() - global_position).normalized(), 150)
+	get_tree().current_scene.add_child(projectile)
+
+
+func _on_attack_delay_timeout() -> void:
+	shoot()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://4wprlrnvop30"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Hamburger/hamburger.gd" id="1_tdoms"]
-[ext_resource type="Texture2D" uid="uid://bhgv6exiv28mj" path="res://Assets/Characters/Meat/meat.png" id="2_jigwq"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_y8qgr"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Meat/meat.gd" id="1_t3l0n"]
+[ext_resource type="Texture2D" uid="uid://bhgv6exiv28mj" path="res://Assets/Characters/Meat/meat.png" id="2_f4o4x"]
+[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_flsh2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4j2qg"]
 
@@ -73,10 +73,10 @@ _data = {
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_tdoms")
+script = ExtResource("1_t3l0n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jigwq")
+texture = ExtResource("2_f4o4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
@@ -92,7 +92,7 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_y8qgr")
+script = ExtResource("3_flsh2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 1)

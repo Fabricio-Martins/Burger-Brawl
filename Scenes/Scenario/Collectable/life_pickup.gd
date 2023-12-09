@@ -10,7 +10,7 @@ func _ready():
 	else:
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if _character:
 		_character.heal()
 		queue_free()

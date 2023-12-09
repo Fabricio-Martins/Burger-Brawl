@@ -1,11 +1,5 @@
 extends CanvasLayer
 
-func _ready():
-	pass
-
-func _process(delta):
-	pass
-
 func _on_resume_pressed():
 	get_tree().set_pause(false)
 	self.hide()

@@ -5,9 +5,6 @@ var _is_full_screen = false
 func _ready():
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-func _process(delta):
-	pass
-
 func _on_pressed() -> void:
 	_toggle_fullscreen()
 

@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmjpkvftnnprx"]
+[gd_scene load_steps=4 format=3 uid="uid://cmjpkvftnnprx"]
 
+[ext_resource type="Script" path="res://Scenes/Enemies/Bread/projectile.gd" id="1_g0sjo"]
 [ext_resource type="Texture2D" uid="uid://bms18v5gqq5lu" path="res://Assets/Characters/Bread/gergelim.png" id="1_q3na0"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8lgh"]
+radius = 3.0
+height = 8.0
+
 [node name="Projectile" type="Area2D"]
+script = ExtResource("1_g0sjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_q3na0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q8lgh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

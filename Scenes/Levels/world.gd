@@ -55,7 +55,7 @@ func _ready():
 		
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("open_pause"):
 		get_tree().set_pause(true)  
 		var pause_scene = preload("res://Scenes/Interface/pause_screen.tscn")
