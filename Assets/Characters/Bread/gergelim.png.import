@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3rdg77y6kqno"
-path="res://.godot/imported/tomato_liquid.png-e47a4dae7a6e8f40810471ec077d2ec7.ctex"
+uid="uid://bms18v5gqq5lu"
+path="res://.godot/imported/gergelim.png-7c8a333f104249b84f170b02c2300f33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tomato_liquid.png"
-dest_files=["res://.godot/imported/tomato_liquid.png-e47a4dae7a6e8f40810471ec077d2ec7.ctex"]
+source_file="res://Assets/Characters/Bread/gergelim.png"
+dest_files=["res://.godot/imported/gergelim.png-7c8a333f104249b84f170b02c2300f33.ctex"]
 
 [params]
 

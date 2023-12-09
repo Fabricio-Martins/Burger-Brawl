@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
 [ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
+[ext_resource type="PackedScene" uid="uid://6huvm4jnuos0" path="res://Scenes/Enemies/Bread/bread.tscn" id="23_prg8h"]
+[ext_resource type="PackedScene" uid="uid://4wprlrnvop30" path="res://Scenes/Enemies/Hamburger/hamburger.tscn" id="24_uougb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -258,6 +260,12 @@ wait_time = 2.0
 [node name="coins" type="Area2D" parent="."]
 
 [node name="Aim" parent="." instance=ExtResource("21_0rjvi")]
+
+[node name="bread" parent="." instance=ExtResource("23_prg8h")]
+position = Vector2(96, 104)
+
+[node name="enemy" parent="." instance=ExtResource("24_uougb")]
+position = Vector2(192, 128)
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]

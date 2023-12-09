@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmi2a658fs0hq"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_test.gd" id="1_5tl2t"]
+[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_6tufj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvq81"]
+radius = 15.0
+
+[node name="enemy_test" type="CharacterBody2D"]
+script = ExtResource("1_5tl2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6tufj")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+rotation = -1.5708
+shape = SubResource("CircleShape2D_mvq81")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

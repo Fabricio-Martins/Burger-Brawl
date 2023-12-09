@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmsbyr8nttcve"
-path="res://.godot/imported/ketchup.png-a12ce71b8196bd17184cd8cd99028499.ctex"
+uid="uid://df1q04nslww81"
+path="res://.godot/imported/bread.png-5ff517c9839a9fcdb1f2a73604912849.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ketchup.png"
-dest_files=["res://.godot/imported/ketchup.png-a12ce71b8196bd17184cd8cd99028499.ctex"]
+source_file="res://Assets/Characters/Bread/bread.png"
+dest_files=["res://.godot/imported/bread.png-5ff517c9839a9fcdb1f2a73604912849.ctex"]
 
 [params]
 

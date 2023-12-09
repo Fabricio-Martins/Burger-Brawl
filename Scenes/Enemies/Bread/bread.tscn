@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://6huvm4jnuos0"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Bread/bread.gd" id="1_ybbja"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_am6i2"]
+[ext_resource type="Texture2D" uid="uid://df1q04nslww81" path="res://Assets/Characters/Bread/bread.png" id="2_dttqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
-radius = 15.0
+radius = 16.0
 
 [sub_resource type="Animation" id="Animation_py473"]
 length = 0.001
@@ -74,8 +74,7 @@ collision_mask = 5
 script = ExtResource("1_ybbja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_am6i2")
-hframes = 2
+texture = ExtResource("2_dttqd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4

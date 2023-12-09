@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://4wprlrnvop30"]
+[gd_scene load_steps=9 format=3 uid="uid://4wprlrnvop30"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Hamburger/hamburger.gd" id="1_tdoms"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_j5mdb"]
+[ext_resource type="Texture2D" uid="uid://bhgv6exiv28mj" path="res://Assets/Characters/Meat/meat.png" id="2_jigwq"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_y8qgr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4j2qg"]
 
 [sub_resource type="Animation" id="Animation_py473"]
 length = 0.001
@@ -69,19 +68,21 @@ _data = {
 "hurt": SubResource("Animation_gc467")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l3re"]
+
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_tdoms")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_j5mdb")
-hframes = 2
+texture = ExtResource("2_jigwq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
+position = Vector2(0, 1)
 rotation = -1.5708
-shape = SubResource("CircleShape2D_wb0is")
+shape = SubResource("CapsuleShape2D_4j2qg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -94,5 +95,6 @@ collision_mask = 2
 script = ExtResource("3_y8qgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1)
 rotation = -1.5708
-shape = SubResource("CircleShape2D_wb0is")
+shape = SubResource("CapsuleShape2D_3l3re")

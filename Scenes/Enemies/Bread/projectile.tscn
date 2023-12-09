@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmjpkvftnnprx"]
+
+[ext_resource type="Texture2D" uid="uid://bms18v5gqq5lu" path="res://Assets/Characters/Bread/gergelim.png" id="1_q3na0"]
+
+[node name="Projectile" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q3na0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
