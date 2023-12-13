@@ -13,7 +13,8 @@ func _on_control_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Interface/control_screen.tscn")
 
 func _on_control_btn_play():
-	get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")	
+	get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
+	MenuTheme.stop()
 
 func _on_credits_btn_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Interface/credits_screen.tscn")	
