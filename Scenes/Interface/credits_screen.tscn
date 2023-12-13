@@ -62,23 +62,25 @@ text = "Arte e Código"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 439.046
+offset_left = 439.0
 offset_top = 299.0
-offset_right = 775.046
-offset_bottom = 410.0
+offset_right = 539.0
+offset_bottom = 310.0
 theme_override_constants/separation = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 8
-
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("2_j4hx5")
 theme_override_font_sizes/font_size = 4
-text = "Fabrício Flávio e Matheus Patriarca"
+text = "Fabrício Flávio"
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "Matheus Patriarca"
 
 [node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
@@ -126,6 +128,35 @@ scale = Vector2(0.026, 0.026)
 mouse_default_cursor_shape = 2
 icon = ExtResource("5_nx6li")
 script = ExtResource("6_m1obe")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 439.046
+offset_top = 325.0
+offset_right = 504.046
+offset_bottom = 334.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 5
+text = "Música e Efeitos"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 439.046
+offset_top = 339.0
+offset_right = 539.046
+offset_bottom = 350.0
+theme_override_constants/separation = 3
+
+[node name="Label5" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "Juhani Junkala [Chiptune Adventures]"
 
 [connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]

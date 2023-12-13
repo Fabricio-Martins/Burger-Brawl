@@ -3,7 +3,7 @@ extends Area2D
 @onready var _character: Character
 
 var damage = 1  
-var damageInterval = 1.0  
+var damageInterval = 0.5  
 var timer = 0.0  
 var is_inside = false
 
