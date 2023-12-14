@@ -17,13 +17,18 @@ var spawn_area
 var heart_size = 16
 @export var _character: Character
 
+var current_level = 1
+
 @onready var cameras = get_tree().get_nodes_in_group("Camera")
 
 var _is_full_screen = false
+var y_position = 0
 
 func _ready():
 	if cameras.size() > 0:
 		_camera = cameras[0]
+		print(_camera.global_position)
+		_camera.custom_room_entered.connect(_change_room)
 	else:
 		print("Nenhum elemento no grupo 'Camera' encontrado.")
 		
@@ -54,23 +59,33 @@ func _ready():
 		$CanvasLayer.ButtonFullscreen.visible = false
 		
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-func _process(_delta):
+
+func _change_room():
+	current_level += 1
+	max_items = 12
+
+func _process(delta):
 	if Input.is_action_pressed("open_pause"):
 		get_tree().set_pause(true)  
 		var pause_scene = preload("res://Scenes/Interface/pause_screen.tscn")
 		var pause_instance = pause_scene.instantiate()  
 		add_child(pause_instance)  
+		
+	#if cameras.size() > 0:
+	#	_camera = cameras[0]
+	#	print(_camera.global_position)
 
 func _on_ketchup_timer_timeout():
 	if current_items < max_items:
 		var random_x
 		var random_y
-
-		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
 		
+		print("ketchup")
+		
+		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
+			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+			random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
+				
 		var ketchup_instance = ketchup_scene.instantiate()
 		ketchup_instance.global_position = Vector2(random_x, random_y)
 		add_child(ketchup_instance)
@@ -84,9 +99,12 @@ func _on_mustard_timer_timeout():
 		var random_x
 		var random_y
 		
-		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+		print("mostarda")
+		
+		if(current_level > 1):
+			while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
+				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
 		
 		var mustard_instance = mustard_scene.instantiate()
 		mustard_instance.global_position = Vector2(random_x, random_y)
@@ -101,9 +119,12 @@ func _on_mayonnaise_timer_timeout():
 		var random_x
 		var random_y
 		
-		while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 or random_y <= 40 or random_x >= 285):
-			random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-			random_y = randf_range(spawn_area.position.y, spawn_area.position.y + spawn_area.size.y)
+		print("maionese")
+		
+		if(current_level > 2):
+			while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
+				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
+				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
 		
 		var mayonnaise_instance = mayonnaise_scene.instantiate()
 		mayonnaise_instance.global_position = Vector2(random_x, random_y)
