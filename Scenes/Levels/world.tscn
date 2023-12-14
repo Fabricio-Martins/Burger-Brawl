@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="3_ljpro"]
 [ext_resource type="PackedScene" uid="uid://m6i5uuduah4i" path="res://Scenes/Levels/level_two.tscn" id="4_2ho8y"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
+[ext_resource type="PackedScene" uid="uid://8tg3r3406ml1" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
@@ -98,16 +98,6 @@ scale = Vector2(0.795575, 0.829446)
 
 [node name="Player" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
 position = Vector2(152, 88)
-_move_speed = 150.0
-_acceleration = 0.2
-_friction = 0.2
-_health = 3.0
-_damage_suffered = 1.0
-_damage = 1.0
-coins = 0.0
-dash_is_allowed = true
-is_dashing = false
-manual_dash_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
