@@ -56,7 +56,7 @@ func _ready():
 		print("Nenhum elemento no grupo 'Character' encontrado.")
 		
 	if OS.has_feature("mobile"):
-		$CanvasLayer.ButtonFullscreen.visible = false
+		$CanvasLayer/ButtonFullscreen.visible = false
 		
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 
@@ -66,11 +66,12 @@ func _change_room():
 
 func _process(delta):
 	if Input.is_action_pressed("open_pause"):
+		$CanvasLayer/ButtonFullscreen.visible = false
 		get_tree().set_pause(true)  
 		var pause_scene = preload("res://Scenes/Interface/pause_screen.tscn")
 		var pause_instance = pause_scene.instantiate()  
-		add_child(pause_instance)  
-		
+		add_child(pause_instance) 
+
 	#if cameras.size() > 0:
 	#	_camera = cameras[0]
 	#	print(_camera.global_position)
