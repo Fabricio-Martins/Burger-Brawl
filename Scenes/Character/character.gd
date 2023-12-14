@@ -19,7 +19,7 @@ var player_alive = true
 var dash_duration: float = 0.3
 var dash_speed: float = 300  
 var _is_being_damaged: bool = false
-var mouse_direction: Vector2 = Vector2.ZERO
+var direction: Vector2 = Vector2.ZERO
 var _is_dead: bool = false
 
 var double_damage_active: bool = false
@@ -43,7 +43,10 @@ func _ready() -> void:
 	emit_signal('life_changed', _health)
 	
 func _physics_process(delta: float) -> void:
-	mouse_direction = (get_global_mouse_position() - global_position).normalized()
+	if OS.has_feature("mobile"):
+		pass
+	else:
+		direction = (get_global_mouse_position() - global_position).normalized()
 	
 	if !_is_dead:
 		if is_dashing:
@@ -56,19 +59,19 @@ func _physics_process(delta: float) -> void:
 			_move()
 	
 	
-	if mouse_direction.x > 0:
+	if direction.x > 0:
 		$AnimatedSprite2D.flip_h = false
 		$Weapon/Node2D/Sprite2D.scale.y = 1
 	else:
 		$AnimatedSprite2D.flip_h = true
 		$Weapon/Node2D/Sprite2D.scale.y = -1
-		
-	weapon.rotation = mouse_direction.angle()
-	weapon_hitbox.knockback_direction = mouse_direction
 	
-	if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and mouse_direction.x > 0:
+	weapon.rotation = direction.angle()
+	weapon_hitbox.knockback_direction = direction
+	
+	if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x > 0:
 		weapon_animation.play("attack_right")
-	elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and mouse_direction.x < 0:
+	elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
 		weapon_animation.play("attack_left")
 		
 	move_and_slide()
@@ -127,11 +130,11 @@ func heal() -> void:
 
 
 func _on_touch_button_attack_pressed() -> void:
-	mouse_direction = (get_global_mouse_position() - global_position).normalized()
+	direction = (get_global_mouse_position() - global_position).normalized()
 	
-	if not weapon_animation.is_playing() and mouse_direction.x > 0:
+	if not weapon_animation.is_playing() and direction.x > 0:
 		weapon_animation.play("attack_right")
-	elif not weapon_animation.is_playing() and mouse_direction.x < 0:
+	elif not weapon_animation.is_playing() and direction.x < 0:
 		weapon_animation.play("attack_left")
 
 func has_died():

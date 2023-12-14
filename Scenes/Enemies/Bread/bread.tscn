@@ -69,6 +69,7 @@ _data = {
 }
 
 [node name="bread" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_ybbja")

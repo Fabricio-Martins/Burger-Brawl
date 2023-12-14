@@ -145,6 +145,7 @@ theme_override_font_sizes/font_size = 5
 text = "Música e Efeitos"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 439.046
 offset_top = 339.0
 offset_right = 539.046

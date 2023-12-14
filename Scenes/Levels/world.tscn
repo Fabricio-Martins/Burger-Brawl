@@ -98,6 +98,16 @@ scale = Vector2(0.795575, 0.829446)
 
 [node name="Player" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
 position = Vector2(152, 88)
+_move_speed = 150.0
+_acceleration = 0.2
+_friction = 0.2
+_health = 3.0
+_damage_suffered = 1.0
+_damage = 1.0
+coins = 0.0
+dash_is_allowed = true
+is_dashing = false
+manual_dash_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
