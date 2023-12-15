@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://k7xtthubkcek"]
+[gd_scene load_steps=5 format=3 uid="uid://k7xtthubkcek"]
 
 [ext_resource type="Script" path="res://Scenes/Interface/pause_screen.gd" id="1_64ee4"]
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="2_kuhet"]
+[ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="3_7eppv"]
+[ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="4_tgylm"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
 script = ExtResource("1_64ee4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -55,7 +58,7 @@ vertical_alignment = 2
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-process_mode = 3
+process_mode = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_kuhet")
@@ -64,7 +67,7 @@ text = "Continuar"
 vertical_icon_alignment = 2
 
 [node name="Button2" type="Button" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-process_mode = 3
+process_mode = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_kuhet")
@@ -72,5 +75,20 @@ theme_override_font_sizes/font_size = 4
 text = "Sair"
 vertical_icon_alignment = 2
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="ButtonFullscreen" type="Button" parent="Control/CanvasLayer"]
+process_mode = 2
+offset_left = 302.0
+offset_top = 7.0
+offset_right = 822.0
+offset_bottom = 527.0
+scale = Vector2(0.026, 0.026)
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_7eppv")
+script = ExtResource("4_tgylm")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/CanvasLayer/ButtonFullscreen" to="." method="_toggle_fullscreen"]

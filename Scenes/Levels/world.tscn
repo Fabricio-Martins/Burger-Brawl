@@ -200,7 +200,8 @@ scale = Vector2(0.914885, 0.872103)
 texture = ExtResource("14_txg1q")
 script = SubResource("GDScript_dboj3")
 
-[node name="ButtonFullscreen" type="Button" parent="CanvasLayer"]
+[node name="ButtonFullscreen" type="Button" parent="CanvasLayer" groups=["WorldButton"]]
+process_mode = 3
 offset_left = 302.0
 offset_top = 7.0
 offset_right = 822.0
