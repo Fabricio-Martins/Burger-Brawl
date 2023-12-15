@@ -105,15 +105,15 @@ func _on_mustard_timer_timeout():
 		if(current_level > 1):
 			while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
 				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
-				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
+				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)
 		
-		var mustard_instance = mustard_scene.instantiate()
-		mustard_instance.global_position = Vector2(random_x, random_y)
-		add_child(mustard_instance)
-		
-		$MustardTimer.start()
-		
-		current_items += 1
+			var mustard_instance = mustard_scene.instantiate()
+			mustard_instance.global_position = Vector2(random_x, random_y)
+			add_child(mustard_instance)
+			
+			$MustardTimer.start()
+			
+			current_items += 1
 	
 func _on_mayonnaise_timer_timeout():
 	if current_items < max_items:
@@ -127,13 +127,13 @@ func _on_mayonnaise_timer_timeout():
 				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
 		
-		var mayonnaise_instance = mayonnaise_scene.instantiate()
-		mayonnaise_instance.global_position = Vector2(random_x, random_y)
-		add_child(mayonnaise_instance)
-		
-		$MayonnaiseTimer.start()
-		
-		current_items += 1
+			var mayonnaise_instance = mayonnaise_scene.instantiate()
+			mayonnaise_instance.global_position = Vector2(random_x, random_y)
+			add_child(mayonnaise_instance)
+			
+			$MayonnaiseTimer.start()
+			
+			current_items += 1
 	
 func _on_touch_screen_button_2_pressed() -> void:
 	_character.manual_dash_enabled = true

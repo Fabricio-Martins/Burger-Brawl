@@ -1,0 +1,216 @@
+[gd_scene load_steps=20 format=3 uid="uid://gtic1iy33w03"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_o57h3"]
+[ext_resource type="Script" path="res://Scenes/Levels/CameraMovement.gd" id="2_vdor5"]
+[ext_resource type="Texture2D" uid="uid://cbj3hi67qqoha" path="res://Assets/UI/heart.png" id="5_pnvu7"]
+[ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="6_sg5ky"]
+[ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_6owxw"]
+[ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_ohxkd"]
+[ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="9_2vpy8"]
+[ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="10_qvq8u"]
+[ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="11_bqs44"]
+[ext_resource type="Texture2D" uid="uid://cmv0rgdlm18vk" path="res://Assets/Scenario/velocity.png" id="12_jmlrp"]
+[ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="13_f2w42"]
+[ext_resource type="Texture2D" uid="uid://b7qm5apiisg2i" path="res://Assets/Scenario/x2.png" id="14_jawll"]
+[ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="15_xt6nl"]
+[ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="16_v6va1"]
+[ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="17_p6v20"]
+[ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="18_t8mdj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 0.47451)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+anti_aliasing_size = 0.01
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lpiq"]
+custom_solver_bias = 1.0
+size = Vector2(8, 8)
+
+[sub_resource type="GDScript" id="GDScript_dboj3"]
+script/source = "extends Sprite2D
+
+
+func _ready():
+	modulate.a8 = 200
+	pass 
+
+func _process(delta):
+	pass
+"
+
+[node name="world_test" type="Node2D"]
+script = ExtResource("1_o57h3")
+
+[node name="CameraMovement" type="Camera2D" parent="." groups=["Camera"]]
+position = Vector2(160, 88)
+script = ExtResource("2_vdor5")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="BackgroundPanel" type="Panel" parent="CanvasLayer2"]
+anchors_preset = -1
+anchor_left = -0.0911458
+anchor_top = -0.446369
+anchor_right = -0.0380208
+anchor_bottom = -0.446369
+offset_left = 41.1667
+offset_top = 90.3464
+offset_right = 81.1667
+offset_bottom = 114.346
+theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart" type="TextureRect" parent="CanvasLayer2/BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00312501
+anchor_top = -0.00555556
+anchor_right = -0.00312501
+anchor_bottom = -0.00555556
+offset_left = 3.17808
+offset_top = 4.13335
+offset_right = 51.1781
+offset_bottom = 20.1334
+scale = Vector2(1, 1.117)
+texture = ExtResource("5_pnvu7")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("6_sg5ky")]
+position = Vector2(19, 123)
+scale = Vector2(0.392445, 0.392172)
+visibility_mode = 1
+action_right = "move_right"
+action_left = "move_left"
+action_up = "move_up"
+action_down = "move_down"
+vanchor = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.276042
+anchor_top = -0.53915
+anchor_right = 0.276042
+anchor_bottom = -0.53915
+offset_left = 165.667
+offset_top = 105.047
+offset_right = 205.667
+offset_bottom = 145.047
+scale = Vector2(1.3146, 0.596821)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
+metadata/_edit_use_anchors_ = true
+
+[node name="TouchButtonAttack" type="TouchScreenButton" parent="CanvasLayer"]
+top_level = true
+position = Vector2(276, 115)
+scale = Vector2(2.69058, 2.7409)
+texture_normal = ExtResource("7_6owxw")
+shape = SubResource("RectangleShape2D_1lpiq")
+shape_visible = false
+visibility_mode = 1
+script = ExtResource("8_ohxkd")
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer"]
+top_level = true
+texture_filter = 1
+position = Vector2(259, 150)
+scale = Vector2(1.37772, 1.32683)
+texture_normal = ExtResource("9_2vpy8")
+visibility_mode = 1
+script = ExtResource("10_qvq8u")
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer" groups=["CoinLabel"]]
+offset_left = 239.0
+offset_top = 7.0
+offset_right = 279.0
+offset_bottom = 33.0
+text = "0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(294, 19)
+texture = ExtResource("11_bqs44")
+hframes = 5
+frame = 1
+
+[node name="powerup_double_speed" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(87, 24)
+scale = Vector2(0.921722, 0.830757)
+texture = ExtResource("12_jmlrp")
+script = ExtResource("13_f2w42")
+
+[node name="powerup_double_damage" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(109, 24)
+scale = Vector2(0.921373, 0.847195)
+texture = ExtResource("14_jawll")
+script = ExtResource("13_f2w42")
+
+[node name="powerup_less_damage" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(131, 24)
+scale = Vector2(0.914885, 0.872103)
+texture = ExtResource("15_xt6nl")
+script = SubResource("GDScript_dboj3")
+
+[node name="tomato_liquid" parent="." instance=ExtResource("16_v6va1")]
+position = Vector2(53, 130)
+scale = Vector2(1, 1)
+
+[node name="tomato_liquid2" parent="." instance=ExtResource("16_v6va1")]
+position = Vector2(257, 83)
+scale = Vector2(1, 1)
+
+[node name="tomato_liquid3" parent="." instance=ExtResource("16_v6va1")]
+position = Vector2(111, 65)
+scale = Vector2(1, 1)
+
+[node name="tomato_liquid4" parent="." instance=ExtResource("16_v6va1")]
+position = Vector2(235, 143)
+scale = Vector2(1, 1)
+
+[node name="Player" parent="." groups=["Character"] instance=ExtResource("17_p6v20")]
+position = Vector2(160, 88)
+
+[node name="coins" type="Area2D" parent="."]
+visible = false
+
+[node name="KetchupTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="MustardTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="MayonnaiseTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-288, -352)
+
+[node name="Salas" type="Node2D" parent="."]
+
+[node name="Level_One" parent="Salas" instance=ExtResource("18_t8mdj")]
+
+[connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
+[connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
+[connection signal="timeout" from="MustardTimer" to="." method="_on_mustard_timer_timeout"]
+[connection signal="timeout" from="MayonnaiseTimer" to="." method="_on_mayonnaise_timer_timeout"]

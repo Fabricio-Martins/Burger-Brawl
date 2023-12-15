@@ -71,6 +71,7 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l3re"]
 
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 1
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_t3l0n")
