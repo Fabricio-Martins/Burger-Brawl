@@ -172,4 +172,8 @@ func _toggle_fullscreen() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func game_ended() -> void:
-	print("GAME OVER!")
+	await get_tree().create_timer(1).timeout
+	get_tree().set_pause(true)
+	var game_won = preload("res://Scenes/Interface/victory_screen.tscn")
+	var game_won_instance = game_won.instantiate()  
+	add_child(game_won_instance)  

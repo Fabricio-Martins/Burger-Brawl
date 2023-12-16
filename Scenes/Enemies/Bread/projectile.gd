@@ -12,7 +12,7 @@ func shooting_target(initial_position: Vector2, dir: Vector2, speed: int) -> voi
 	knockback_direction = dir
 	_speed = speed
 
-	rotation += dir.angle() + PI/4
+	rotation += dir.angle() + PI/2
 
 func _physics_process(delta: float) -> void:
 	position += _direction * _speed * delta
@@ -20,4 +20,4 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage, knockback_force, knockback_direction)
-	#queue_free()
+	queue_free()
