@@ -430,7 +430,7 @@ states/End/position = Vector2(1025, 115)
 states/Start/position = Vector2(279, 127)
 graph_offset = Vector2(-16, 30)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Character"]]
 collision_layer = 2
 script = ExtResource("1_1md65")
 

@@ -16,15 +16,17 @@ var current_items = 0
 var spawn_area
 var heart_size = 16
 @export var _character: Character
-
-var current_level = 1
+@export var _exported_final_level: int = 3
 
 @onready var cameras = get_tree().get_nodes_in_group("Camera")
 
 var _is_full_screen = false
 var y_position = 0
 
+
 func _ready():
+	Events.current_level = 1
+	Events.final_level = _exported_final_level
 	if cameras.size() > 0:
 		_camera = cameras[0]
 		print(_camera.global_position)
@@ -61,10 +63,10 @@ func _ready():
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _change_room():
-	current_level += 1
+	Events.current_level += 1
 	max_items = 12
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("open_pause"):
 		$CanvasLayer/ButtonFullscreen.visible = false
 		get_tree().set_pause(true)  
@@ -102,7 +104,7 @@ func _on_mustard_timer_timeout():
 		
 		print("mostarda")
 		
-		if(current_level > 1):
+		if(Events.current_level > 1):
 			while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
 				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)
@@ -122,7 +124,7 @@ func _on_mayonnaise_timer_timeout():
 		
 		print("maionese")
 		
-		if(current_level > 2):
+		if(Events.current_level > 2):
 			while (random_x == null or random_y == null or random_x <= 52 or random_y >= 150 + _camera.global_position.y or random_y <= 40 + _camera.global_position.y or random_x >= 285):
 				random_x = randf_range(spawn_area.position.x, spawn_area.position.x + spawn_area.size.x)
 				random_y = randf_range(spawn_area.position.y + _camera.global_position.y, spawn_area.position.y + spawn_area.size.y + _camera.global_position.y)			
@@ -168,3 +170,6 @@ func _toggle_fullscreen() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func game_ended() -> void:
+	print("GAME OVER!")

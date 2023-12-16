@@ -68,13 +68,14 @@ position = Vector2(0, -192)
 position = Vector2(0, -384)
 
 [node name="TomatoLiquid" type="Node2D" parent="."]
+position = Vector2(0, -384)
 
 [node name="tomato_liquid" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
 position = Vector2(53, 130)
 scale = Vector2(1, 1)
 
 [node name="tomato_liquid2" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-position = Vector2(257, 83)
+position = Vector2(256, 88)
 scale = Vector2(1, 1)
 
 [node name="tomato_liquid3" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
@@ -96,7 +97,7 @@ scale = Vector2(0.795575, 0.829446)
 
 [node name="OnionGas" type="Node2D" parent="."]
 
-[node name="Player" parent="." groups=["Character"] instance=ExtResource("2_m6s6x")]
+[node name="Player" parent="." instance=ExtResource("2_m6s6x")]
 position = Vector2(152, 88)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

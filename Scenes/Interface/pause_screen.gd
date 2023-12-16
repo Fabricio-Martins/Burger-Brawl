@@ -15,10 +15,7 @@ func _ready():
 		_fs_button = fullscreenButtons[0]
 		
 func _on_resume_pressed():
-	_fs_button.visible = true	
-	get_tree().set_pause(false)
-	self.hide()
-	queue_free()
+	_unpause()
 
 func _on_quit_pressed():
 	get_tree().set_pause(false)
@@ -32,3 +29,9 @@ func _toggle_fullscreen() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func _unpause() -> void:
+	_fs_button.visible = true	
+	get_tree().set_pause(false)
+	self.hide()
+	queue_free()

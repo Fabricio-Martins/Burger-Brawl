@@ -12,12 +12,15 @@ const ENEMIES: Dictionary = {
 	"MEAT": preload("res://Scenes/Enemies/Meat/meat.tscn")
 }
 
+@onready var world: Node2D = get_node("../..")
+
 @onready var tilemap: TileMap = $TileMapKitchen
 @onready var entrance: Node2D = $Entrance
 @onready var enemies_position: Node2D = $EnemyPositions
 @onready var player_detector: Area2D = $PlayerDetector
 
 var num_enemies: int
+@export var enemy_chosen: String
 
 func _ready() -> void:
 	num_enemies = enemies_position.get_child_count() # Adquire a quantia de inimigos.
@@ -31,7 +34,10 @@ func _on_enemy_killed(enemy):
 	# Abre todas as portas quando não há mais inimigos na sala.
 	num_enemies -= 1
 	if num_enemies == 0:
-		_open_doors()
+		if Events.current_level == Events.final_level:
+			world.game_ended()
+		else:
+			_open_doors()
 	
 func _open_doors() -> void:
 	# Abre todas portas da sala.
@@ -48,9 +54,9 @@ func _spawn_enemies() -> void:
 	for enemy_position in enemies_position.get_children():
 		var enemy: CharacterBody2D
 		
-		var enemy_choosen = ENEMIES.keys()[randi() % ENEMIES.size()]
+		#enemy_chosen = ENEMIES.keys()[randi() % ENEMIES.size()]
 		
-		match(enemy_choosen):
+		match(enemy_chosen):
 			"TOMATO":
 				enemy = ENEMIES.TOMATO.instantiate()
 			"BREAD":
