@@ -89,5 +89,6 @@ libraries = {
 }
 
 [node name="AttackDelay" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

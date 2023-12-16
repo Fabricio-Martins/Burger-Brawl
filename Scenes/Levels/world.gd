@@ -174,6 +174,6 @@ func _toggle_fullscreen() -> void:
 func game_ended() -> void:
 	await get_tree().create_timer(1).timeout
 	get_tree().set_pause(true)
-	var game_ended = preload("res://Scenes/Interface/victory_screen.tscn")
-	var game_ended_instance = game_ended.instantiate()  
-	add_child(game_ended_instance)  
+	var game_won = preload("res://Scenes/Interface/victory_screen.tscn")
+	var game_won_instance = game_won.instantiate()  
+	add_child(game_won_instance)  
