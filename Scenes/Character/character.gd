@@ -69,10 +69,11 @@ func _physics_process(delta: float) -> void:
 	weapon.rotation = direction.angle()
 	weapon_hitbox.knockback_direction = direction
 	
-	if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x > 0:
-		weapon_animation.play("attack_right")
-	elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
-		weapon_animation.play("attack_left")
+	if not (OS.has_feature("mobile")):
+		if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x > 0:
+			weapon_animation.play("attack_right")
+		elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
+			weapon_animation.play("attack_left")
 		
 	move_and_slide()
 	
@@ -127,15 +128,6 @@ func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: 
 func heal() -> void:
 	_health += 1
 	emit_signal('life_changed', _health)
-
-
-func _on_touch_button_attack_pressed() -> void:
-	direction = (get_global_mouse_position() - global_position).normalized()
-	
-	if not weapon_animation.is_playing() and direction.x > 0:
-		weapon_animation.play("attack_right")
-	elif not weapon_animation.is_playing() and direction.x < 0:
-		weapon_animation.play("attack_left")
 
 func has_died():
 	emit_signal("died")

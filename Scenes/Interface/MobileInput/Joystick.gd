@@ -1,4 +1,4 @@
-class_name MyVirtualJoystick
+class_name MyVirtualJoystick2
 extends TouchScreenButton
 
 enum HAlign {LEFT, RIGHT}
@@ -32,7 +32,6 @@ func _ready() -> void:
 	_on_vierport_size_changed()
 	
 	get_tree().root.size_changed.connect(_on_vierport_size_changed)
-
 
 func _get_anchored_position_offset():
 	var original_size: Vector2 = Vector2(
@@ -108,7 +107,6 @@ func _new_input(_action: String, strength: float) -> void:
 	ev.pressed = true
 	Input.parse_input_event(ev)	
 
-
 func _generate_input_events() -> void:
 	var strength: float = 0
 		
@@ -124,7 +122,6 @@ func _generate_input_events() -> void:
 	strength = _input_vector.y if _input_vector.y >= 0 else 0.0
 	_new_input(action_down, strength)
 
-# external access method
 func get_input_vector() -> Vector2:
 	return _input_vector
 	

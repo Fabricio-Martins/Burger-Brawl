@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
 [ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="9_k88nf"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
+[ext_resource type="Script" path="res://Scenes/Interface/MobileInput/Joystick2.gd" id="10_gcdt7"]
 [ext_resource type="Texture2D" uid="uid://b7qm5apiisg2i" path="res://Assets/Scenario/x2.png" id="11_0gi2p"]
 [ext_resource type="Texture2D" uid="uid://cmv0rgdlm18vk" path="res://Assets/Scenario/velocity.png" id="11_a0o32"]
 [ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="12_ac5gf"]
@@ -116,15 +117,11 @@ vanchor = 1
 
 [node name="JoystickBase2" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
 visible = false
-position = Vector2(248, 120)
+position = Vector2(229, 117)
 scale = Vector2(0.392, 0.392)
 shape_visible = false
 visibility_mode = 1
-action_right = "ui_right2"
-action_left = "ui_left2"
-action_up = "ui_up2"
-action_down = "ui_down2"
-vanchor = 1
+script = ExtResource("10_gcdt7")
 
 [node name="CoinBackgroundPanel" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -162,7 +159,7 @@ metadata/_edit_use_anchors_ = true
 [node name="TouchButtonAttack" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false
 top_level = true
-position = Vector2(276, 115)
+position = Vector2(292, 127)
 scale = Vector2(2.69058, 2.7409)
 texture_normal = ExtResource("7_2q305")
 shape = SubResource("RectangleShape2D_1lpiq")
@@ -174,7 +171,7 @@ script = ExtResource("8_yivcq")
 visible = false
 top_level = true
 texture_filter = 1
-position = Vector2(259, 150)
+position = Vector2(290, 96)
 scale = Vector2(1.37772, 1.32683)
 texture_normal = ExtResource("8_3ug3c")
 visibility_mode = 1
@@ -260,7 +257,7 @@ autoplay = true
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
-[connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="Player" method="_on_touch_button_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="CanvasLayer/JoystickBase2" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]
 [connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]

@@ -469,14 +469,11 @@ shape = SubResource("CapsuleShape2D_aqcmc")
 disabled = true
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_4hpa4")
 }
-autoplay = "RESET"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_8p765")
-}
 tree_root = SubResource("AnimationNodeStateMachine_yaby1")
 anim_player = NodePath("../AnimationPlayer")
