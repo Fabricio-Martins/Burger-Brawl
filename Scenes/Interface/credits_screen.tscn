@@ -159,5 +159,26 @@ theme_override_fonts/font = ExtResource("2_j4hx5")
 theme_override_font_sizes/font_size = 4
 text = "Juhani Junkala [Chiptune Adventures]"
 
+[node name="Label8" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "lmbubec"
+
+[node name="Label7" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "Kastenfrosch"
+
+[node name="Label6" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "zander games"
+
 [connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]

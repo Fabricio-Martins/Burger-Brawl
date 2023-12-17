@@ -12,5 +12,6 @@ func _ready():
 		
 func _on_body_entered(_body: Node2D) -> void:
 	if _character:
+		$GetPowerup.play()
 		_character.heal()
 		queue_free()

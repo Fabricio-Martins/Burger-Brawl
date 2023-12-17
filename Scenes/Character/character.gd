@@ -71,8 +71,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not (OS.has_feature("mobile")):
 		if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x > 0:
+			$AttackAudio.play()
 			weapon_animation.play("attack_right")
 		elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
+			$AttackAudio.play()
 			weapon_animation.play("attack_left")
 		
 	move_and_slide()
@@ -86,6 +88,7 @@ func start_dash():
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		).normalized()
 		
+		$DashAudio.play()
 		$AnimationPlayer.play("dash")
 		velocity = dash_direction * dash_speed
 
@@ -110,6 +113,7 @@ func _move() -> void:
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
 
 func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: Vector2) -> void:
+	$DamageAudio.play()
 	_health -= _damage_suffered
 	
 	print(_health)
@@ -126,6 +130,7 @@ func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: 
 	_is_being_damaged = false
 
 func heal() -> void:
+	$GetPowerup.play()
 	_health += 1
 	emit_signal('life_changed', _health)
 

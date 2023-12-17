@@ -153,12 +153,15 @@ func _on_player_died() -> void:
 	add_child(game_over_instance)  
 	
 func _set_power_up_double_damage():
+	$GetPowerup.play()
 	$CanvasLayer/powerup_double_damage.visible = not($CanvasLayer/powerup_double_damage.visible)
 	
 func _set_power_up_more_speed():
+	$GetPowerup.play()	
 	$CanvasLayer/powerup_double_speed.visible = not($CanvasLayer/powerup_double_speed.visible)
 
 func _set_power_up_less_damage():
+	$GetPowerup.play()
 	$CanvasLayer/powerup_less_damage.visible = not($CanvasLayer/powerup_less_damage.visible)
 
 func _on_pressed() -> void:

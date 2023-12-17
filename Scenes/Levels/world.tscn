@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
 [ext_resource type="AudioStream" uid="uid://cwp5poftx3o2t" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
+[ext_resource type="AudioStream" uid="uid://dpcslc814qmcx" path="res://Soundtrack/powerup.wav" id="25_372g3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -254,6 +255,11 @@ wait_time = 2.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_exyvv")
 autoplay = true
+
+[node name="GetPowerup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_372g3")
+volume_db = 12.0
+pitch_scale = 1.52
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="life_changed" from="Player" to="." method="_on_player_life_changed"]
