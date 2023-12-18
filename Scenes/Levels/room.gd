@@ -42,7 +42,8 @@ func _on_enemy_killed(enemy):
 func _open_doors() -> void:
 	# Abre todas portas da sala.
 	for door in tilemap.get_children():
-		door.open()
+		if door.has_method("open"):
+			door.open()
 		
 func _close_entrance() -> void:
 	# Fecha a entrada da sala colocando um tile pelo tilemap.

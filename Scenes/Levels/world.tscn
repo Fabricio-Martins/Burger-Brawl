@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
-[ext_resource type="PackedScene" uid="uid://dnddd1adfisj4" path="res://Scenes/Scenario/Hazard/tomato_liquid.tscn" id="8_lbtg3"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
 [ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="9_k88nf"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
@@ -69,25 +68,6 @@ position = Vector2(0, -192)
 [node name="LevelThree" parent="Rooms" instance=ExtResource("5_2m6kr")]
 position = Vector2(0, -384)
 
-[node name="TomatoLiquid" type="Node2D" parent="."]
-position = Vector2(0, -384)
-
-[node name="tomato_liquid" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-position = Vector2(53, 130)
-scale = Vector2(1, 1)
-
-[node name="tomato_liquid2" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-position = Vector2(256, 88)
-scale = Vector2(1, 1)
-
-[node name="tomato_liquid3" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-position = Vector2(111, 65)
-scale = Vector2(1, 1)
-
-[node name="tomato_liquid4" parent="TomatoLiquid" instance=ExtResource("8_lbtg3")]
-position = Vector2(235, 143)
-scale = Vector2(1, 1)
-
 [node name="CookingOil" type="Node2D" parent="."]
 
 [node name="cooking_oil" parent="CookingOil" instance=ExtResource("17_uxr03")]
@@ -100,7 +80,7 @@ scale = Vector2(0.795575, 0.829446)
 [node name="OnionGas" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_m6s6x")]
-position = Vector2(152, 88)
+position = Vector2(152, 104)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
