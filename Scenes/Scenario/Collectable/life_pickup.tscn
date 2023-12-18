@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Scenario/Collectable/life_pickup.gd" id="1_j1en6"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="1_pi383"]
-[ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="3_okysj"]
+[ext_resource type="AudioStream" uid="uid://dpcslc814qmcx" path="res://Soundtrack/powerup.wav" id="3_okysj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h7yo"]
 size = Vector2(11.1296, 14.2547)
