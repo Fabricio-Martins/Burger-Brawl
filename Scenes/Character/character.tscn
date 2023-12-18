@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="4_a73ab"]
 [ext_resource type="Texture2D" uid="uid://dhys3wail7koq" path="res://Assets/Characters/Chef/OneHandChef16.png" id="4_er042"]
 [ext_resource type="Texture2D" uid="uid://cmop3p32e1l16" path="res://Assets/Characters/blown.png" id="5_udmks"]
-[ext_resource type="AudioStream" uid="uid://cn0e8mkdceusr" path="res://Soundtrack/damage_taken.mp3" id="7_h2o50"]
-[ext_resource type="AudioStream" uid="uid://byqnimuxr6x7y" path="res://Soundtrack/attacksound.wav" id="8_w0xat"]
-[ext_resource type="AudioStream" uid="uid://dpcslc814qmcx" path="res://Soundtrack/powerup.wav" id="9_cxi8f"]
-[ext_resource type="AudioStream" uid="uid://bsadodtgwlnxm" path="res://Soundtrack/dash.wav" id="10_ngiin"]
+[ext_resource type="AudioStream" uid="uid://bvcvfiggfbefv" path="res://Soundtrack/damage_taken.mp3" id="7_h2o50"]
+[ext_resource type="AudioStream" uid="uid://dhdyrq02cko3a" path="res://Soundtrack/attacksound.wav" id="8_w0xat"]
+[ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="9_cxi8f"]
+[ext_resource type="AudioStream" uid="uid://c2ndr5xu6gxsj" path="res://Soundtrack/dash.wav" id="10_ngiin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gr1u7"]
 atlas = ExtResource("2_qo31p")
@@ -473,12 +473,15 @@ shape = SubResource("CapsuleShape2D_aqcmc")
 disabled = true
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_4hpa4")
 }
+autoplay = "RESET"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8p765")
+}
 tree_root = SubResource("AnimationNodeStateMachine_yaby1")
 anim_player = NodePath("../AnimationPlayer")
 

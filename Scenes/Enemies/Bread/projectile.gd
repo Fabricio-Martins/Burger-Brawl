@@ -1,10 +1,13 @@
-extends Hitbox
+extends Area2D
 
 # Esse código possui partes baseadas em uma série de vídeos, cujo script pode ser encontrado em:
 # https://github.com/MateuSai/Godot-Roguelike-Tutorial
 
 var _direction: Vector2 = Vector2.ZERO
 var _speed: int = 0
+var knockback_direction: Vector2 = Vector2.ZERO
+@export var damage: int = 1
+@export var knockback_force: int = 200
 
 func shooting_target(initial_position: Vector2, dir: Vector2, speed: int) -> void:
 	position = initial_position

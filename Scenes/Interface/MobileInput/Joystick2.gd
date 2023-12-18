@@ -133,7 +133,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var weapon_animation: AnimationPlayer
 @onready var weapon_hitbox: Area2D 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if OS.has_feature("mobile"):
 		direction = self.get_input_vector().normalized()
 		
