@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -19,11 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
 [ext_resource type="Texture2D" uid="uid://b8fi2bwenlwab" path="res://Assets/UI/fullscreen.png" id="15_aq4wa"]
 [ext_resource type="Script" path="res://Scenes/Levels/ButtonFullscreen.gd" id="16_5fxfm"]
+[ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="17_rgq0w"]
 [ext_resource type="PackedScene" uid="uid://cew2j4x41j32d" path="res://Scenes/Scenario/Hazard/cooking_oil.tscn" id="17_uxr03"]
 [ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
-[ext_resource type="AudioStream" uid="uid://b3camq8o0eywv" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
-[ext_resource type="AudioStream" uid="uid://dpcslc814qmcx" path="res://Soundtrack/powerup.wav" id="25_372g3"]
+[ext_resource type="AudioStream" uid="uid://cwp5poftx3o2t" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
+[ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="25_372g3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -86,7 +87,7 @@ position = Vector2(152, 104)
 
 [node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
 visible = false
-position = Vector2(19, 123)
+position = Vector2(16, 116)
 scale = Vector2(0.392445, 0.392172)
 shape_visible = false
 visibility_mode = 1
@@ -98,7 +99,7 @@ vanchor = 1
 
 [node name="JoystickBase2" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
 visible = false
-position = Vector2(229, 117)
+position = Vector2(254, 116)
 scale = Vector2(0.392, 0.392)
 shape_visible = false
 visibility_mode = 1
@@ -140,7 +141,7 @@ metadata/_edit_use_anchors_ = true
 [node name="TouchButtonAttack" type="TouchScreenButton" parent="CanvasLayer"]
 visible = false
 top_level = true
-position = Vector2(292, 127)
+position = Vector2(228, 111)
 scale = Vector2(2.69058, 2.7409)
 texture_normal = ExtResource("7_2q305")
 shape = SubResource("RectangleShape2D_1lpiq")
@@ -152,7 +153,7 @@ script = ExtResource("8_yivcq")
 visible = false
 top_level = true
 texture_filter = 1
-position = Vector2(290, 96)
+position = Vector2(259, 87)
 scale = Vector2(1.37772, 1.32683)
 texture_normal = ExtResource("8_3ug3c")
 visibility_mode = 1
@@ -160,24 +161,60 @@ script = ExtResource("9_wxms1")
 
 [node name="powerup_double_speed" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(87, 24)
+position = Vector2(24, 48)
 scale = Vector2(0.921722, 0.830757)
 texture = ExtResource("11_a0o32")
 script = ExtResource("12_ac5gf")
 
+[node name="Label" type="Label" parent="CanvasLayer/powerup_double_speed"]
+offset_left = 10.8493
+offset_top = -2.40744
+offset_right = 45.8493
+offset_bottom = 2.59256
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_rgq0w")
+theme_override_font_sizes/font_size = 5
+text = "Velocidade!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="powerup_double_damage" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(109, 24)
+position = Vector2(24, 64)
 scale = Vector2(0.921373, 0.847195)
 texture = ExtResource("11_0gi2p")
 script = ExtResource("12_ac5gf")
 
+[node name="Label" type="Label" parent="CanvasLayer/powerup_double_damage"]
+offset_left = 10.8534
+offset_top = -2.36073
+offset_right = 45.8534
+offset_bottom = 2.63927
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_rgq0w")
+theme_override_font_sizes/font_size = 5
+text = "Dano Duplo!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="powerup_less_damage" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(131, 24)
+position = Vector2(24, 80)
 scale = Vector2(0.914885, 0.872103)
 texture = ExtResource("14_txg1q")
 script = SubResource("GDScript_dboj3")
+
+[node name="Label" type="Label" parent="CanvasLayer/powerup_less_damage"]
+offset_left = 10.9303
+offset_top = -2.29331
+offset_right = 45.9303
+offset_bottom = 2.70669
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_rgq0w")
+theme_override_font_sizes/font_size = 5
+text = "Invunerável!"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="ButtonFullscreen" type="Button" parent="CanvasLayer" groups=["WorldButton"]]
 process_mode = 3
