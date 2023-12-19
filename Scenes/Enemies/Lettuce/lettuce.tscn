@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cwyeqrpuloj2q"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Lettuce/lettuce.gd" id="1_060mj"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_uxtxf"]
+[ext_resource type="Texture2D" uid="uid://4g7i2dc6xx0c" path="res://Assets/Characters/Lettuce/lettuce.png" id="2_shwn3"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_ceylg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
@@ -45,10 +45,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1, 0]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -78,8 +78,7 @@ collision_mask = 5
 script = ExtResource("1_060mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_uxtxf")
-hframes = 2
+texture = ExtResource("2_shwn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4

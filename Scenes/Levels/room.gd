@@ -8,8 +8,11 @@ const spawn_animation: PackedScene = preload("res://Scenes/Scenario/Enviroment/s
 
 const ENEMIES: Dictionary = {
 	"TOMATO": preload("res://Scenes/Enemies/Tomato/tomato.tscn"),
-	"BREAD": preload("res://Scenes/Enemies/Bread/bread.tscn"),
-	"MEAT": preload("res://Scenes/Enemies/Meat/meat.tscn")
+	"BREAD_TOP": preload("res://Scenes/Enemies/Bread/bread.tscn"),
+	"BREAD_BOT": preload("res://Scenes/Enemies/BreadBottom/bread_bot.tscn"),
+	"MEAT": preload("res://Scenes/Enemies/Meat/meat.tscn"),
+	"LETTUCE": preload("res://Scenes/Enemies/Lettuce/lettuce.tscn"),
+	"CHEESE": preload("res://Scenes/Enemies/Cheese/cheese.tscn")
 }
 
 @onready var world: Node2D = get_node("../..")
@@ -60,10 +63,16 @@ func _spawn_enemies() -> void:
 		match(enemy_chosen):
 			"TOMATO":
 				enemy = ENEMIES.TOMATO.instantiate()
-			"BREAD":
-				enemy = ENEMIES.BREAD.instantiate()
+			"BREAD_TOP":
+				enemy = ENEMIES.BREAD_TOP.instantiate()
+			"BREAD_BOT":
+				enemy = ENEMIES.BREAD_BOT.instantiate()
 			"MEAT":
 				enemy = ENEMIES.MEAT.instantiate()
+			"LETTUCE":
+				enemy = ENEMIES.LETTUCE.instantiate()
+			"CHEESE":
+				enemy = ENEMIES.CHEESE.instantiate()
 		
 		
 		var __ = enemy.connect("tree_exited", _on_enemy_killed.bind(enemy)) # Envia sinal quando inimigo morre.

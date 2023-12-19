@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ve0tm63r8s3"]
+[gd_scene load_steps=9 format=3 uid="uid://dth5io03a2on3"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Lettuce/lettuce.gd" id="1_7qtex"]
-[ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_tnvn7"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_ylb45"]
+[ext_resource type="Script" path="res://Scenes/Enemies/BreadBottom/bread_bot.gd" id="1_gloic"]
+[ext_resource type="Texture2D" uid="uid://3v6atudusr0p" path="res://Assets/Characters/BreadBottom/bottombread-Sheet.png" id="2_pnk43"]
+[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_jc6md"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tq6n"]
 radius = 15.0
 
 [sub_resource type="Animation" id="Animation_py473"]
@@ -45,10 +45,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1, 0]
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -63,39 +63,56 @@ tracks/1/keys = {
 "values": [true, false, true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_mqjej"]
+resource_name = "default"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8t3ih"]
 _data = {
 "RESET": SubResource("Animation_py473"),
+"default": SubResource("Animation_mqjej"),
 "hurt": SubResource("Animation_gc467")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7e0wa"]
-radius = 15.0
-
-[node name="lettuce" type="CharacterBody2D" groups=["Enemy"]]
+[node name="BreadBot" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_7qtex")
+script = ExtResource("1_gloic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tnvn7")
-hframes = 2
+texture = ExtResource("2_pnk43")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 rotation = -1.5708
-shape = SubResource("CircleShape2D_wb0is")
+shape = SubResource("CircleShape2D_6tq6n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8t3ih")
 }
+autoplay = "default"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("3_ylb45")
+script = ExtResource("3_jc6md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708
-shape = SubResource("CircleShape2D_7e0wa")
+shape = SubResource("CircleShape2D_6tq6n")

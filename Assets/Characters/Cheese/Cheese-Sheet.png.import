@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de4qbn3mqetjs"
-path="res://.godot/imported/tomato.png-05c6a5520135e86bf2cf0e8d685369f1.ctex"
+uid="uid://d3dvvjypw7eoe"
+path="res://.godot/imported/Cheese-Sheet.png-020770b90e446427c3cfe4ab7782b0bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Tomato/tomato.png"
-dest_files=["res://.godot/imported/tomato.png-05c6a5520135e86bf2cf0e8d685369f1.ctex"]
+source_file="res://Assets/Characters/Cheese/Cheese-Sheet.png"
+dest_files=["res://.godot/imported/Cheese-Sheet.png-020770b90e446427c3cfe4ab7782b0bc.ctex"]
 
 [params]
 
