@@ -8,7 +8,7 @@ extends CharacterBody2D
 var pos_enemy
 var pos_player
 
-var _speed: float = 50
+@export var _speed: float = 70
 var _motion: Vector2
 var _is_being_damaged = false
 

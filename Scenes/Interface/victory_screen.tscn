@@ -2,9 +2,9 @@
 
 [ext_resource type="FontFile" uid="uid://ca00cy123gglt" path="res://Assets/PressStart2P.ttf" id="1_7ihbc"]
 [ext_resource type="Script" path="res://Scenes/Interface/victory_screen.gd" id="1_p8dtv"]
-[ext_resource type="AudioStream" uid="uid://deda6vu1one5e" path="res://Soundtrack/win.mp3" id="3_4a2ko"]
+[ext_resource type="AudioStream" uid="uid://cs2lrd6ot2qph" path="res://Soundtrack/win.mp3" id="3_4a2ko"]
 [ext_resource type="Script" path="res://Scenes/Interface/Label.gd" id="3_h4h20"]
-[ext_resource type="Texture2D" uid="uid://bk0neb2mt7hw0" path="res://Assets/UI/trofeu.png" id="4_una7m"]
+[ext_resource type="Texture2D" uid="uid://cov8ly5nlsoww" path="res://Assets/UI/trofeu.png" id="4_una7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5uik8"]
 bg_color = Color(0.968627, 0.917647, 0.843137, 1)
@@ -95,7 +95,7 @@ text = "Voltar ao Menu
 vertical_icon_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-position = Vector2(32, -7)
+position = Vector2(32, -8)
 scale = Vector2(-0.937198, 1.08031)
 texture = ExtResource("4_una7m")
 

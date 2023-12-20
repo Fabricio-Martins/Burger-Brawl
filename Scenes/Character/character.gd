@@ -26,6 +26,7 @@ var double_damage_active: bool = false
 var double_speed_active: bool = false
 var less_damage_active: bool = false
 
+@onready var animation_tree = $AnimationTree
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
 @onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
@@ -176,3 +177,7 @@ func apply_powerup_less_damage():
 			emit_signal("less_damage")
 			_damage_suffered = 1
 			less_damage_active = false
+
+func update_animation_parameters(move_input : Vector2):
+	if(move_input != Vector2.ZERO):
+		animation_tree.set("parameters/Idle/blend_position", move_input)

@@ -37,6 +37,7 @@ func _on_enemy_killed(enemy):
 	# Abre todas as portas quando não há mais inimigos na sala.
 	num_enemies -= 1
 	if num_enemies == 0:
+		Events.hamburger_state += 1
 		if Events.current_level == Events.final_level:
 			world.game_ended()
 		else:

@@ -12,6 +12,8 @@ var _speed: float = 30
 var _motion: Vector2
 var _is_being_damaged = false
 
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var characters = get_tree().get_nodes_in_group("Character")
 @onready var hitbox: Area2D = get_node("Hitbox")
@@ -33,7 +35,9 @@ func _physics_process(_delta: float) -> void:
 			$Sprite2D.flip_h = true
 				
 		_motion = (pos_player - pos_enemy).normalized()
-			
+		
+		update_animation_parameters(_motion)
+		
 		if not _is_being_damaged:
 			velocity = _motion * _speed
 		
@@ -46,11 +50,14 @@ func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector
 	
 	velocity += knockback_direction * knockback_force
 	
-	$AnimationPlayer.play("hurt")
+	state_machine.travel("Hurt")
 	_is_being_damaged = true
 	await get_tree().create_timer(0.2).timeout
 	
 	if _health <= 0:
 		queue_free()
 	_is_being_damaged = false
-	$AnimationPlayer.play("default")
+
+func update_animation_parameters(move_input : Vector2):
+	if(move_input != Vector2.ZERO):
+		animation_tree.set("parameters/Walk/blend_position", move_input)

@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var _character: Character
 
+@export var slow_speed = 35
+
 func _ready():
 	var characters = get_tree().get_nodes_in_group("Character")
 	
@@ -16,10 +18,10 @@ func _on_body_entered(body):
 		if _character.is_dashing:
 			_character.is_dashing = false
 		_character.dash_is_allowed = false
-		_character._move_speed -= 30
+		_character._move_speed -= slow_speed
 
 
 func _on_body_exited(body):
 	if body.get_name() == "Player":
 		_character.dash_is_allowed = true
-		_character._move_speed += 30
+		_character._move_speed += slow_speed

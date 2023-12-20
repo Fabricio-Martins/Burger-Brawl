@@ -1,19 +1,23 @@
-[gd_scene load_steps=29 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=41 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
 [ext_resource type="PackedScene" uid="uid://umd3k0c8uf3n" path="res://Scenes/Character/character.tscn" id="2_m6s6x"]
 [ext_resource type="PackedScene" uid="uid://bw7krlnqrohhe" path="res://Scenes/Levels/level_one.tscn" id="3_ljpro"]
 [ext_resource type="PackedScene" uid="uid://m6i5uuduah4i" path="res://Scenes/Levels/level_two.tscn" id="4_2ho8y"]
-[ext_resource type="PackedScene" uid="uid://8tg3r3406ml1" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
+[ext_resource type="PackedScene" uid="uid://b0iflftatm4rg" path="res://Scenes/Levels/level_three.tscn" id="5_2m6kr"]
 [ext_resource type="PackedScene" uid="uid://dxfmjk3a1rfvo" path="res://Scenes/Interface/MobileInput/Joystick.tscn" id="5_d5x8i"]
+[ext_resource type="PackedScene" uid="uid://bdf8t0ycfekj6" path="res://Scenes/Levels/level_four.tscn" id="6_1cmnp"]
 [ext_resource type="Texture2D" uid="uid://dxrfui75nhf3s" path="res://Assets/Weapons/sword.png" id="7_2q305"]
+[ext_resource type="PackedScene" uid="uid://8tg3r3406ml1" path="res://Scenes/Levels/level_five.tscn" id="7_s20qq"]
 [ext_resource type="Texture2D" uid="uid://cmalggpmbhu3h" path="res://Assets/Weapons/raio.png" id="8_3ug3c"]
+[ext_resource type="PackedScene" uid="uid://dfr217f54rrbu" path="res://Scenes/Levels/level_six.tscn" id="8_i0vgl"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton.gd" id="8_yivcq"]
 [ext_resource type="Texture2D" uid="uid://dma06tkoclsny" path="res://Assets/Scenario/JustTheCoin.png" id="9_k88nf"]
 [ext_resource type="Script" path="res://Scenes/Levels/TouchScreenButton2.gd" id="9_wxms1"]
 [ext_resource type="Script" path="res://Scenes/Interface/MobileInput/Joystick2.gd" id="10_gcdt7"]
 [ext_resource type="Texture2D" uid="uid://b7qm5apiisg2i" path="res://Assets/Scenario/x2.png" id="11_0gi2p"]
+[ext_resource type="Texture2D" uid="uid://c67x0xn5aeopb" path="res://Assets/UI/Hamburger/burger_parts-SheetBlankSquare.png" id="11_3xrrf"]
 [ext_resource type="Texture2D" uid="uid://cmv0rgdlm18vk" path="res://Assets/Scenario/velocity.png" id="11_a0o32"]
 [ext_resource type="Script" path="res://Scenes/Levels/powerup.gd" id="12_ac5gf"]
 [ext_resource type="Texture2D" uid="uid://bvvprvjcch5km" path="res://Assets/Scenario/health.png" id="14_txg1q"]
@@ -43,6 +47,63 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 anti_aliasing_size = 0.01
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pelpu"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(192, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqxse"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvgvd"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ip45"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myb6v"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6owb"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(128, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bshrh"]
+atlas = ExtResource("11_3xrrf")
+region = Rect2(160, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pe3yh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pelpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqxse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvgvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ip45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myb6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6owb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bshrh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lpiq"]
 custom_solver_bias = 1.0
 size = Vector2(8, 8)
@@ -69,6 +130,15 @@ position = Vector2(0, -192)
 [node name="LevelThree" parent="Rooms" instance=ExtResource("5_2m6kr")]
 position = Vector2(0, -384)
 
+[node name="LevelFour" parent="Rooms" instance=ExtResource("6_1cmnp")]
+position = Vector2(0, -576)
+
+[node name="LevelFive" parent="Rooms" instance=ExtResource("7_s20qq")]
+position = Vector2(0, -768)
+
+[node name="LevelSix" parent="Rooms" instance=ExtResource("8_i0vgl")]
+position = Vector2(0, -960)
+
 [node name="CookingOil" type="Node2D" parent="."]
 
 [node name="cooking_oil" parent="CookingOil" instance=ExtResource("17_uxr03")]
@@ -84,6 +154,20 @@ scale = Vector2(0.795575, 0.829446)
 position = Vector2(152, 104)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HamburgerPanel" type="Panel" parent="CanvasLayer"]
+z_index = -1
+offset_left = 275.0
+offset_top = 5.0
+offset_right = 315.0
+offset_bottom = 45.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lll2k")
+metadata/_edit_use_anchors_ = true
+
+[node name="HamburgerSprite" type="AnimatedSprite2D" parent="CanvasLayer/HamburgerPanel"]
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_pe3yh")
+frame = 6
 
 [node name="JoystickBase" parent="CanvasLayer" instance=ExtResource("5_d5x8i")]
 visible = false
@@ -218,10 +302,10 @@ vertical_alignment = 2
 
 [node name="ButtonFullscreen" type="Button" parent="CanvasLayer" groups=["WorldButton"]]
 process_mode = 3
-offset_left = 302.0
-offset_top = 7.0
-offset_right = 822.0
-offset_bottom = 527.0
+offset_left = 257.0
+offset_top = 4.0
+offset_right = 777.0
+offset_bottom = 524.0
 scale = Vector2(0.0262319, 0.0263534)
 mouse_default_cursor_shape = 2
 icon = ExtResource("15_aq4wa")

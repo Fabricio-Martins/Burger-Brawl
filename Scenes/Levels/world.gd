@@ -16,7 +16,7 @@ var current_items = 0
 var spawn_area
 var heart_size = 16
 @export var _character: Character
-@export var _exported_final_level: int = 3
+@export var _exported_final_level: int = 6
 
 @onready var cameras = get_tree().get_nodes_in_group("Camera")
 
@@ -25,6 +25,7 @@ var y_position = 0
 
 
 func _ready():
+	Events.hamburger_state = 0
 	Events.current_level = 1
 	Events.final_level = _exported_final_level
 	if cameras.size() > 0:
@@ -67,6 +68,7 @@ func _change_room():
 	max_items = 12
 
 func _process(_delta):
+	$CanvasLayer/HamburgerPanel/HamburgerSprite.set_frame(Events.hamburger_state)
 	if Input.is_action_pressed("open_pause"):
 		$CanvasLayer/ButtonFullscreen.visible = false
 		get_tree().set_pause(true)  
