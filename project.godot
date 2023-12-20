@@ -19,6 +19,7 @@ config/icon="res://Assets/Characters/Tomato/tomato.png"
 
 Events="*res://events.gd"
 MenuTheme="*res://Scenes/Autoload/menu_theme.tscn"
+SelectSfx="*res://Scenes/Autoload/select_sfx.tscn"
 
 [display]
 

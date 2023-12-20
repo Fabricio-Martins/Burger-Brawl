@@ -231,6 +231,7 @@ texture = ExtResource("3_nyrso")
 stretch_mode = 1
 
 [node name="ButtonFullscreen" type="Button" parent="."]
+layout_mode = 0
 offset_left = 716.811
 offset_top = 245.0
 offset_right = 1236.81

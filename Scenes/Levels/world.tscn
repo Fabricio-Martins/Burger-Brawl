@@ -140,6 +140,7 @@ position = Vector2(0, -768)
 position = Vector2(0, -960)
 
 [node name="CookingOil" type="Node2D" parent="."]
+position = Vector2(3, -217)
 
 [node name="cooking_oil" parent="CookingOil" instance=ExtResource("17_uxr03")]
 position = Vector2(73, -54)

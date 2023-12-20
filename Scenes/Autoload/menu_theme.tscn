@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8m64v7idc8i1"]
 
-[ext_resource type="AudioStream" uid="uid://cm1ysk2kbf6rd" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 1. Stage 1.ogg" id="1_kxrvy"]
+[ext_resource type="AudioStream" uid="uid://dychlue2t07ec" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 1. Stage 1.ogg" id="1_kxrvy"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+[node name="MenuTheme" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_kxrvy")
 autoplay = true

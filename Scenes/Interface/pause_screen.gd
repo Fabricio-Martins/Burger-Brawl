@@ -15,15 +15,18 @@ func _ready():
 		_fs_button = fullscreenButtons[0]
 		
 func _on_resume_pressed():
+	SelectSfx.play()
 	_unpause()
 
 func _on_quit_pressed():
+	SelectSfx.play()
 	get_tree().set_pause(false)
 	get_tree().change_scene_to_file("res://Scenes/Interface/start_screen.tscn")
 	queue_free()
 	MenuTheme.play()
 
 func _toggle_fullscreen() -> void:
+	SelectSfx.play()
 	_is_full_screen = not _is_full_screen
 	if _is_full_screen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

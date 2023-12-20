@@ -9,6 +9,7 @@ func _process(delta):
 	pass
 
 func _on_pressed() -> void:
+	SelectSfx.play()
 	_toggle_fullscreen()
 
 func _toggle_fullscreen() -> void:

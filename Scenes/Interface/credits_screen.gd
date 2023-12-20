@@ -6,6 +6,7 @@ func _ready():
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_pressed() -> void:
+	SelectSfx.play()
 	_toggle_fullscreen()
 
 func _toggle_fullscreen() -> void:

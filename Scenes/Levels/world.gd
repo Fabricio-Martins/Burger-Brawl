@@ -167,6 +167,7 @@ func _set_power_up_less_damage():
 	$CanvasLayer/powerup_less_damage.visible = not($CanvasLayer/powerup_less_damage.visible)
 
 func _on_pressed() -> void:
+	SelectSfx.play()
 	_toggle_fullscreen()
 
 func _toggle_fullscreen() -> void:
