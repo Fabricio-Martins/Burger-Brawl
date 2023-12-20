@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwyeqrpuloj2q"]
+[gd_scene load_steps=11 format=3 uid="uid://cwyeqrpuloj2q"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Lettuce/lettuce.gd" id="1_060mj"]
 [ext_resource type="Texture2D" uid="uid://4g7i2dc6xx0c" path="res://Assets/Characters/Lettuce/lettuce.png" id="2_shwn3"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_ceylg"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_bib2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
 radius = 15.0
@@ -72,6 +73,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_7e0wa"]
 radius = 15.0
 
+[sub_resource type="Curve" id="Curve_6gtkj"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="lettuce" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 2
 collision_layer = 4
@@ -100,3 +105,25 @@ script = ExtResource("3_ceylg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708
 shape = SubResource("CircleShape2D_7e0wa")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("4_bib2l")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_6gtkj")

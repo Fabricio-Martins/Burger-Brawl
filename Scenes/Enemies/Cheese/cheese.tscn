@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://dgligpyao0rng"]
+[gd_scene load_steps=30 format=3 uid="uid://dgligpyao0rng"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Cheese/cheese.gd" id="1_nrnjm"]
 [ext_resource type="Texture2D" uid="uid://d3dvvjypw7eoe" path="res://Assets/Characters/Cheese/Cheese-Sheet.png" id="1_xntq1"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="2_jckve"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_1agup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rf6n"]
 atlas = ExtResource("1_xntq1")
@@ -184,6 +185,10 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="CircleShape2D" id="CircleShape2D_gw6yb"]
 radius = 16.0312
 
+[sub_resource type="Curve" id="Curve_dhs5o"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Cheese" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 4
@@ -223,3 +228,25 @@ script = ExtResource("2_jckve")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708
 shape = SubResource("CircleShape2D_gw6yb")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("4_1agup")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_dhs5o")

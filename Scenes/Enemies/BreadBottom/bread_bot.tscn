@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dth5io03a2on3"]
+[gd_scene load_steps=31 format=3 uid="uid://dth5io03a2on3"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/BreadBottom/bread_bot.gd" id="1_gloic"]
 [ext_resource type="Texture2D" uid="uid://3v6atudusr0p" path="res://Assets/Characters/BreadBottom/bottombread-Sheet.png" id="2_pnk43"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_jc6md"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_cnx61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_av8e3"]
 atlas = ExtResource("2_pnk43")
@@ -68,6 +69,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mqjej"]
 resource_name = "default"
@@ -114,6 +127,32 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8t3ih"]
@@ -190,8 +229,13 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_njewt"]
 
+[sub_resource type="Curve" id="Curve_aj1gx"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="BreadBot" type="CharacterBody2D"]
 z_index = 2
+position = Vector2(0, -6)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_gloic")
@@ -221,11 +265,33 @@ parameters/Hurt/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0.015873)
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 6)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_jc6md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 6)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_njewt")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("4_cnx61")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_aj1gx")

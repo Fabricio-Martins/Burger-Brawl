@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://6huvm4jnuos0"]
+[gd_scene load_steps=9 format=3 uid="uid://6huvm4jnuos0"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Bread/bread.gd" id="1_ybbja"]
 [ext_resource type="Texture2D" uid="uid://df1q04nslww81" path="res://Assets/Characters/Bread/bread.png" id="2_dttqd"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="3_t17fp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
 radius = 16.0
@@ -68,6 +69,10 @@ _data = {
 "hurt": SubResource("Animation_gc467")
 }
 
+[sub_resource type="Curve" id="Curve_yqhg0"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="bread" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 2
 collision_layer = 4
@@ -89,5 +94,27 @@ libraries = {
 
 [node name="AttackDelay" type="Timer" parent="."]
 autostart = true
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("3_t17fp")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_yqhg0")
 
 [connection signal="timeout" from="AttackDelay" to="." method="_on_attack_delay_timeout"]

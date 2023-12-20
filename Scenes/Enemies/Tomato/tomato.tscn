@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkad7k7oh5bc3"]
+[gd_scene load_steps=10 format=3 uid="uid://dkad7k7oh5bc3"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Tomato/tomato.gd" id="1_brvnf"]
 [ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_wbi28"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_5k06r"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_mmghn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]
 radius = 15.0
@@ -69,6 +70,10 @@ _data = {
 "hurt": SubResource("Animation_gc467")
 }
 
+[sub_resource type="Curve" id="Curve_osq6o"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="tomato" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 2
 collision_layer = 4
@@ -99,3 +104,25 @@ script = ExtResource("3_5k06r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = -1.5708
 shape = SubResource("CircleShape2D_wb0is")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("4_mmghn")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_osq6o")

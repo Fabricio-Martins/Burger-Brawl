@@ -12,6 +12,7 @@ var _speed: float = 30
 var _motion: Vector2
 var _is_being_damaged = false
 
+@onready var hit_particles = $HitParticles
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
@@ -36,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 				
 		_motion = (pos_player - pos_enemy).normalized()
 		
-		update_animation_parameters(_motion)
+		#update_animation_parameters(_motion)
 		
 		if not _is_being_damaged:
 			velocity = _motion * _speed
@@ -48,7 +49,9 @@ func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector
 	print(_character._damage)
 	_health -= _character._damage
 	
+	hit_particles.rotation = get_angle_to(_character.position) + PI
 	velocity += knockback_direction * knockback_force
+	$HitParticles.emitting = true
 	
 	state_machine.travel("Hurt")
 	_is_being_damaged = true

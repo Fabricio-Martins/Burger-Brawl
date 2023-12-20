@@ -12,6 +12,7 @@ var pos_player
 var _motion: Vector2
 var _is_being_damaged = false
 
+@onready var hit_particles = $HitParticles
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 @onready var characters = get_tree().get_nodes_in_group("Character")
 @onready var hitbox: Area2D = get_node("Hitbox")
@@ -45,6 +46,10 @@ func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector
 	_health -= _character._damage
 	
 	velocity += knockback_direction * knockback_force
+	
+	hit_particles.rotation = get_angle_to(_character.position) + PI
+	velocity += knockback_direction * knockback_force
+	$HitParticles.emitting = true
 	
 	$AnimationPlayer.play("hurt")
 	_is_being_damaged = true

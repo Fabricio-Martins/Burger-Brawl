@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://4wprlrnvop30"]
+[gd_scene load_steps=11 format=3 uid="uid://4wprlrnvop30"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Meat/meat.gd" id="1_t3l0n"]
 [ext_resource type="Texture2D" uid="uid://bhgv6exiv28mj" path="res://Assets/Characters/Meat/meat.png" id="2_f4o4x"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_flsh2"]
+[ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_l0udu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4j2qg"]
 
@@ -70,6 +71,10 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l3re"]
 
+[sub_resource type="Curve" id="Curve_gvmcw"]
+_data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 2
 collision_layer = 4
@@ -99,3 +104,25 @@ script = ExtResource("3_flsh2")
 position = Vector2(0, 1)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_3l3re")
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+rotation = -0.00664629
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.59
+texture = ExtResource("4_l0udu")
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+linear_accel_max = 600.0
+damping_min = 50.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_gvmcw")
