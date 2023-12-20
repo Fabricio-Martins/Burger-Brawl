@@ -187,5 +187,12 @@ theme_override_fonts/font = ExtResource("2_j4hx5")
 theme_override_font_sizes/font_size = 4
 text = "zander games"
 
+[node name="Label10" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("2_j4hx5")
+theme_override_font_sizes/font_size = 4
+text = "Kenney.nl"
+
 [connection signal="pressed" from="ReturnButton" to="ReturnButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]
