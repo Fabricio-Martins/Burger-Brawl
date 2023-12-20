@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hhevv40y6bs1"
-path="res://.godot/imported/KitchenKnifeRight.png-1637d89c38e6248536e010d7ab4957d0.ctex"
+uid="uid://c37kds58br81r"
+path="res://.godot/imported/KitchenKnifeSlash.png-3ce875c56e5eb9e277e9a6e803cda4d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/KitchenKnifeRight.png"
-dest_files=["res://.godot/imported/KitchenKnifeRight.png-1637d89c38e6248536e010d7ab4957d0.ctex"]
+source_file="res://Assets/Weapons/Knife/KitchenKnifeSlash.png"
+dest_files=["res://.godot/imported/KitchenKnifeSlash.png-3ce875c56e5eb9e277e9a6e803cda4d4.ctex"]
 
 [params]
 

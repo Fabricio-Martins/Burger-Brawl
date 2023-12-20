@@ -29,7 +29,7 @@ var less_damage_active: bool = false
 @onready var animation_tree = $AnimationTree
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
-@onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Sprite2D/Hitbox")
+@onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Texture/Hitbox")
 
 signal double_damage
 signal double_speed
@@ -62,10 +62,10 @@ func _physics_process(delta: float) -> void:
 	
 	if direction.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$Weapon/Node2D/Sprite2D.scale.y = 1
+		$Weapon/Node2D/Texture.scale.y = 1
 	else:
 		$AnimatedSprite2D.flip_h = true
-		$Weapon/Node2D/Sprite2D.scale.y = -1
+		$Weapon/Node2D/Texture.scale.y = -1
 	
 	weapon.rotation = direction.angle()
 	weapon_hitbox.knockback_direction = direction

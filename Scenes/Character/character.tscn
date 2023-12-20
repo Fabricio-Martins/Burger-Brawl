@@ -1,11 +1,12 @@
-[gd_scene load_steps=45 format=3 uid="uid://umd3k0c8uf3n"]
+[gd_scene load_steps=46 format=3 uid="uid://umd3k0c8uf3n"]
 
 [ext_resource type="Script" path="res://Scenes/Character/character.gd" id="1_1md65"]
 [ext_resource type="Texture2D" uid="uid://pkl4itthq6k7" path="res://Assets/Characters/Chef/dashChef.png" id="2_qo31p"]
-[ext_resource type="Texture2D" uid="uid://hhevv40y6bs1" path="res://Assets/Weapons/KitchenKnifeRight.png" id="3_hculd"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="4_a73ab"]
 [ext_resource type="Texture2D" uid="uid://dhys3wail7koq" path="res://Assets/Characters/Chef/OneHandChef16.png" id="4_er042"]
 [ext_resource type="Texture2D" uid="uid://cmop3p32e1l16" path="res://Assets/Characters/blown.png" id="5_udmks"]
+[ext_resource type="Texture2D" uid="uid://hhevv40y6bs1" path="res://Assets/Weapons/Knife/KitchenKnifeRight.png" id="5_wgirp"]
+[ext_resource type="Texture2D" uid="uid://c37kds58br81r" path="res://Assets/Weapons/Knife/KitchenKnifeSlash.png" id="6_5hx2b"]
 [ext_resource type="AudioStream" uid="uid://bvcvfiggfbefv" path="res://Soundtrack/damage_taken.mp3" id="7_h2o50"]
 [ext_resource type="AudioStream" uid="uid://dhdyrq02cko3a" path="res://Soundtrack/attacksound.wav" id="8_w0xat"]
 [ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="9_cxi8f"]
@@ -342,7 +343,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/0/path = NodePath("Node2D/Texture:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -354,7 +355,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Node2D/Texture/Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -362,6 +363,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Texture/Trail:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_e4rrq"]
@@ -371,7 +384,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/0/path = NodePath("Node2D/Texture:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -383,7 +396,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Node2D/Texture/Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -391,6 +404,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Texture/Trail:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_0ieih"]
@@ -400,7 +425,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/0/path = NodePath("Node2D/Texture:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -412,7 +437,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite2D/Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Node2D/Texture/Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -420,6 +445,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Texture/Trail:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hpa4"]
@@ -475,16 +512,21 @@ libraries = {
 
 [node name="Node2D" type="Node2D" parent="Weapon"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon/Node2D"]
-texture = ExtResource("3_hculd")
+[node name="Texture" type="Sprite2D" parent="Weapon/Node2D"]
+texture = ExtResource("5_wgirp")
 offset = Vector2(12.5, 2)
 
-[node name="Hitbox" type="Area2D" parent="Weapon/Node2D/Sprite2D"]
+[node name="Trail" type="Sprite2D" parent="Weapon/Node2D/Texture"]
+visible = false
+position = Vector2(13, -3)
+texture = ExtResource("6_5hx2b")
+
+[node name="Hitbox" type="Area2D" parent="Weapon/Node2D/Texture"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("4_a73ab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Node2D/Sprite2D/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Node2D/Texture/Hitbox"]
 position = Vector2(13, 2)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_aqcmc")
