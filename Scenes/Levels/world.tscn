@@ -152,7 +152,7 @@ scale = Vector2(0.795575, 0.829446)
 [node name="OnionGas" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_m6s6x")]
-position = Vector2(152, 104)
+position = Vector2(152, 99)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
