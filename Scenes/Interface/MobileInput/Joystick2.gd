@@ -122,7 +122,6 @@ func _generate_input_events() -> void:
 	strength = _input_vector.y if _input_vector.y >= 0 else 0.0
 	_new_input(action_down, strength)
 
-# external access method
 func get_input_vector() -> Vector2:
 	return _input_vector
 	
@@ -139,20 +138,18 @@ func _physics_process(_delta):
 		
 		if direction.x > 0:
 			_character.get_node("AnimatedSprite2D").flip_h = false
-			_character.get_node("Weapon/Node2D/Sprite2D").scale.y = 1
+			#_character.get_node("Weapon/Node2D/Sprite2D").scale.y = 1
 		else:
 			_character.get_node("AnimatedSprite2D").flip_h = true
-			_character.get_node("Weapon/Node2D/Sprite2D").scale.y = -1
-
+			#_character.get_node("Weapon/Node2D/Sprite2D").scale.y = -1
+			
 		weapon = _character.get_node("Weapon")
 		weapon_animation = _character.get_node("Weapon/WeaponAnimationPlayer")
-		weapon_hitbox = _character.get_node("Weapon/Node2D/Sprite2D/Hitbox")
-			
+		weapon_hitbox = _character.get_node("Weapon/Node2D/Texture/Hitbox")
+		
 		weapon.rotation = direction.angle()
 		weapon_hitbox.knockback_direction = direction
-
-		print(direction.angle())
-
+		
 func _on_touch_button_attack_pressed():
 	direction = self.get_input_vector().normalized()
 	
