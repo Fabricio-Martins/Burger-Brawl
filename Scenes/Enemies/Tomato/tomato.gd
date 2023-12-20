@@ -47,6 +47,8 @@ func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector
 	
 	velocity += knockback_direction * knockback_force
 	
+	Events.emit_signal("enemy_hit")
+	
 	hit_particles.rotation = get_angle_to(_character.position) + PI
 	velocity += knockback_direction * knockback_force
 	$HitParticles.emitting = true

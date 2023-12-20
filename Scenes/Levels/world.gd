@@ -15,6 +15,8 @@ var current_items = 0
 
 var spawn_area
 var heart_size = 16
+@export var freeze_slow := 0.07
+@export var freeze_time := 0.3
 @export var _character: Character
 @export var _exported_final_level: int = 6
 
@@ -25,6 +27,7 @@ var y_position = 0
 
 
 func _ready():
+	Events.connect("enemy_hit", freeze_engine)
 	Events.hamburger_state = 0
 	Events.current_level = 1
 	Events.final_level = _exported_final_level
@@ -189,4 +192,8 @@ func _on_button_mobile_menu_pressed():
 	var pause_scene = preload("res://Scenes/Interface/pause_screen.tscn")
 	var pause_instance = pause_scene.instantiate()  
 	add_child(pause_instance) 
-	
+
+func freeze_engine() -> void:
+	Engine.time_scale = freeze_slow
+	await get_tree().create_timer(freeze_time * freeze_slow).timeout
+	Engine.time_scale = 1

@@ -2,6 +2,7 @@ extends Node
 
 var hit_particles = preload("res://Scenes/Scenario/Enviroment/hit_particles.tscn")
 
+signal enemy_hit
 signal room_entered(room)
 var current_level: int
 var final_level: int
