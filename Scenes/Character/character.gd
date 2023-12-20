@@ -27,6 +27,7 @@ var double_speed_active: bool = false
 var less_damage_active: bool = false
 
 @onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
 @onready var weapon: Node2D = get_node("Weapon")
 @onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
 @onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Texture/Hitbox")
@@ -77,8 +78,9 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
 			$AttackAudio.play()
 			weapon_animation.play("attack_left")
-		
+	
 	move_and_slide()
+	#pick_new_state()
 	
 func start_dash():
 	if not is_dashing:
@@ -90,8 +92,11 @@ func start_dash():
 		).normalized()
 		
 		$DashAudio.play()
+		#state_machine.travel("Dash")
 		$AnimationPlayer.play("dash")
 		velocity = dash_direction * dash_speed
+		
+		#update_animation_parameters(velocity)
 
 func _input(event):
 	if (event.is_action_pressed("dash") or manual_dash_enabled) and dash_is_allowed:
@@ -112,6 +117,8 @@ func _move() -> void:
 	if not _is_being_damaged:
 		velocity.x = lerp(velocity.x, _direction.normalized().x * _move_speed, _friction)
 		velocity.y = lerp(velocity.y, _direction.normalized().y * _move_speed, _friction)
+		
+	#update_animation_parameters(velocity)
 
 func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: Vector2) -> void:
 	$DamageAudio.play()
@@ -123,12 +130,17 @@ func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: 
 	velocity += knockback_direction * knockback_force
 	
 	_is_being_damaged = true
+	dash_is_allowed = false
 	if _health > 0:
 		$AnimationPlayer.play("hurt")
+		#state_machine.travel("Hurt")
 	else:
 		$AnimationPlayer.play("dead")
+		#Events.create_hit(get_global_position())
 	await get_tree().create_timer(0.2).timeout
 	_is_being_damaged = false
+	await get_tree().create_timer(0.2).timeout
+	dash_is_allowed = true
 
 func heal() -> void:
 	$GetPowerup.play()
@@ -178,6 +190,17 @@ func apply_powerup_less_damage():
 			_damage_suffered = 1
 			less_damage_active = false
 
+
+# Funções em desuso
+func pick_new_state():
+	if(velocity != Vector2.ZERO):
+		pass
+		#state_machine.travel("Walk")
+	else:
+		state_machine.travel("Idle")
+		
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
 		animation_tree.set("parameters/Idle/blend_position", move_input)
+		animation_tree.set("parameters/Hurt/blend_position", move_input)
+		animation_tree.set("parameters/Dash/blend_position", move_input)
