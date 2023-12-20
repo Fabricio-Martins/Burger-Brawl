@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://umd3k0c8uf3n"]
+[gd_scene load_steps=56 format=3 uid="uid://umd3k0c8uf3n"]
 
 [ext_resource type="Script" path="res://Scenes/Character/character.gd" id="1_1md65"]
 [ext_resource type="Texture2D" uid="uid://pkl4itthq6k7" path="res://Assets/Characters/Chef/dashChef.png" id="2_qo31p"]
@@ -330,6 +330,7 @@ resource_name = "idle_right"
 
 [sub_resource type="Animation" id="Animation_tsisv"]
 resource_name = "idle_top"
+step = 0.2
 
 [sub_resource type="Animation" id="Animation_32lc6"]
 resource_name = "move_down"
@@ -491,11 +492,55 @@ _data = {
 "attack_right": SubResource("Animation_0ieih")
 }
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b3ccl"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70oy7"]
+animation = &"hurt"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_th5ce"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7xvis"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rs0uy"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p7ohh"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b3ccl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_70oy7")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_7xvis")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_rs0uy")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_p7ohh")
+blend_point_3/pos = Vector2(0, -1.1)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mdcul"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3g4tq"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pqi7t"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4krja"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_th5ce"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_mdcul")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_3g4tq")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_pqi7t")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_4krja")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p05bd"]
 advance_mode = 2
@@ -561,12 +606,15 @@ shape = SubResource("CapsuleShape2D_aqcmc")
 disabled = true
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Weapon"]
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_4hpa4")
 }
+autoplay = "RESET"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8p765")
+}
 tree_root = SubResource("AnimationNodeStateMachine_yaby1")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Hurt/blend_position = Vector2(0, 0)

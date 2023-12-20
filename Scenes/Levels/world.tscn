@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
 [ext_resource type="AudioStream" uid="uid://cwp5poftx3o2t" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
 [ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="25_372g3"]
-[ext_resource type="Texture2D" uid="uid://bkc1h42avxpai" path="res://Assets/UI/burger.png" id="26_ah650"]
+[ext_resource type="Texture2D" uid="uid://bsybq8xlfkvyj" path="res://Assets/UI/burger.png" id="26_ah650"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0

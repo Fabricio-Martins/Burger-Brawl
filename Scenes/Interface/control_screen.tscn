@@ -226,87 +226,98 @@ script = ExtResource("2_7pjcj")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
-offset_left = 442.033
-offset_top = 346.0
-offset_right = 668.033
-offset_bottom = 354.0
+offset_left = 443.029
+offset_top = 333.0
+offset_right = 669.029
+offset_bottom = 341.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_420tc")
 theme_override_font_sizes/font_size = 5
-text = "Powerups"
+text = "Power-Ups"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 445.0
-offset_top = 355.0
-offset_right = 667.0
-offset_bottom = 394.0
-theme_override_constants/separation = 3
+offset_left = 441.037
+offset_top = 351.0
+offset_right = 690.037
+offset_bottom = 385.0
+theme_override_constants/separation = 50
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer5/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 8
 
-[node name="Label5" type="Label" parent="VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
-theme_override_fonts/font = ExtResource("1_420tc")
-theme_override_font_sizes/font_size = 4
-text = "Dano duplo"
-
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/HBoxContainer"]
-position = Vector2(48.8026, 1)
-scale = Vector2(0.4, 0.4)
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer5/VBoxContainer2/HBoxContainer"]
+position = Vector2(-16, 8)
 texture = ExtResource("4_21y05")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Label3" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+[node name="Label5" type="Label" parent="HBoxContainer5/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("1_420tc")
 theme_override_font_sizes/font_size = 4
-text = "Velocidade"
+text = "Dobra o dano
+causado pelo
+Jogador"
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/HBoxContainer2"]
-position = Vector2(48.8026, 1)
-scale = Vector2(0.4, 0.4)
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer5/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label3" type="Label" parent="HBoxContainer5/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
+theme_override_fonts/font = ExtResource("1_420tc")
+theme_override_font_sizes/font_size = 4
+text = "Aumenta a velocidade
+do jogador"
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer5/VBoxContainer2/HBoxContainer2"]
+position = Vector2(-16, 4)
 texture = ExtResource("5_77lwc")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer5/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label4" type="Label" parent="VBoxContainer2/HBoxContainer4"]
+[node name="Label4" type="Label" parent="HBoxContainer5/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("1_420tc")
 theme_override_font_sizes/font_size = 4
-text = "Invencibilidade"
+text = "Deixa o jogador
+invencível por um 
+breve período de tempo"
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/HBoxContainer4"]
-position = Vector2(66.7229, 1)
-scale = Vector2(0.4, 0.4)
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer5/VBoxContainer/HBoxContainer4"]
+position = Vector2(-12, 8)
 texture = ExtResource("6_07hr7")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer5/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label4" type="Label" parent="VBoxContainer2/HBoxContainer3"]
+[node name="Label4" type="Label" parent="HBoxContainer5/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.466667, 0.466667, 0.466667, 1)
 theme_override_fonts/font = ExtResource("1_420tc")
 theme_override_font_sizes/font_size = 4
-text = "Recuperar Saúde"
+text = "Aumenta a saúde 
+total do jogador"
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/HBoxContainer3"]
-position = Vector2(66.7229, 2)
-scale = Vector2(0.4, 0.4)
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer5/VBoxContainer/HBoxContainer3"]
+position = Vector2(-12, 4)
 texture = ExtResource("7_tjsfj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
