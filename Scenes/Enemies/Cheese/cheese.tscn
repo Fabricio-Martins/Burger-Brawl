@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgligpyao0rng"]
+[gd_scene load_steps=32 format=3 uid="uid://dgligpyao0rng"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Cheese/cheese.gd" id="1_nrnjm"]
 [ext_resource type="Texture2D" uid="uid://d3dvvjypw7eoe" path="res://Assets/Characters/Cheese/Cheese-Sheet.png" id="1_xntq1"]
 [ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="2_jckve"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_1agup"]
+[ext_resource type="Texture2D" uid="uid://dcdranr4weuhb" path="res://Assets/Characters/Cheese/justTheCheese.png" id="5_x6gun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rf6n"]
 atlas = ExtResource("1_xntq1")
@@ -189,6 +190,9 @@ radius = 16.0312
 _data = [Vector2(0, 0.285714), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Gradient" id="Gradient_fbbo1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Cheese" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 4
@@ -250,3 +254,13 @@ damping_max = 100.0
 angle_min = -720.0
 angle_max = 720.0
 scale_amount_curve = SubResource("Curve_dhs5o")
+
+[node name="GhostEffect" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 3
+lifetime = 0.3
+texture = ExtResource("5_x6gun")
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+color = Color(1, 1, 1, 0.509804)
+color_ramp = SubResource("Gradient_fbbo1")

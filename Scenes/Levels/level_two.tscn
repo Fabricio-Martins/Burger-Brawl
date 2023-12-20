@@ -18,6 +18,9 @@ position = Vector2(152, 151)
 [node name="Marker2D" type="Marker2D" parent="EnemyPositions" index="0"]
 position = Vector2(248, 56)
 
+[node name="Marker2D2" type="Marker2D" parent="EnemyPositions" index="1"]
+position = Vector2(62, 56)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCameraDetector" index="0"]
 light_mask = 0
 visibility_layer = 2

@@ -8,7 +8,7 @@ extends CharacterBody2D
 var pos_enemy
 var pos_player
 
-var _speed: float = 120
+var _speed: float = 150
 var _motion: Vector2
 var _is_being_damaged = false
 
@@ -30,10 +30,15 @@ func _physics_process(_delta: float) -> void:
 		pos_player = _character.get_global_position()
 		pos_enemy = get_global_position()
 		
+		var img = $GhostEffect.texture.get_image()
 		if pos_player.x < pos_enemy.x:
 			$Sprite2D.flip_h = true
+			img.flip_x()
+			$GhostEffect.texture = ImageTexture.create_from_image(img)
 		else:
 			$Sprite2D.flip_h = false
+			img.flip_x()
+			$GhostEffect.texture = ImageTexture.create_from_image(img)
 				
 		_motion = (pos_player - pos_enemy).normalized()
 		
