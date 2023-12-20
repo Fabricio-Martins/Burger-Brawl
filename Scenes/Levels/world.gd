@@ -183,3 +183,10 @@ func game_ended() -> void:
 	var game_won = preload("res://Scenes/Interface/victory_screen.tscn")
 	var game_won_instance = game_won.instantiate()  
 	add_child(game_won_instance)  
+
+func _on_button_mobile_menu_pressed():
+	get_tree().set_pause(true)  
+	var pause_scene = preload("res://Scenes/Interface/pause_screen.tscn")
+	var pause_instance = pause_scene.instantiate()  
+	add_child(pause_instance) 
+	

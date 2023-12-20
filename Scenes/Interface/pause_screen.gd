@@ -8,9 +8,6 @@ var _is_full_screen = false
 func _ready():
 	_is_full_screen = (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-	if OS.has_feature("mobile"):
-		visible = false
-		
 	if fullscreenButtons.size() > 0:
 		_fs_button = fullscreenButtons[0]
 		
@@ -34,7 +31,9 @@ func _toggle_fullscreen() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _unpause() -> void:
-	_fs_button.visible = true	
+	if not OS.has_feature("mobile"):
+		_fs_button.visible = true	
+		
 	get_tree().set_pause(false)
 	self.hide()
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://mbmewlsmr6o7"]
+[gd_scene load_steps=42 format=3 uid="uid://mbmewlsmr6o7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_3fyiq"]
 [ext_resource type="Script" path="res://MainCamera.gd" id="2_3rbv0"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
 [ext_resource type="AudioStream" uid="uid://cwp5poftx3o2t" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
 [ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="25_372g3"]
+[ext_resource type="Texture2D" uid="uid://sl1lqrsw4xy" path="res://Assets/UI/burger.png" id="26_ah650"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -312,6 +313,14 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("15_aq4wa")
 script = ExtResource("16_5fxfm")
 
+[node name="ButtonMobileMenu" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(257, 17)
+scale = Vector2(0.026, 0.026)
+texture_normal = ExtResource("26_ah650")
+visibility_mode = 1
+script = ExtResource("8_yivcq")
+
 [node name="BackgroundPanel" type="Panel" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.018103
@@ -368,6 +377,7 @@ pitch_scale = 1.52
 [connection signal="pressed" from="CanvasLayer/TouchButtonAttack" to="CanvasLayer/JoystickBase2" method="_on_touch_button_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton2" to="." method="_on_touch_screen_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonFullscreen" to="." method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonMobileMenu" to="." method="_on_button_mobile_menu_pressed"]
 [connection signal="timeout" from="KetchupTimer" to="." method="_on_ketchup_timer_timeout"]
 [connection signal="timeout" from="MustardTimer" to="." method="_on_mustard_timer_timeout"]
 [connection signal="timeout" from="MayonnaiseTimer" to="." method="_on_mayonnaise_timer_timeout"]
