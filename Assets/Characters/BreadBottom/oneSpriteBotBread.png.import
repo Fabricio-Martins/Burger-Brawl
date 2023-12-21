@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1apcvum4nfb4"
-path="res://.godot/imported/WoodenSpoon.png-5e3eb2b4a219874ab4e1120f43874698.ctex"
+uid="uid://evelmprr8cjs"
+path="res://.godot/imported/oneSpriteBotBread.png-7e13385d147b91d9b913de440f8c4439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/WoodenSpoon.png"
-dest_files=["res://.godot/imported/WoodenSpoon.png-5e3eb2b4a219874ab4e1120f43874698.ctex"]
+source_file="res://Assets/Characters/BreadBottom/oneSpriteBotBread.png"
+dest_files=["res://.godot/imported/oneSpriteBotBread.png-7e13385d147b91d9b913de440f8c4439.ctex"]
 
 [params]
 

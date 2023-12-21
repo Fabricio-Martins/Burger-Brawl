@@ -1,5 +1,9 @@
+@icon("res://Assets/Characters/Chef/chef16.png")
+
 class_name Character
 extends CharacterBody2D
+
+enum {UP, DOWN}
 
 var enemy_inattack_range = false
 var enemy_attack_colldown = true 
@@ -28,9 +32,10 @@ var less_damage_active: bool = false
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
-@onready var weapon: Node2D = get_node("Weapon")
-@onready var weapon_animation: AnimationPlayer = get_node("Weapon/WeaponAnimationPlayer")
-@onready var weapon_hitbox: Area2D = get_node("Weapon/Node2D/Texture/Hitbox")
+
+@onready var weapons: Node2D = get_node("Weapons")
+
+var current_weapon: Node2D
 
 signal double_damage
 signal double_speed
@@ -43,6 +48,7 @@ signal died
 
 func _ready() -> void:
 	emit_signal('life_changed', _health)
+	current_weapon = weapons.get_child(0)
 	
 func _physics_process(delta: float) -> void:
 	if OS.has_feature("mobile"):
@@ -63,24 +69,34 @@ func _physics_process(delta: float) -> void:
 	
 	if direction.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		$Weapon/Node2D/Texture.scale.y = 1
 	else:
 		$AnimatedSprite2D.flip_h = true
-		$Weapon/Node2D/Texture.scale.y = -1
 	
-	weapon.rotation = direction.angle()
-	weapon_hitbox.knockback_direction = direction
-	
-	if not (OS.has_feature("mobile")):
-		if Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x > 0:
-			$AttackAudio.play()
-			weapon_animation.play("attack_right")
-		elif Input.is_action_just_pressed("ui_attack") and not weapon_animation.is_playing() and direction.x < 0:
-			$AttackAudio.play()
-			weapon_animation.play("attack_left")
+	current_weapon.move(direction)
+	if not current_weapon.is_busy():
+		if Input.is_action_just_released("ui_previous_weapon"):
+			_switch_weapon(UP)
+		elif Input.is_action_just_released("ui_next_weapon"):
+			_switch_weapon(DOWN)
+	current_weapon.get_input()
 	
 	move_and_slide()
 	#pick_new_state()
+	
+func _switch_weapon(input_direction: int) -> void:
+	var index: int = current_weapon.get_index()
+	if input_direction == UP:
+		index -= 1
+		if index < 0:
+			index = weapons.get_child_count() - 1
+	else:
+		index += 1
+		if index > weapons.get_child_count() - 1:
+			index = 0
+	
+	current_weapon.hide()
+	current_weapon = weapons.get_child(index)
+	current_weapon.show()
 	
 func start_dash():
 	if not is_dashing:
@@ -120,7 +136,7 @@ func _move() -> void:
 		
 	#update_animation_parameters(velocity)
 
-func take_damage(_damage_dealt: int, knockback_force: int, knockback_direction: Vector2) -> void:
+func take_damage(_damage_dealt: float, knockback_force: int, knockback_direction: Vector2) -> void:
 	$DamageAudio.play()
 	_health -= _damage_suffered
 	

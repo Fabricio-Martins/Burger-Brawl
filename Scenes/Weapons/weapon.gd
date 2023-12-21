@@ -24,18 +24,10 @@ func _physics_process(_delta: float) -> void:
 		pos_player = _character.get_global_position()
 		
 func get_input() -> void:
-	if OS.has_feature("mobile"):
-		pass
-	else:
-		direction = (get_global_mouse_position() - global_position).normalized()
-		
 	if not (OS.has_feature("mobile")):
-		if Input.is_action_just_pressed("ui_attack") and not animation_player.is_playing() and direction.x > 0:
+		if Input.is_action_just_pressed("ui_attack") and not animation_player.is_playing():
 			$AttackAudio.play()
-			animation_player.play("attack_right")
-		elif Input.is_action_just_pressed("ui_attack") and not animation_player.is_playing() and direction.x < 0:
-			$AttackAudio.play()
-			animation_player.play("attack_left")
+			animation_player.play("attack")
 
 func move(mouse_direction: Vector2) -> void:
 	rotation = mouse_direction.angle()
