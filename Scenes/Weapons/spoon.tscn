@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://72s472p1wyrb"]
+
+[ext_resource type="PackedScene" uid="uid://c3uebp7p53r3q" path="res://Scenes/Weapons/weapon.tscn" id="1_418hy"]
+[ext_resource type="Texture2D" uid="uid://b1apcvum4nfb4" path="res://Assets/Weapons/Spoon/WoodenSpoon.png" id="2_y00yq"]
+[ext_resource type="Texture2D" uid="uid://dqwltatbjx8cb" path="res://Assets/Weapons/Spoon/big_slash-Sheet.png" id="3_ili8s"]
+[ext_resource type="AudioStream" uid="uid://fjee8uks3a26" path="res://Soundtrack/spoon.wav" id="4_t4reg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p18l1"]
+size = Vector2(18, 9)
+
+[sub_resource type="Animation" id="Animation_4dc5e"]
+resource_name = "attack"
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Texture:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Texture/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Texture/Trail:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.5708, 1.5708, 1.5708, 1.5708, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_g0x78"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6lj34"]
+_data = {
+"RESET": SubResource("Animation_g0x78"),
+"attack": SubResource("Animation_4dc5e")
+}
+
+[node name="Spoon" instance=ExtResource("1_418hy")]
+
+[node name="Texture" parent="Node2D" index="0"]
+position = Vector2(-5, -7)
+texture = ExtResource("2_y00yq")
+
+[node name="Trail" parent="Node2D/Texture" index="0"]
+position = Vector2(6, -9)
+rotation = -1.55334
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_ili8s")
+hframes = 3
+
+[node name="Hitbox" parent="Node2D/Texture" index="1"]
+damage = 1.5
+knockback_force = 300
+
+[node name="CollisionShape2D" parent="Node2D/Texture/Hitbox" index="0"]
+position = Vector2(11.5, -5)
+shape = SubResource("RectangleShape2D_p18l1")
+
+[node name="WeaponAnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_6lj34")
+}
+
+[node name="AttackAudio" parent="." index="2"]
+stream = ExtResource("4_t4reg")

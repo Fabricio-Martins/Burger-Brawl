@@ -1,3 +1,5 @@
+@icon("res://Assets/Characters/BreadBottom/oneSpriteBotBread.png")
+
 class_name BreadBottom
 extends CharacterBody2D
 
@@ -45,9 +47,9 @@ func _physics_process(_delta: float) -> void:
 		hitbox.knockback_direction = velocity.normalized()
 		move_and_slide()
 	
-func take_damage(_damage: int, knockback_force: int, knockback_direction: Vector2) -> void:
-	print(_character._damage)
-	_health -= _character._damage
+func take_damage(_damage: float, knockback_force: int, knockback_direction: Vector2) -> void:
+	print(_damage)
+	_health -= _damage
 	
 	Events.emit_signal("enemy_hit")
 	

@@ -1,3 +1,5 @@
+@icon("res://Assets/Characters/Lettuce/lettuce.png")
+
 class_name LettuceLeaf
 extends CharacterBody2D
 
@@ -41,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 		hitbox.knockback_direction = velocity.normalized()
 		move_and_slide()
 	
-func take_damage(_damaged: int, knockback_force: int, knockback_direction: Vector2) -> void:
+func take_damage(_damaged: float, knockback_force: int, knockback_direction: Vector2) -> void:
 	_health -= _character._damage
 	
 	velocity += knockback_direction * knockback_force
