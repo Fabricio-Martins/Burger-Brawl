@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Lettuce/lettuce.gd" id="1_060mj"]
 [ext_resource type="Texture2D" uid="uid://4g7i2dc6xx0c" path="res://Assets/Characters/Lettuce/lettuce.png" id="2_shwn3"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_ceylg"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="3_ceylg"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_bib2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]

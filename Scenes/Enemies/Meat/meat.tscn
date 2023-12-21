@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Meat/meat.gd" id="1_t3l0n"]
 [ext_resource type="Texture2D" uid="uid://bhgv6exiv28mj" path="res://Assets/Characters/Meat/meat.png" id="2_f4o4x"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_flsh2"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="3_flsh2"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_l0udu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4j2qg"]

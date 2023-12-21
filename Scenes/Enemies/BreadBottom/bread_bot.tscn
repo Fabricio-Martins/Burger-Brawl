@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemies/BreadBottom/bread_bot.gd" id="1_gloic"]
 [ext_resource type="Texture2D" uid="uid://3v6atudusr0p" path="res://Assets/Characters/BreadBottom/bottombread-Sheet.png" id="2_pnk43"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_jc6md"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="3_jc6md"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_cnx61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_av8e3"]

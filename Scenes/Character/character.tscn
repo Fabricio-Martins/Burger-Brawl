@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Character/character.gd" id="1_1md65"]
 [ext_resource type="Texture2D" uid="uid://pkl4itthq6k7" path="res://Assets/Characters/Chef/dashChef.png" id="2_qo31p"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="4_a73ab"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="4_a73ab"]
 [ext_resource type="Texture2D" uid="uid://dhys3wail7koq" path="res://Assets/Characters/Chef/OneHandChef16.png" id="4_er042"]
 [ext_resource type="Texture2D" uid="uid://cmop3p32e1l16" path="res://Assets/Characters/blown.png" id="5_udmks"]
 [ext_resource type="Texture2D" uid="uid://hhevv40y6bs1" path="res://Assets/Weapons/Knife/KitchenKnifeRight.png" id="5_wgirp"]

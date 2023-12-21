@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Tomato/tomato.gd" id="1_brvnf"]
 [ext_resource type="Texture2D" uid="uid://bx5uiakm3a5i8" path="res://Assets/Characters/Tomato/tomatoSprite.png" id="2_wbi28"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="3_5k06r"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="3_5k06r"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_mmghn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wb0is"]

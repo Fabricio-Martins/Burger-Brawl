@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Cheese/cheese.gd" id="1_nrnjm"]
 [ext_resource type="Texture2D" uid="uid://d3dvvjypw7eoe" path="res://Assets/Characters/Cheese/Cheese-Sheet.png" id="1_xntq1"]
-[ext_resource type="Script" path="res://Scenes/Character/Hitbox.gd" id="2_jckve"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Hitbox.gd" id="2_jckve"]
 [ext_resource type="Texture2D" uid="uid://bjpbfsrdml4qg" path="res://Assets/Scenario/whiteDot.png" id="4_1agup"]
 [ext_resource type="Texture2D" uid="uid://dcdranr4weuhb" path="res://Assets/Characters/Cheese/justTheCheese.png" id="5_x6gun"]
 
