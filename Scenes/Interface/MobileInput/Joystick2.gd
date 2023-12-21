@@ -138,10 +138,10 @@ func _physics_process(_delta):
 		
 		if direction.x > 0:
 			_character.get_node("AnimatedSprite2D").flip_h = false
-			#_character.get_node("Weapon/Node2D/Sprite2D").scale.y = 1
+			_character.get_node("Weapon/Node2D/Texture").scale.y = 1
 		else:
 			_character.get_node("AnimatedSprite2D").flip_h = true
-			#_character.get_node("Weapon/Node2D/Sprite2D").scale.y = -1
+			_character.get_node("Weapon/Node2D/Texture").scale.y = -1
 			
 		weapon = _character.get_node("Weapon")
 		weapon_animation = _character.get_node("Weapon/WeaponAnimationPlayer")
