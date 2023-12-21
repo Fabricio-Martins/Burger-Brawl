@@ -52,6 +52,9 @@ _data = {
 
 [node name="Knife" instance=ExtResource("1_4s5b3")]
 
+[node name="Hitbox" parent="Node2D/Texture" index="1"]
+knockback_force = 100
+
 [node name="CollisionShape2D" parent="Node2D/Texture/Hitbox" index="0"]
 disabled = false
 

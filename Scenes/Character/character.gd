@@ -3,8 +3,6 @@
 class_name Character
 extends CharacterBody2D
 
-enum {UP, DOWN}
-
 var enemy_inattack_range = false
 var enemy_attack_colldown = true 
 var player_alive = true
@@ -74,25 +72,18 @@ func _physics_process(delta: float) -> void:
 	
 	current_weapon.move(direction)
 	if not current_weapon.is_busy():
-		if Input.is_action_just_released("ui_previous_weapon"):
-			_switch_weapon(UP)
-		elif Input.is_action_just_released("ui_next_weapon"):
-			_switch_weapon(DOWN)
+		if Input.is_action_just_released("ui_change_weapon"):
+			_switch_weapon()
 	current_weapon.get_input()
 	
 	move_and_slide()
 	#pick_new_state()
 	
-func _switch_weapon(input_direction: int) -> void:
+func _switch_weapon() -> void:
 	var index: int = current_weapon.get_index()
-	if input_direction == UP:
-		index -= 1
-		if index < 0:
-			index = weapons.get_child_count() - 1
-	else:
-		index += 1
-		if index > weapons.get_child_count() - 1:
-			index = 0
+	index -= 1
+	if index < 0:
+		index = weapons.get_child_count() - 1
 	
 	current_weapon.hide()
 	current_weapon = weapons.get_child(index)
