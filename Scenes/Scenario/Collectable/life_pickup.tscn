@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Scenario/Collectable/life_pickup.gd" id="1_j1en6"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="1_pi383"]
-[ext_resource type="AudioStream" uid="uid://dpcslc814qmcx" path="res://Soundtrack/powerup.wav" id="3_okysj"]
+[ext_resource type="AudioStream" uid="uid://bnqf1610xj3ng" path="res://Soundtrack/PowerupSound.ogg" id="3_60s32"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h7yo"]
 size = Vector2(11.1296, 14.2547)
@@ -23,7 +23,7 @@ scale = Vector2(1.34776, 0.911982)
 shape = SubResource("RectangleShape2D_6h7yo")
 
 [node name="GetPowerup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_okysj")
+stream = ExtResource("3_60s32")
 volume_db = 14.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

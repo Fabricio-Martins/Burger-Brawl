@@ -28,8 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://2m6a3rl1qmq8" path="res://Scenes/Interface/Aim/Aim.tscn" id="21_0rjvi"]
 [ext_resource type="Texture2D" uid="uid://dwbtkwib3ongy" path="res://Assets/UI/chefHat.png" id="21_uskco"]
 [ext_resource type="AudioStream" uid="uid://cwp5poftx3o2t" path="res://Soundtrack/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.ogg" id="23_exyvv"]
-[ext_resource type="AudioStream" uid="uid://b6bdh08ee423f" path="res://Soundtrack/powerup.wav" id="25_372g3"]
 [ext_resource type="Texture2D" uid="uid://bsybq8xlfkvyj" path="res://Assets/UI/burger.png" id="26_ah650"]
+[ext_resource type="AudioStream" uid="uid://bnqf1610xj3ng" path="res://Soundtrack/PowerupSound.ogg" id="30_x063d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lll2k"]
 content_margin_left = 0.0
@@ -144,11 +144,32 @@ position = Vector2(0, -960)
 position = Vector2(3, -217)
 
 [node name="cooking_oil" parent="CookingOil" instance=ExtResource("17_uxr03")]
-position = Vector2(73, -54)
+position = Vector2(83, -69)
 
 [node name="cooking_oil2" parent="CookingOil" instance=ExtResource("17_uxr03")]
-position = Vector2(237, -85)
+position = Vector2(253, -114)
 scale = Vector2(0.795575, 0.829446)
+
+[node name="cooking_oil3" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(114, -107)
+
+[node name="cooking_oil4" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(260, -27)
+
+[node name="cooking_oil5" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(205, -44)
+
+[node name="cooking_oil6" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(191, -94)
+
+[node name="cooking_oil7" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(143, -48)
+
+[node name="cooking_oil8" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(47, -28)
+
+[node name="cooking_oil9" parent="CookingOil" instance=ExtResource("17_uxr03")]
+position = Vector2(43, -111)
 
 [node name="OnionGas" type="Node2D" parent="."]
 
@@ -369,7 +390,7 @@ stream = ExtResource("23_exyvv")
 autoplay = true
 
 [node name="GetPowerup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("25_372g3")
+stream = ExtResource("30_x063d")
 volume_db = 12.0
 pitch_scale = 1.52
 
