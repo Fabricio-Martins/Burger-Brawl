@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv7hrbiaw25hx"]
+[gd_scene load_steps=6 format=3 uid="uid://dv7hrbiaw25hx"]
 
 [ext_resource type="PackedScene" uid="uid://c3uebp7p53r3q" path="res://Scenes/Weapons/weapon.tscn" id="1_4s5b3"]
 [ext_resource type="Animation" uid="uid://bxq64oce3r13a" path="res://Scenes/Weapons/knife_attack.res" id="2_viw1k"]
@@ -44,8 +44,12 @@ tracks/2/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_t7wjj"]
+resource_name = "RESET"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xa81a"]
 _data = {
+"RESET": SubResource("Animation_t7wjj"),
 "attack": SubResource("Animation_chm3l"),
 "knife_attack": ExtResource("2_viw1k")
 }
@@ -54,9 +58,6 @@ _data = {
 
 [node name="Hitbox" parent="Node2D/Texture" index="1"]
 knockback_force = 100
-
-[node name="CollisionShape2D" parent="Node2D/Texture/Hitbox" index="0"]
-disabled = false
 
 [node name="WeaponAnimationPlayer" parent="." index="1"]
 libraries = {
